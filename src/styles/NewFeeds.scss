@@ -1,0 +1,166 @@
+.post-item {
+  color: var(--text-primary-color);
+  .post-single-box {
+    border-radius: 11px;
+    padding: 15px;
+    .top-area {
+      .profile-area {
+        .avatar-item {
+          img {
+            width: 48px;
+            height: 48px;
+          }
+        }
+        .info-area {
+          a {
+            color: var(--primary-color) !important;
+            text-decoration: none;
+            font-weight: 700;
+          }
+        }
+      }
+      .title {
+        font-weight: 600;
+      }
+
+      .post-img {
+        width: 100% !important;
+        .single {
+          flex: 0 0 calc(50% - 8px);
+          align-self: center;
+          img {
+            width: 100%;
+          }
+          .avatar {
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+  //PostReaction
+  .react-list {
+    button {
+      background: none;
+      border: none;
+      color: #7c7b7b;
+    }
+  }
+  .like-comment-share {
+    border-top: 1px solid var(--text-3rd-color);
+    border-bottom: 1px solid var(--text-3rd-color);
+    button {
+      background: transparent;
+      border: transparent;
+      color: var(--text-primary-color);
+      border-radius: 16px;
+      &:hover {
+        color: rgba(19, 21, 31, 0.8) !important;
+      }
+    }
+  }
+
+  //WriteComment
+  .write-comment {
+    margin-bottom: 20px;
+    .input-group {
+      border-radius: 11px;
+      border: 1px solid var(--primary-color);
+      vertical-align: middle;
+      background-color: var(--card-color) !important;
+
+      button {
+        background-color: transparent !important;
+        border: none !important;
+        border-radius: 11px;
+      }
+    }
+    .file-button {
+      label {
+        margin: 10px 4px;
+      }
+    }
+    input {
+      border-radius: 11px;
+      &::placeholder {
+        color: var(--text-2nd-color) !important;
+      }
+    }
+  }
+
+  //Comments
+
+  .comments-area {
+    .top-area {
+      border: 1px solid var(--primary-color);
+      border-radius: 20px;
+      background: var(--card-color);
+    }
+    .main-area {
+      margin: 5px 0;
+      p {
+        color: var(--text-primary-color);
+        font-weight: 500;
+      }
+      a {
+        color: var(--text-primary-color) !important;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .edit-comment-area {
+        display: flex;
+        gap: 10px;
+        .input-group {
+          &.editing-comment {
+            background-color: var(--hover-color);
+            border-radius: 11px;
+            padding: 10px;
+            input {
+              background-color: var(--hover-color);
+            }
+          }
+        }
+      }
+      svg {
+        font-size: 25px;
+        cursor: pointer;
+        :hover {
+          color: var(--primary-color);
+        }
+      }
+    }
+    .like-share {
+      li {
+        position: relative;
+        left: -25px;
+        list-style: none;
+      }
+      button {
+        background: none;
+        border: none;
+        color: var(--text-2nd-color);
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+    }
+    .single-comment-area {
+      .parent-comment {
+        position: relative;
+      }
+    }
+    .sibling-comment,
+    .only-child-comment {
+      position: relative;
+      padding-left: 72px;
+    }
+    .comment-item-nested {
+      .avatar-item {
+        position: relative;
+      }
+    }
+    .comment-form {
+      margin-top: 24px;
+    }
+  }
+}

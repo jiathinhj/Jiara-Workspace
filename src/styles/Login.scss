@@ -1,0 +1,110 @@
+.login-form {
+  background: transparent;
+  border: none;
+
+  .header {
+    color: #cececea8;
+    padding: 0 30px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+  }
+  h2 {
+    margin: 10px 0;
+    color: #cecece;
+  }
+  .row {
+    height: 50px !important;
+    margin: 20px 0;
+
+    label {
+      color: #1e7578;
+      font-weight: 700;
+    }
+    input,
+    select {
+      border: 1px solid #1e7578;
+      height: 45px;
+      padding: 5px 0;
+      background-color: transparent;
+      border-radius: 10px;
+      color: #cecece;
+      padding-left: 10px;
+    }
+    input[type="file"] {
+      &::file-selector-button {
+        display: none;
+      }
+    }
+  }
+  hr {
+    color: #cecece;
+  }
+  svg {
+    margin: 0px 7px;
+  }
+  .btn-login {
+    background-color: #1e7578 !important;
+    margin-top: 10px;
+  }
+  .btn-gg {
+    background-color: #dd4b39 !important;
+  }
+  .sign-up-area {
+    color: #9c9c9c;
+    text-align: center;
+    margin-top: 20px;
+    .btn-sign-up {
+      text-decoration: underline;
+      background-color: transparent;
+      border: transparent;
+    }
+  }
+  .radio-group {
+    label {
+      position: relative;
+      margin: 0 40px;
+      input {
+        position: absolute;
+        top: -10px;
+        left: -30px;
+        width: 18px;
+        accent-color: #1e7578 !important;
+      }
+    }
+  }
+  .error-message {
+    color: #dd4b39 !important;
+  }
+}
+
+.sign-up-form {
+  max-width: 1300px !important;
+
+
+.success-page {
+  .row {
+    justify-content: center;
+  }
+  img {
+    width: 200px;
+  }
+  h2 {
+    color: #f7f6f6a8;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+    align-self: center;
+  }
+  .message {
+    width: 70%;
+    border: 2px solid rgba(19, 21, 31, 0.8);
+    border-radius: 16px;
+    color: #00a469;
+    padding: 0 30px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+}
+}
