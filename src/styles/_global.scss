@@ -1,12 +1,34 @@
 :root {
-  --body-color: #15202b;
+  --body-color: #2c6bab;
   --body-2nd-color: #0f161eac;
   --text-primary-color: #ffffff;
   --text-2nd-color: #8899a6;
   --text-3rd-color: #434d55;
-  --primary-color: #0085ff;
-  --highlight-color: #ff4949;
+  --primary-color: #bb86fc;
+  --primary-2nd-color: #3700b3;
+  --highlight-color: #cf6679;
   --highlight-2nd-color: #3e3e3e;
   --card-color: #192734;
   --hover-color: #293a49;
+}
+
+//dark theme
+body.dark {
+  --body-color: #121212;
+  --body-2nd-color: #1e1e1e;
+  --text-primary-color: rgb(255, 255, 255, 87%);
+  --text-2nd-color: rgb(255, 255, 255, 60%);
+  --text-3rd-color: rgb(255, 255, 255, 38%);
+  --primary-color: rgb(	54, 167, 156);
+  --primary-2nd-color: #3700b3;
+  --border-primary-color: rgb(	54, 167, 156, 38%);
+  --secondary-color: #03dac6;
+  --highlight-color: #d60a2f;
+  --highlight-2nd-color: #03dac6;
+  --error-color: #cf6679;
+  --error-text-color: #000000;
+  --card-color: #272727;
+  --hover-color: #333333;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif !important;
 }

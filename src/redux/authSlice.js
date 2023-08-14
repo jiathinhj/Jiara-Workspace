@@ -12,7 +12,7 @@ const authSlice = createSlice({
     loginStart: (state) => {
       state.isFetching = true;
     },
-    
+
     loginSuccess: (state, action) => {
       state.isFetching = false;
       state.authToken = action.payload.token;
@@ -30,28 +30,10 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.currentUser = action.payload;
     },
-
-    // saveLogin: (state, action) => {
-    //   state.isFetching = false;
-    //   state.currentUser = action.payload;
-    // }
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(login.pending, (state) => {
-  //     state.isFetching = true;
-  //   });
-  //   builder.addCase(login.fulfilled, (state, action) => {
-  //     state.isFetching = false;
-  //     state.user = action.payload;
-  //     state.authToken = action.payload.authToken;
-  //   });
-  //   builder.addCase(login.rejected, (state, action) => {
-  //     state.isFetching = false;
-  //     state.error = action.payload;
-  //   });
-  // },
 });
 
-export const { loginStart, loginSuccess, loginFailure, isLoggingIn } = authSlice.actions;
+export const { loginStart, loginSuccess, loginFailure, isLoggingIn } =
+  authSlice.actions;
 export default authSlice.reducer;
 // export default authSlice;

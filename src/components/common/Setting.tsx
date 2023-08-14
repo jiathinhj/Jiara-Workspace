@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import avatar_1 from "../../logo.jpeg";
 import { Image } from "react-bootstrap";
 import { Gear, Power } from "react-bootstrap-icons";
+import { DarkModeToggle } from "../themes/Toggle";
 
 const Setting = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
   const [user, setUser] = useState<any>({});
@@ -62,29 +62,7 @@ const Setting = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
             </a>
           </li>
         </ul>
-        {/* <div className="switch-wrapper mt-4 d-flex gap-1 align-items-center">
-          <i
-            className={`mat-icon material-symbols-outlined sun icon ${
-              theme === "light" && "active"
-            }`}
-          >
-            light_mode
-          </i>
-          <label className="switch">
-            <input type="checkbox" className="checkbox" onClick={handleTheme} />
-            <span
-              className={`slider ${theme === "dark" ? " slider-active" : ""}`}
-            ></span>
-          </label>
-          <i
-            className={`mat-icon material-symbols-outlined moon icon ${
-              theme === "dark" && "active"
-            }`}
-          >
-            dark_mode
-          </i>
-          <span className="mdtxt ms-2">Dark mode</span>
-        </div> */}
+        <DarkModeToggle />
       </div>
     </>
   );

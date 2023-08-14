@@ -25,7 +25,7 @@ const PersonCard = ({ data, type, allAccounts, removeMemberHandler }: any) => {
   };
 
   useEffect(() => {
-    if (data && allAccounts) {
+    if (data && data.length && allAccounts && allAccounts.length) {
       handleMapInfo();
     }
   }, [data, allAccounts]);
@@ -40,9 +40,7 @@ const PersonCard = ({ data, type, allAccounts, removeMemberHandler }: any) => {
                   <div className="d-flex">
                     <div className="flex-shrink-0">
                       {info.avatarUrl ? (
-                        <Card.Img
-                          src={info.avatarUrl}
-                        />
+                        <Card.Img src={info.avatarUrl} />
                       ) : (
                         <Avatar
                           firstname={info.firstname}

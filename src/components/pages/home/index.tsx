@@ -2,7 +2,6 @@ import React from "react";
 import { Col } from "react-bootstrap";
 
 import FollowPeople from "../../common/FollowPeople";
-import NewsFeeds from "../../NewFeeds/Post";
 import LeftSider from "../../layout/menu/LeftSider";
 import RightSider from "../../layout/menu/RightSider";
 import AddNewPost from "../../common/AddNewPost";

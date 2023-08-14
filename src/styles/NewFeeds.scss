@@ -112,11 +112,11 @@
         gap: 10px;
         .input-group {
           &.editing-comment {
-            background-color: var(--hover-color);
+            background-color: var(--card-color);
             border-radius: 11px;
             padding: 10px;
             input {
-              background-color: var(--hover-color);
+              background-color: var(--card-color);
             }
           }
         }

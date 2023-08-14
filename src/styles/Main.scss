@@ -1,8 +1,9 @@
 .main-container {
   padding: 80px 0 0;
+  color: var(--text-primary-color);
   .main-content {
     height: 100vh;
-    padding: 10px 0px 0px 20px;
+    padding: 10px 20px 0px 20px;
   }
 }
 .people-carousel {
@@ -42,7 +43,6 @@
     position: relative;
     z-index: 1;
     .card {
-      color: var(--text-primary-color);
       background: var(--card-color);
       border: transparent;
       border-radius: 11px !important;
@@ -66,24 +66,35 @@
 .department {
   .header-area {
     font-size: 24px;
-    color: var(--text-2nd-color);
     font-weight: 600;
   }
   .department-card {
     cursor: pointer;
     margin: 0 0 15px;
     .card {
-      height: 200px;
+      border: 1px solid var(--hover-color);
+      height: 220px;
       background-color: var(--card-color);
-      color: var(--text-2nd-color);
+      color: var(--text-primary-color);
       .card-header {
+        color: var(--primary-color);
         font-weight: 600;
         min-height: fit-content;
         text-align: center;
-        color: var(--text-primary-color);
+        border-bottom-color: var(--hover-color);
       }
-      h6 {
+      .department-info {
+        display: flex;
         flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 10px;
+
+        .badge {
+          background: transparent !important;
+          border: 1px solid var(--hover-color);
+          font-size: 14px;
+          font-weight: unset;
+        }
       }
     }
   }
@@ -91,7 +102,6 @@
 
 //GroupDetail navtab
 .group-detail {
-  color: var(--text-primary-color);
   .nav-link {
     &.disabled {
       color: var(--text-2nd-color);
@@ -117,7 +127,6 @@
       }
       button {
         background-color: transparent !important;
-        color: var(--text-primary-color);
         border-color: transparent !important;
         position: relative;
 
@@ -175,8 +184,6 @@
   }
   .card {
     background-color: var(--card-color) !important;
-    // margin-block: 10px;
-    color: var(--text-primary-color);
   }
   .card-header {
     font-weight: 700;
@@ -201,8 +208,9 @@
     }
   }
   .hashtag {
-    a {
-      color: var(--text-2nd-color) !important;
+    .badge {
+      background-color: transparent !important;
+      border: 1px solid var(--highlight-2nd-color);
     }
   }
   .card-footer {

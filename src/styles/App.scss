@@ -1,7 +1,6 @@
 body {
-  font-size: 16px;
-  font-family: "Nunito", sans-serif !important;
   background: var(--body-color) !important;
+  color: var(--text-primary-color) !important;
 }
 
 // noti baloon
@@ -231,21 +230,6 @@ body {
 }
 .txtmuted {
   color: var(--text-3rd-color) !important;
-}
-
-// avatar
-
-.avatar {
-  &::before {
-    position: absolute;
-    content: "";
-    width: 16px;
-    height: 16px;
-    background: #21e900;
-    border-radius: 50%;
-    top: -4px;
-    left: -4px;
-  }
 }
 
 //PersonCard

@@ -25,11 +25,14 @@ const DepartmentDetail = () => {
   //get data of current user from Redux
   const currentUser = useSelector((state: any) => state.auth.currentUser);
 
-  useEffect(() => {
-    getGroupById(id, toast, dispatch, navigate);
+  const fetchGroupDetails = async () => {
+    await getGroupById(id, toast, dispatch, navigate);
     setLoading(false);
-    console.log(groupId);
-  }, [groupId]);
+  };
+
+  useEffect(() => {
+    fetchGroupDetails();
+  }, [id]);
 
   return (
     <DepartmentMain>

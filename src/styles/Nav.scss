@@ -35,11 +35,11 @@
     margin-right: 20px;
     height: 40px;
     input {
-      background-color: var(--hover-color);
+      background-color: var(--card-color);
       border-radius: 20px;
     }
     .search-button {
-      background-color: var(--hover-color) !important;
+      background-color: var(--card-color) !important;
       border-radius: 20px;
     }
   }
@@ -57,6 +57,12 @@
   }
 
   .right-area {
+    .ant-switch-checked {
+      background-color: var(--primary-color);
+      &:hover {
+        background-color: var(--primary-color);
+      }
+    }
     .single-item {
       .main-area {
         position: absolute;
@@ -64,7 +70,7 @@
         white-space: nowrap;
         right: 0;
         transform: translateY(150px);
-        background: var(--card-color);
+        background: var(--body-2nd-color);
         border-radius: 10px;
         opacity: 0;
         transition: 0.3s;
@@ -85,6 +91,18 @@
           width: 45px;
           height: 45px;
           border-radius: 50%;
+        }
+        .avatar {
+          &::before {
+            position: absolute;
+            content: "";
+            width: 16px;
+            height: 16px;
+            background: #21e900;
+            border-radius: 50%;
+            top: -4px;
+            left: -4px;
+          }
         }
       }
 
@@ -214,6 +232,7 @@
       width: 45px;
       height: 45px;
     }
+
     h6 {
       font-weight: 600;
       text-decoration: none;

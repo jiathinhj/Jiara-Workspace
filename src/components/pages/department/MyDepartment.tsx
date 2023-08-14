@@ -38,26 +38,26 @@ const MyDepartment = () => {
                     {groupName}
                   </Card.Header>
                   <Card.Body>
-                    <h6 className="d-flex gap-1">
+                    <div className="department-info">
                       Manager:
                       {managers.map((manager: any) => (
-                        <Badge key={manager} pill bg="secondary">
+                        <Badge key={manager} pill >
                           {manager}
                         </Badge>
                       ))}
-                    </h6>
-                    <h6 className="d-flex gap-1">
+                    </div>
+                    <div className="department-info">
                       Posts:
-                      <Badge key="numberOfPosts" pill bg="secondary">
+                      <Badge key="numberOfPosts" pill >
                         {postIds.length}
                       </Badge>
-                    </h6>
-                    <h6 className="d-flex gap-1">
+                    </div>
+                    <div className="department-info">
                       Members:
-                      <Badge key="numberOfMembers" pill bg="secondary">
+                      <Badge key="numberOfMembers" pill >
                         {usernames.length}
                       </Badge>
-                    </h6>
+                    </div>
                   </Card.Body>
                 </Card>
               </div>

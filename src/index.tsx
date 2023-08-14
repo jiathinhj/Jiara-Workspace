@@ -18,6 +18,7 @@ root.render(
     <BrowserRouter>
       <LoadingProvider>
         <App />
+
         <ToastContainer
           autoClose={2000}
           hideProgressBar={false}
