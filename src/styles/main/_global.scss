@@ -1,0 +1,44 @@
+:root {
+  --body-color: #ffffff;
+  --body-2nd-color: rgb(249, 249, 250);
+  --text-primary-color: rgb(0, 0, 0, 87%);
+  --text-2nd-color: rgb(0, 0, 0, 60%);
+  --text-3rd-color: rgb(0, 0, 0, 38%);
+  --primary-color: #427ac2;
+  --primary-2nd-color: #3700b3;
+  --border-primary-color: rgb(66, 122, 194, 38%);
+  --hover-primary-color: rgb(232, 235, 242);
+  --highlight-color: #d60a2f;
+  --highlight-2nd-color: #3700b3;
+  --active-color: #21e900;
+  --error-color: #d60a2f;
+  --error-text-color: #ffffff;
+  --card-color: #ebecef;
+  --hover-color: rgb(221, 223, 228);
+  --border-card-color: rgb(213, 215, 222);
+  font-size: 16px;
+  font-family: "Nunito", sans-serif !important;
+}
+
+//dark theme
+body.dark {
+  --body-color: #121212;
+  --body-2nd-color: #1e1e1e;
+  --text-primary-color: rgb(255, 255, 255, 87%);
+  --text-2nd-color: rgb(255, 255, 255, 60%);
+  --text-3rd-color: rgb(255, 255, 255, 38%);
+  --primary-color: #427ac2;
+  --primary-2nd-color: #3700b3;
+  --border-primary-color: rgb(66, 122, 194, 38%);
+  --hover-primary-color: rgb(66, 122, 194, 38%);
+  --highlight-color: #d60a2f;
+  --highlight-2nd-color: rgb(3, 218, 198, 38%);
+  --active-color: #21e900;
+  --error-color: #cf6679;
+  --error-text-color: rgb(255, 255, 255, 87%);
+  --card-color: #242424;
+  --hover-color: #272727;
+  --border-card-color: #333333;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif !important;
+}

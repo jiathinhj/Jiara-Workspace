@@ -1,22 +1,25 @@
-import { useEffect, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { Gear, Power } from "react-bootstrap-icons";
-import { DarkModeToggle } from "../themes/Toggle";
+import { DarkModeToggle } from "../themeToggle";
 
-const Setting = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
-  const [user, setUser] = useState<any>({});
+const Setting = memo(function Setting({
+  activeHandler,
+}: {
+  activeHandler: (a: string) => void;
+}) {
+  const [userProFile, setUserProFile] = useState<any>({});
 
   const handleSignout = () => {
     localStorage.clear();
   };
+  console.log("Setting render");
 
   useEffect(() => {
-    //get data of current user from Local Storage
-    const currentUser: any = localStorage.getItem("currentUser");
-    // const currentAvatar = JSON.parse(currentUser).avatar;
-    setUser(JSON.parse(currentUser));
+    const localUser: any = localStorage.getItem("currentUser");
+    const parsedUser = JSON.parse(localUser);
+    setUserProFile(parsedUser);
   }, []);
-
   return (
     <>
       <div className="profile-pic d-flex align-items-center">
@@ -24,7 +27,11 @@ const Setting = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
           className="avatar cmn-btn active-status"
           onClick={() => activeHandler("settings")}
         >
-          <img className="avatar-img" src={`${user.avatarUrl}`} alt="avatar" />
+          <img
+            className="avatar-img"
+            src={`${userProFile.avatarUrl}`}
+            alt="avatar"
+          />
         </span>
       </div>
       <div className="main-area mt-2 p-4 profile-content">
@@ -33,12 +40,12 @@ const Setting = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
             <div className="avatar-item">
               <Image
                 className="avatar-img"
-                src={`${user.avatarUrl}`}
+                src={`${userProFile.avatarUrl}`}
                 alt="avatar"
               />
             </div>
             <div className="text-area">
-              <h6 className="m-0">{`${user.lastname} ${user.firstname}`}</h6>
+              <h6 className="m-0">{`${userProFile.lastname} ${userProFile.firstname}`}</h6>
               <p className="mdtxt">Job tiltle</p>
             </div>
           </div>
@@ -66,6 +73,6 @@ const Setting = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
       </div>
     </>
   );
-};
+});
 
 export default Setting;

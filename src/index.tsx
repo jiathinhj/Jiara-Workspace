@@ -7,34 +7,34 @@ import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { LoadingProvider } from "./components/preloader/LoadingContext";
+import { LoadingProvider } from "./components/context/loading";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <BrowserRouter>
-      <LoadingProvider>
-        <App />
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <LoadingProvider>
+          <App />
 
-        <ToastContainer
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss={false}
-          draggable
-          pauseOnHover
-          theme={"dark"}
-          limit={2}
-        />
-      </LoadingProvider>
-    </BrowserRouter>
-  </Provider>
-  // </React.StrictMode>
+          <ToastContainer
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover
+            theme={"dark"}
+            limit={2}
+          />
+        </LoadingProvider>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,17 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Router from "./routes/Router";
 
 import "./styles/globals.scss";
-import { ThemeProvider, useDarkMode } from "./components/themes/ThemeContext";
+import { ThemeProvider } from "./components/context/theme";
+import { CurrentUserProvider } from "./components/context/currentUser";
 function App() {
-  // const { isDark, setIsDark }: any = useDarkMode();
-  // useEffect(()=>{
-  //   setIsDark(true)
-  // })
   return (
     <>
       <ThemeProvider>
-        <Router />
+        <CurrentUserProvider>
+          <Router />
+        </CurrentUserProvider>
       </ThemeProvider>
     </>
   );

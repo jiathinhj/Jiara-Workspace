@@ -1,14 +1,12 @@
 import contactData from "../../../data/contactData";
-import RequestCard from "../../cards/RequestCard";
+import RequestCard from "../../cards/request";
 
 const Request = () => {
   return (
     <>
-      <div className="request mb-4">
-        <h6 className="d-inline-flex position-relative">
-          Request
-          <span className="mdtxt abs-area d-center position-absolute">2</span>
-        </h6>
+      <div className="request d-flex mb-4 gap-1">
+        <h5>Request</h5>
+        <span className="abs-area d-center">2</span>
       </div>
       <div className="d-grid gap-6">
         {/* Request Card */}

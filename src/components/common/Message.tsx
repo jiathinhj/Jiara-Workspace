@@ -2,8 +2,14 @@ import { Image } from "react-bootstrap";
 import { Envelope } from "react-bootstrap-icons";
 
 import messageData from "../../data/peopleData";
+import { memo } from "react";
 
-const Message = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
+const Message = memo(function Message({
+  activeHandler,
+}: {
+  activeHandler: (a: string) => void;
+}) {
+   console.log('Rerender')
   return (
     <>
       <div className="messages-btn cmn-btn position-relative">
@@ -15,13 +21,8 @@ const Message = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
       <div className="main-area mt-2 px-5 py-4 messages-content">
         <h5>Messages</h5>
         {messageData.map((message) => {
-          const {
-            id,
-            last_message,
-            number_of_message,
-            user_avt,
-            user_name,
-          } = message;
+          const { id, last_message, number_of_message, user_avt, user_name } =
+            message;
 
           return (
             <div key={id} className="single-box">
@@ -53,6 +54,6 @@ const Message = ({ activeHandler }: { activeHandler: (a: string) => void }) => {
       </div>
     </>
   );
-};
+});
 
 export default Message;

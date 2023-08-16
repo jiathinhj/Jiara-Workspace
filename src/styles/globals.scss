@@ -7,11 +7,11 @@
 @import 'react-toastify/dist/ReactToastify.css';
 
 // Sass Global
-@import "./global";
+@import "./main/global";
 
 
-@import "./App.scss";
-@import "./Login.scss";
-@import "./NewFeeds.scss";
-@import "./Main.scss";
-@import "./Nav.scss";
+@import "./sections/main";
+@import "./sections/feeds";
+@import "./sections/login";
+@import "./sections/group";
+@import "./sections/nav";

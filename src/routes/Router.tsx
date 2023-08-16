@@ -1,11 +1,11 @@
 import { Navigate, useRoutes } from "react-router-dom";
-import Layout from "../components/layout/Layout";
-import HomeMain from "../components/pages/home";
-import DepartmentDetail from "../components/pages/department/DepartmentDetail";
-import LogIn from "../components/pages/login/LogIn";
-import MyDepartment from "../components/pages/department/MyDepartment";
-import GroupPost from "../components/pages/department/GroupPost";
-import Profile from "../components/pages/profile";
+import HomeMain from "../pages/home";
+import DepartmentDetail from "../components/pages/department/detail";
+import MyDepartment from "../components/pages/department/departments";
+import GroupPost from "../components/pages/department/post";
+import Profile from "../pages/profile";
+import Layout from "../components/layout";
+import LogIn from "../pages/login";
 
 const Router = () => {
   return useRoutes([

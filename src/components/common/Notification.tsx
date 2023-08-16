@@ -5,12 +5,14 @@ import avatar_lan from "../../images/avatar/lan.jpg";
 import avatar_lu4 from "../../images/avatar/lu4.jpg";
 
 import { Image } from "react-bootstrap";
+import { memo } from "react";
 
-const Notification = ({
+const Notification = memo(function Notification({
   activeHandler,
 }: {
   activeHandler: (a: string) => void;
-}) => {
+}) {
+  console.log('notification render')
   return (
     <>
       <div className="notification-btn cmn-btn position-relative ">
@@ -130,6 +132,6 @@ const Notification = ({
       </div>
     </>
   );
-};
+});
 
 export default Notification;

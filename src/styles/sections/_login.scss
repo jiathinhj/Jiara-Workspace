@@ -1,0 +1,114 @@
+.login-form {
+  background: transparent;
+  border: none;
+
+  .header {
+    color: var(--primary-color);
+    padding: 0 30px;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+  }
+  h2 {
+    margin: 10px 0;
+    color: var(--text-primary-color);
+  }
+  .row {
+    height: 50px !important;
+    margin: 20px 0;
+
+    label {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    input,
+    select {
+      border: 1px solid var(--primary-color);
+      height: 45px;
+      padding: 5px 0;
+      background-color: transparent;
+      border-radius: 10px;
+      color: var(--text-primary-color);
+      padding-left: 10px;
+    }
+    input[type="file"] {
+      &::file-selector-button {
+        display: none;
+      }
+    }
+  }
+  hr {
+    color: var(--text-primary-color);
+  }
+  svg {
+    margin: 0px 7px;
+  }
+
+  .btn-gg {
+    background-color: var(--highlight-color);
+    &:hover {
+      background-color: var(--hover-color);
+    }
+  }
+  .sign-up-area {
+    text-align: center;
+    margin-top: 20px;
+    .btn-sign-up {
+      text-decoration: underline;
+      background-color: transparent;
+      border: transparent;
+      color: var(--text-2nd-color);
+      &:hover{
+        color: var(--primary-color);
+        background-color: var(--hover-color);
+        border-radius: 20px;
+      }
+    }
+  }
+  .radio-group {
+    label {
+      position: relative;
+      margin: 0 40px;
+      input {
+        position: absolute;
+        top: -10px;
+        left: -30px;
+        width: 18px;
+        accent-color: var(--primary-color) !important;
+      }
+    }
+  }
+  .error-message {
+    color: var(--error-color) !important;
+  }
+}
+
+.sign-up-form {
+  max-width: 1300px !important;
+
+  // .success-page {
+  //   .row {
+  //     justify-content: center;
+  //   }
+  //   img {
+  //     width: 200px;
+  //   }
+  //   h2 {
+  //     color: var(--primary-color);
+  //     text-align: center;
+  //     font-size: 3rem;
+  //     font-weight: 900;
+  //     align-self: center;
+  //   }
+  //   .message {
+  //     width: 70%;
+  //     border: 2px solid rgba(19, 21, 31, 0.8);
+  //     border-radius: 16px;
+  //     color: var(--active-color);
+  //     padding: 0 30px;
+  //     text-align: center;
+  //     font-size: 3rem;
+  //     font-weight: 700;
+  //   }
+  // }
+}
