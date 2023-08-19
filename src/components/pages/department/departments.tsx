@@ -29,7 +29,7 @@ const MyDepartment = () => {
         {group.allGroup.map((group: any) => {
           const { groupId, groupName, managers, postIds, usernames } = group;
           return (
-            <Col key={groupId} xl="5" sm="6">
+            <Col key={groupId} xs={10} sm={6} lg={9} xl={5}>
               <div className="department-card">
                 <Card onClick={() => navigate("/department/" + groupId)}>
                   <Card.Header className="department-name">

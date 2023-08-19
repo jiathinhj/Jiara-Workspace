@@ -19,12 +19,17 @@ export const postAPI = async ({
     });
     return apiRes;
   } catch (error: any) {
-    if (error && error.response.status === 422) {
-      toast.error("Password incorrect");
-    } else {
+    if (error && error.response && error.response.status === 401) {
+      console.log("error", error);
+      toast.error("Your login session has expired! Please login again!");
+      window.location.href = "/login";
+    } else if (error && error.response) {
+      toast.error("Please try again!");
+    } else if (error && error.request) {
       toast.error("Please try again!");
     }
     console.log(error);
+    return error;
   }
 };
 
@@ -39,7 +44,17 @@ export const getAPI = async (path: string) => {
     console.log(apiRes);
     return apiRes;
   } catch (error: any) {
-    toast.error("Please try again!");
+    if (error && error.response && error.response.status === 401) {
+      console.log("error", error);
+      toast.error("Your login session has expired! Please login again!");
+      window.location.href = "/login";
+    } else if (error && error.response) {
+      toast.error("Please try again!");
+    } else if (error && error.request) {
+      toast.error("Please try again!");
+    }
+    console.log(error);
+    return error;
   }
 };
 
@@ -68,7 +83,16 @@ export const apiResquest = async ({
     console.log(apiRes);
     return apiRes;
   } catch (error: any) {
-    toast.error("Please try again!");
+    if (error && error.response && error.response.status === 401) {
+      console.log("error", error);
+      toast.error("Your login session has expired! Please login again!");
+      window.location.href = "/login";
+    } else if (error && error.response) {
+      toast.error("Please try again!");
+    } else if (error && error.request) {
+      toast.error("Please try again!");
+    }
+    console.log(error);
     return error;
   }
 };

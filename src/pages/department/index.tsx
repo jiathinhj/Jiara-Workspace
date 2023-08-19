@@ -1,4 +1,4 @@
-import { Col, Spinner } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 
 import LeftSider from "../../components/layout/menu/left";
 import { useContext, useEffect } from "react";
@@ -37,15 +37,16 @@ const DepartmentMain = ({ children }: any) => {
   }, [currentUser]);
 
   return (
-    <>
-      <Col className="sider" xs={3}>
-        <LeftSider />
-      </Col>
-
-      <Col xs={9} className="main-content department">
-        {loading ? <Preloader /> : <>{children} </>}
-      </Col>
-    </>
+    <div className="toggler">
+      <Row>
+        <Col sm={6} lg={3} xxl={3}>
+          <LeftSider />
+        </Col>
+        <Col sm={12} lg={8} xxl={9} className="main-content department">
+          {loading ? <Preloader /> : <>{children} </>}
+        </Col>
+      </Row>
+    </div>
   );
 };
 

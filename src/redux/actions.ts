@@ -12,16 +12,11 @@ export const loginUser = async (
   navigate: NavigateFunction
 ) => {
   dispatch(loginStart);
-  await postAPI({ path: "/api/auth/login", body: account })
-    .then((apiRes) => {
-      dispatch(loginSuccess(apiRes?.data));
-      console.log(apiRes?.data);
-      navigate("/department");
-    })
-    .catch((error) => {
-      console.log(error);
-      toast.error("Login failed! Please try again!");
-    });
+  await postAPI({ path: "/api/auth/login", body: account }).then((apiRes) => {
+    dispatch(loginSuccess(apiRes?.data));
+    console.log(apiRes?.data);
+    navigate("/department");
+  });
 };
 
 export const getAllGroup = async (dispatch: AppDispatch) => {

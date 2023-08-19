@@ -130,7 +130,7 @@ const Profile = () => {
 
   return (
     <>
-      <Col className="sider" xs={3}>
+      <Col xs={3}>
         <LeftSider />
       </Col>
       <Col xs={9} className="main-content">

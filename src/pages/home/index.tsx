@@ -12,16 +12,16 @@ const HomeMain = () => {
   // run effect when the cpn mounted
   return (
     <>
-      <Col className="sider" xs={3}>
+      <Col xs={6} lg={4} xl={3} xxl={3}>
         <LeftSider />
       </Col>
-      <Col className="main-content" xs={6}>
+      <Col className="main-content" lg={8} xl={5} xxl={6}>
         <AddNewPost />
         <FollowPeople />
         <HomePost />
       </Col>
-      <Col className="sider" xs={3}>
-        <RightSider  />
+      <Col xs={6} lg={4} xl={3} xxl={3}>
+        <RightSider />
       </Col>
     </>
   );

@@ -6,6 +6,8 @@ import GroupPost from "../components/pages/department/post";
 import Profile from "../pages/profile";
 import Layout from "../components/layout";
 import LogIn from "../pages/login";
+import ChatBox from "../pages/chat";
+
 
 const Router = () => {
   return useRoutes([
@@ -19,6 +21,7 @@ const Router = () => {
         { path: "department", element: <MyDepartment /> },
         { path: "department/:id", element: <DepartmentDetail /> },
         { path: "department/:groupId/:postId", element: <GroupPost /> },
+        { path: "chat", element: <ChatBox /> },
       ],
     },
     { path: "/login", element: <LogIn /> },

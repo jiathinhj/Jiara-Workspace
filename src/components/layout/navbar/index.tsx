@@ -14,6 +14,7 @@ import {
   InputGroup,
   Nav,
   Navbar,
+  Offcanvas,
 } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 
@@ -48,9 +49,13 @@ const NavBar = () => {
 
   return (
     <header className={`header-section ${windowHeight > 50 && "header-fixed"}`}>
-      <Navbar className="justify-content-between">
+      <Navbar
+        key={"lg"}
+        expand={"lg"}
+        className="sticky-top justify-content-between"
+      >
         <Container>
-          <Col xs={3} className="left-area d-flex">
+          <Col lg={3} md={4} sm={4} className="left-area d-flex">
             <Navbar.Brand href="#home">
               <Image src={logo} className="logo " alt="logo" />
             </Navbar.Brand>
@@ -61,37 +66,50 @@ const NavBar = () => {
               <Form.Control placeholder="#hashtag" />
             </InputGroup>
           </Col>
-          <Col xs={6}>
-            <Nav className="nav-justified">
-              <Nav.Item>
-                <Nav.Link href={"/home"} eventKey="home">
-                  Home
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href={"/department"} eventKey="department">
-                  Department
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href={"/"} eventKey="test">
-                  Nav-Item
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col xs={3}>
+          <Navbar.Offcanvas
+            id={`offcanvasNavbar-expand-lg`}
+            aria-labelledby={`offcanvasNavbarLabel-expand-lg`}
+            placement="end"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-lg`}>
+                Offcanvas
+              </Offcanvas.Title>
+            </Offcanvas.Header>
+            <Offcanvas.Body>
+              <Col xs={12}>
+                <Nav className="nav-justified">
+                  <Nav.Item>
+                    <Nav.Link href={"/home"} eventKey="home">
+                      Home
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href={"/department"} eventKey="department">
+                      Department
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link href={"/"} eventKey="test">
+                      Nav-Item
+                    </Nav.Link>
+                  </Nav.Item>
+                </Nav>
+              </Col>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+          <Col lg={3} md={5} sm={5}>
             <div className="right-area position-relative d-flex ps-5 align-items-center justify-content-between">
               <div
-                className={`single-item d-none d-lg-block messages-area ${
+                className={`single-item messages-area ${
                   active === "message" ? "active" : ""
                 }`}
               >
                 {/* Message */}
-                <Message activeHandler={activeHandler} />
+                <Message />
               </div>
               <div
-                className={`single-item d-none d-lg-block messages-area notification-area ${
+                className={`single-item messages-area notification-area ${
                   active === "notification" ? "active" : ""
                 }`}
               >
@@ -99,7 +117,7 @@ const NavBar = () => {
                 <Notification activeHandler={activeHandler} />
               </div>
               <div
-                className={`single-item d-none d-lg-block profile-area position-relative ${
+                className={`single-item profile-area position-relative ${
                   active === "settings" ? "active" : ""
                 }`}
               >
@@ -108,6 +126,7 @@ const NavBar = () => {
               </div>
             </div>
           </Col>
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
         </Container>
       </Navbar>
     </header>

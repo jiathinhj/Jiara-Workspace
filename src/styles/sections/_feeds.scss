@@ -1,10 +1,10 @@
 .post-item {
-  color: var(--text-primary-color);
+  color: var(--On-surface);
   .post-single-box {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-
     border-radius: 10px;
     padding: 15px;
+    background-color: var(--Surface-container-low);
+    box-shadow: 3px 3px 3px var(--Surface-container-highest);
     .top-area {
       .profile-area {
         .avatar-item {
@@ -15,7 +15,7 @@
         }
         .info-area {
           a {
-            color: var(--primary-color) !important;
+            color: var(--On-surface) !important;
             text-decoration: none;
           }
         }
@@ -42,8 +42,8 @@
     .hashtag {
       .badge {
         background-color: transparent !important;
-        border: 1px solid var(--highlight-2nd-color);
-        color: var(--highlight-2nd-color);
+        border: 1px solid var(--Tertiary);
+        color: var(--Tertiary);
       }
     }
   }
@@ -52,18 +52,18 @@
     button {
       background: none;
       border: none;
-      color: var(--text-3rd-color);
+      color: var(--On-surface-3rd);
     }
   }
   .like-comment-share {
-    border-top: 1px solid var(--border-card-color);
-    border-bottom: 1px solid var(--border-card-color);
+    border-top: 1px solid var(--Outline-variant);
+    border-bottom: 1px solid var(--Outline-variant);
     button {
       background: transparent;
       border: transparent;
-      color: var(--text-primary-color);
+      color: var(--On-surface);
       &:hover {
-        color: var(--primary-color) !important;
+        color: var(--Inverse-primary) !important;
       }
     }
   }
@@ -73,14 +73,19 @@
     margin-bottom: 20px;
     .input-group {
       border-radius: 10px;
-      border: 1px solid var(--border-primary-color);
       vertical-align: middle;
-      background-color: var(--card-color) !important;
+      background-color: var(--Surface-container-highest) !important;
 
       button {
         background-color: transparent !important;
         border: none !important;
         border-radius: 10px;
+      }
+      svg {
+        color: var(--Primary);
+        &:hover {
+          color: var(--Inverse-primary);
+        }
       }
     }
     .file-button {
@@ -91,7 +96,7 @@
     input {
       border-radius: 10px;
       &::placeholder {
-        color: var(--text-3rd-color) !important;
+        color: var(--On-surface-2nd) !important;
       }
     }
   }
@@ -100,18 +105,17 @@
 
   .comments-area {
     .top-area {
-      border: 1px solid var(--border-primary-color);
       border-radius: 20px;
-      background: var(--card-color);
+      background: var(--Surface-container);
     }
     .main-area {
       margin: 5px 0;
       p {
-        color: var(--text-primary-color);
+        color: var(--On-surface);
         font-weight: 500;
       }
       a {
-        color: var(--text-primary-color) !important;
+        color: var(--On-surface) !important;
         text-decoration: none;
         font-weight: 700;
       }
@@ -119,12 +123,15 @@
         display: flex;
         gap: 10px;
         .input-group {
+          input {
+            background: var(--Surface-container);
+          }
           &.editing-comment {
-            background-color: var(--card-color);
+            background-color: var(--Surface-container-highest);
             border-radius: 10px;
             padding: 10px;
             input {
-              background-color: var(--card-color);
+              background-color: var(--Surface-container-highest);
             }
           }
         }
@@ -133,7 +140,7 @@
         font-size: 25px;
         cursor: pointer;
         :hover {
-          color: var(--primary-color);
+          color: var(--Inverse-primary);
         }
       }
     }
@@ -146,9 +153,9 @@
       button {
         background: none;
         border: none;
-        color: var(--text-2nd-color);
+        color: var(--On-surface);
         &:hover {
-          color: var(--primary-color);
+          color: var(--Inverse-primary);
         }
       }
     }

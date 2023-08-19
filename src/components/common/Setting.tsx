@@ -2,50 +2,58 @@ import { memo, useContext, useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { Gear, Power } from "react-bootstrap-icons";
 import { DarkModeToggle } from "../themeToggle";
+import Avatar from "../avatar/Avatar";
+import { CurrentUserContext } from "../context/currentUser";
 
 const Setting = memo(function Setting({
   activeHandler,
 }: {
   activeHandler: (a: string) => void;
 }) {
-  const [userProFile, setUserProFile] = useState<any>({});
+  const { currentUser }: any = useContext(CurrentUserContext);
 
   const handleSignout = () => {
     localStorage.clear();
   };
-  console.log("Setting render");
 
-  useEffect(() => {
-    const localUser: any = localStorage.getItem("currentUser");
-    const parsedUser = JSON.parse(localUser);
-    setUserProFile(parsedUser);
-  }, []);
   return (
-    <>
+    <div>
       <div className="profile-pic d-flex align-items-center">
         <span
           className="avatar cmn-btn active-status"
           onClick={() => activeHandler("settings")}
         >
-          <img
-            className="avatar-img"
-            src={`${userProFile.avatarUrl}`}
-            alt="avatar"
-          />
+          {currentUser?.avatarUrl ? (
+            <Image
+              className="avatar-img"
+              src={`${currentUser?.avatarUrl}` || ""}
+              alt="avatar"
+            />
+          ) : (
+            <Avatar firstname={"J"} lastname={"R"} />
+          )}
         </span>
       </div>
       <div className="main-area mt-2 p-4 profile-content">
         <div className="head-area">
           <div className="d-flex gap-3">
             <div className="avatar-item">
-              <Image
-                className="avatar-img"
-                src={`${userProFile.avatarUrl}`}
-                alt="avatar"
-              />
+              {currentUser?.avatarUrl ? (
+                <Image
+                  className="avatar-img"
+                  src={`${currentUser?.avatarUrl}` || ""}
+                  alt="avatar"
+                />
+              ) : (
+                <Avatar firstname={"J"} lastname={"R"} />
+              )}
             </div>
             <div className="text-area">
-              <h6 className="m-0">{`${userProFile.lastname} ${userProFile.firstname}`}</h6>
+              <h6 className="m-0">
+                {`${currentUser?.lastname || "User"} ${
+                  currentUser?.firstname
+                }` || "User"}
+              </h6>
               <p className="mdtxt">Job tiltle</p>
             </div>
           </div>
@@ -69,9 +77,9 @@ const Setting = memo(function Setting({
             </a>
           </li>
         </ul>
-        <DarkModeToggle />
+        <span className="switch">Dark-mode</span> <DarkModeToggle />
       </div>
-    </>
+    </div>
   );
 });
 

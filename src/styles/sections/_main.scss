@@ -1,6 +1,9 @@
 body {
-  background: var(--body-color);
-  color: var(--text-primary-color);
+  background: var(--Background);
+  color: var(--On-background);
+  &::-webkit-scrollbar-track{
+    background-color: transparent;
+  }
 }
 
 // noti baloon
@@ -8,11 +11,11 @@ body {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background-color: var(--highlight-color);
+  background-color: var(--Noti-color);
   text-align: center;
   line-height: 18px;
   font-weight: 500;
-  color: var(--error-text-color);
+  color: var(--On-Noti);
 }
 
 // action dropdown
@@ -24,47 +27,49 @@ body {
     }
   }
   .dropdown-menu {
-    background-color: var(--card-color);
+    background-color: var(--Surface-container-highest);
+    border: none;
   }
   .dropdown-item {
-    color: var(--text-primary-color);
+    color: var(--On-surface-variant);
     padding: 15px;
   }
   .dropdown-item:hover {
     background-color: transparent;
-    color: var(--primary-color);
+    color: var(--Inverse-primary);
   }
 }
 
 //button
 .btn-primary {
-  background-color: var(--primary-color);
-  color: var(--error-text-color);
+  background-color: var(--Primary);
+  color: var(--On-primary);
   border: transparent;
   &:hover {
-    background-color: var(--hover-color);
-    color: var(--primary-color);
+    background-color: var(--Inverse-primary);
+    color: var(--On-primary);
   }
 }
 
 .btn-outline-primary {
-  border: 1px solid var(--primary-color) !important;
-  color: var(--text-primary-color);
+  border: 1px solid var(--Primary) !important;
+  color: var(--On-primary-container);
   background-color: transparent;
   &:hover {
-    background-color: var(--primary-color);
-    color: var(--error-text-color);
+    border: transparent;
+    background-color: var(--Primary);
+    color: var(--On-primary);
   }
 }
 
 .btn-accept {
   border-radius: 20px;
   border: transparent;
-  color: var(--error-text-color);
-  background-color: var(--primary-color);
+  color: var(--On-primary-container);
+  background-color: var(--Primary-container);
   &:hover {
-    background-color: var(--hover-color);
-    color: var(--primary-color);
+    background-color: var(--Inverse-primary);
+    color: var(--On-primary);
   }
 }
 
@@ -72,19 +77,19 @@ body {
   border: transparent !important;
   background-color: transparent !important;
   &:hover {
-    background-color: var(--hover-color) !important;
-    color: var(--primary-color) !important;
+    background-color: var(--Inverse-primary) !important;
+    color: var(--On-primary) !important;
   }
 }
 .btn-delete {
   border-radius: 20px;
-  border: 1px solid var(--text-3rd-color);
-  color: var(--text-3rd-color);
-  background-color: transparent;
+  border: transparent;
+  color: var(--On-tertiary-container);
+  background-color: var(--Tertiary-container);
   height: 30px;
   &:hover {
-    background-color: var(--highlight-2nd-color);
-    color: var(--error-text-color);
+    background-color: var(--Tertiary-container);
+    color: var(--On-tertiary);
   }
 }
 
@@ -98,7 +103,7 @@ body {
 //cmn button
 .cmn-btn {
   cursor: pointer;
-  color: var(--text-2nd-color);
+  color: var(--Primary);
   .icon-area {
     width: 50px;
     height: 50px;
@@ -120,12 +125,12 @@ body {
   // border-radius: 15px;
   input {
     &::placeholder {
-      color: var(--text-3rd-color);
+      color: var(--On-surface-3rd);
     }
   }
   .input-group-text {
     border: transparent;
-    background-color: var(--card-color);
+    background-color: var(--Surface-container);
   }
 }
 
@@ -133,7 +138,7 @@ body {
 .inline-icon {
   background-color: transparent;
   border: transparent;
-  color: var(--text-2nd-color);
+  color: var(--Primary);
 }
 
 //modal
@@ -141,12 +146,12 @@ body {
 .modal {
   .modal-title {
     padding-top: 20px;
-    color: var(--primary-color);
+    color: var(--Primary);
     font-weight: 600;
     text-align: center;
   }
   .modal-content {
-    background: var(--body-2nd-color);
+    background: var(--Surface-container-high);
     border: transparent !important;
   }
   .modal-footer {
@@ -164,11 +169,11 @@ body {
         }
         svg {
           position: absolute;
-          color: var(--text-primary-color);
+          color: var(--On-primary);
           top: 10px;
           right: 3px;
           &:hover {
-            color: var(--primary-color);
+            color: var(--Inverse-primary);
           }
         }
       }
@@ -177,14 +182,16 @@ body {
 }
 .add-new-post {
   height: 60px;
+  padding: 0 5px;
   input {
     height: 55px;
+    background-color: var(--Surface-container) !important;
   }
 }
 .post-modal {
   form {
     label {
-      color: var(--primary-color) !important;
+      color: var(--Tertiary);
       font-weight: 600;
     }
     .row {
@@ -193,11 +200,11 @@ body {
     textarea,
     input {
       border: transparent;
-      background-color: var(--hover-color);
-      color: var(--text-primary-color);
+      background-color: var(--Surface-container-low);
+      color: var(--On-surface);
       border-radius: 10px;
       &::placeholder {
-        color: var(--text-3rd-color);
+        color: var(--On-surface-3rd);
       }
     }
     input[type="file" i] {
@@ -205,7 +212,7 @@ body {
       &::file-selector-button {
         display: none;
       }
-      color: var(--text-3rd-color);
+      color: var(--On-surface-3rd);
     }
   }
 }
@@ -213,20 +220,20 @@ body {
 //form control
 .form-control-text {
   &::placeholder {
-    color: var(--text-3rd-color);
+    color: var(--On-surface-3rd);
   }
 }
 
 .form-control {
   border: transparent;
-  background-color: var(--card-color);
+  background-color: var(--Surface-container-highest);
   box-shadow: none;
-  color: var(--text-primary-color);
+  color: var(--On-surface);
   &:focus {
-    color: var(--text-primary-color);
+    color: var(--Primary);
     border-color: none;
     box-shadow: none;
-    background-color: var(--card-color);
+    background-color: var(--Surface-container-highest);
   }
 }
 
@@ -239,10 +246,10 @@ body {
 }
 
 .txt-2nd {
-  color: var(--text-2nd-color) !important;
+  color: var(--On-surface-2nd) !important;
 }
 .txtmuted {
-  color: var(--text-3rd-color) !important;
+  color: var(--On-surface-3rd) !important;
 }
 
 //PersonCard
@@ -251,11 +258,11 @@ body {
     margin-bottom: 20px;
   }
   .card {
-    color: var(--text-primary-color);
-    background-color: var(--hover-color);
+    color: var(--On-surface);
+    background-color: var(--Surface-container-highest);
     border-radius: 15px;
     margin: 10px 0;
-    border-color: var(--border-card-color);
+    border: none;
   }
   .remove-btn {
     border: none;
@@ -270,3 +277,22 @@ body {
     }
   }
 }
+
+// .selection {
+//   label {
+//     display: block;
+//     input:before {
+//       content: "";
+//       display: inline-block;
+//       position: relative;
+//       height: 20px;
+//       width: 20px;
+//       border: 2px solid rgba(255, 255, 255, 0.18);
+//       border-radius: 4px;
+//       background-color: transparent;
+//       margin-right: 15px;
+//       margin-left: 10px;
+//       vertical-align: middle;
+//     }
+//   }
+// }

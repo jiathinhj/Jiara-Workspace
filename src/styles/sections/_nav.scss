@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 999;
   .container {
-    background-color: var(--body-2nd-color);
+    background-color: var(--Surface-container);
     border-radius: 20px;
   }
 
@@ -19,14 +19,13 @@
     z-index: 999;
     border-bottom: none;
     .container {
-      background-color: var(--body-2nd-color);
+      background-color: var(--Surface-container);
       border-radius: 20px;
     }
   }
   .logo {
     width: 50px;
   }
-  
 
   .search-bar {
     align-self: center;
@@ -34,11 +33,11 @@
     margin-right: 20px;
     height: 40px;
     input {
-      background-color: var(--card-color);
+      background-color: var(--Surface-container-high);
       border-radius: 20px;
     }
     .search-button {
-      background-color: var(--card-color);
+      background-color: var(--Surface-container-high);
       border-radius: 20px;
     }
   }
@@ -50,21 +49,24 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: 600;
-        color: var(--text-2nd-color);
+        color: var(--On-surface-variant);
       }
       .nav-link:hover {
-        color: var(--primary-color);
-        background-color: var(--hover-primary-color);
+        color: var(--On-secondary-container);
+        background-color: var(--Secondary-container);
         border-radius: 20px;
       }
     }
   }
 
   .right-area {
+    .switch {
+      color: var(--Primary);
+    }
     .ant-switch-checked {
-      background-color: var(--primary-color);
+      background-color: var(--Tertiary);
       &:hover {
-        background-color: var(--primary-color);
+        background-color: var(--Tertiary);
       }
     }
     .single-item {
@@ -74,7 +76,7 @@
         white-space: nowrap;
         right: 0;
         transform: translateY(150px);
-        background: var(--body-2nd-color);
+        background: var(--Surface-container-highest);
         border-radius: 10px;
         opacity: 0;
         transition: 0.3s;
@@ -102,7 +104,7 @@
             content: "";
             width: 16px;
             height: 16px;
-            background: var(--active-color);
+            background: var(--Active-color);
             border-radius: 50%;
             top: -4px;
             left: -4px;
@@ -119,21 +121,22 @@
         }
         .text-area {
           h6 {
-            color: var(--text-primary-color);
+            color: var(--On-primary-container);
             font-weight: 600;
           }
           p {
-            color: var(--text-primary-color);
+            color: var(--On-primary-container);
           }
         }
         .view-profile {
           a {
-            background-color: var(--body-color);
-            color: var(--primary-color);
+            background-color: var(--Surface-container);
+            color: var(--Primary);
             text-decoration: none;
             border-radius: 10px;
             &:hover {
-              background-color: var(--hover-color);
+              background-color: var(--Surface-tint);
+              color: var(--On-primary);
             }
           }
         }
@@ -144,10 +147,10 @@
             align-items: center;
             gap: 8px;
             margin: 16px 0;
-            color: var(--text-primary-color);
+            color: var(--On-surface);
             text-decoration: none;
             &:hover {
-              color: var(--primary-color);
+              color: var(--Primary);
             }
           }
         }
@@ -157,7 +160,7 @@
   .messages-area {
     .main-area {
       h5 {
-        color: var(--text-primary-color);
+        color: var(--On-surface);
         font-weight: 600;
       }
     }
@@ -172,19 +175,19 @@
     .text-area {
       h6 {
         font-weight: 600;
-        color: var(--text-primary-color);
+        color: var(--On-surface);
       }
       .abs-area {
         right: -25px;
       }
     }
     a {
-      color: var(--text-primary-color);
+      color: var(--On-surface);
       text-decoration: none;
     }
     .btn-area {
       a {
-        color: var(--primary-color);
+        color: var(--On-primary-container);
       }
     }
   }
@@ -193,25 +196,24 @@
 //------------- Left Sider --------------------------------
 .sider {
   height: 100vh;
-  background-color: var(--body-2nd-color);
+  background-color: var(--Surface-container);
   border-radius: 20px;
-}
-.sidebar-nav {
-  padding-top: 15px;
-
+  display: flex;
   &.left {
     .navbar-nav {
+      display: block;
+      align-self: self-start;
       .sidebar-item {
         &:hover {
-          background-color: var(--hover-primary-color);
+          background-color: var(--Secondary-container);
           border-radius: 10px;
         }
         &:active {
-          color: var(--primary-color);
+          color: var(--On-secondary-container);
         }
         a {
           border-radius: 20px;
-          color: var(--text-2nd-color);
+          color: var(--On-surface-variant);
           display: flex;
           align-self: center;
           text-transform: uppercase;
@@ -220,7 +222,7 @@
           font-weight: 600;
         }
         svg {
-          color: var(--text-2nd-color);
+          color: var(--On-surface-variant);
           align-self: center;
           margin: 0 10px;
         }
@@ -231,12 +233,13 @@
 
 //------------- Right Sider --------------------------------
 
-.sidebar-nav {
+.sider {
   &.right {
     .navbar-nav {
+      display: block;
       .sidebar-item {
         &:first-child {
-          border-bottom: 1px solid var(--border-card-color);
+          border-bottom: 1px solid var(--Outline-variant);
         }
       }
     }
@@ -247,30 +250,25 @@
 
     h5 {
       font-weight: 600;
-      color: var(--primary-color);
+      color: var(--On-surface-variant);
     }
     h6 {
       font-weight: 600;
-      color: var(--error-text-color);
+      color: var(--On-surface-variant);
     }
     a {
       text-decoration: none;
-      color: var(--text-primary-color);
+      color: var(--On-surface-variant);
       &:hover {
-        color: var(--primary-color);
+        color: var(--Inverse-primary);
       }
     }
     .abs-area {
       width: 20px;
       height: 20px;
-      background: var(--highlight-color);
+      background: var(--Noti-color);
       border-radius: 50%;
-      color: var(--error-text-color);
-    }
-    .contact-card {
-      ::shadow {
-        color: var(--hover-primary-color);
-      }
+      color: var(--On-surface);
     }
   }
 }
@@ -281,7 +279,7 @@
   .profile-pic {
     a {
       &:hover {
-        color: var(--primary-color);
+        color: var(--Inverse-primary);
       }
     }
   }
@@ -300,7 +298,7 @@
     }
     span {
       margin-left: -8px;
-      color: var(--text-primary-color);
+      color: var(--On-surface-variant);
     }
   }
 }

@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import { ThreeDots } from "react-bootstrap-icons";
 import PostModal from "../modals/post";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { apiResquest } from "../../api";
 import { getGroupById } from "../../redux/actions";
@@ -56,16 +53,13 @@ const Action = ({
   };
 
   const handleDeleteComment = async () => {
-    const body: object = {
-      data: {
-        commentId: data.commentId,
-      },
-    };
     if (
       await apiResquest({
         method: "delete",
         url: `${path}/comments`,
-        data: body,
+        data: {
+          commentId: data.commentId,
+        },
         successMessage: "Successfully deleted",
       })
     ) {

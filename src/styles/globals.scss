@@ -4,14 +4,17 @@
 
 @import "bootstrap/dist/css/bootstrap.min.css";
 
-@import 'react-toastify/dist/ReactToastify.css';
+@import "react-toastify/dist/ReactToastify.css";
+
+@import "@weavy/uikit-react/dist/css/weavy.css";
 
 // Sass Global
 @import "./main/global";
-
+@import "./main/responsive";
 
 @import "./sections/main";
 @import "./sections/feeds";
 @import "./sections/login";
 @import "./sections/group";
 @import "./sections/nav";
+@import "./sections/weawy";

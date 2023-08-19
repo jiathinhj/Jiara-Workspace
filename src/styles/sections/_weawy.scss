@@ -1,0 +1,111 @@
+// @use "../../../node_modules/@weavy/uikit-react/scss/weavy" as weawy;
+
+// weawy.
+
+:root {
+  /* Tones based on #00ff00 generated using Material Theme Builder */
+
+  /* Primary color  */
+  --wy-primary-99: #f9f7fb;
+  --wy-primary-95: #f3f1f8;
+  --wy-primary-90: #e1dcee;
+  --wy-primary-80: #ccc4e2;
+  --wy-primary-70: #b8acd7;
+  --wy-primary-60: #a394cb;
+  --wy-primary-50: #8f7cbf;
+  --wy-primary-40: #6750a4;
+  --wy-primary-30: #513f82; //bubble chat
+  --wy-primary-20: #3c2f5f; //hover
+  --wy-primary-10: #261e3d;
+
+  /* neutral color */
+  --wy-neutral-99: #190f41;
+  --wy-neutral-95: #0b0b0b;
+  --wy-neutral-90: #dfdde4;
+  --wy-neutral-80: #c3c1c7;
+  --wy-neutral-70: #a7a6ab;
+  --wy-neutral-60: #8e8d91;
+  --wy-neutral-50: #757279;
+  --wy-neutral-40: #5c595f;
+  --wy-neutral-30: #454347;
+  --wy-neutral-20: #2e2c30;
+  --wy-neutral-10: #1a171c;
+
+  /* error color */
+  --wy-error-99: #fffbff;
+  --wy-error-95: #ffedea;
+  --wy-error-90: #ffdad6;
+  --wy-error-80: #ffb4ab;
+  --wy-error-70: #ff897d;
+  --wy-error-60: #ff5449;
+  --wy-error-50: #de3730;
+  --wy-error-40: #ba1a1a;
+  --wy-error-30: #93000a;
+  --wy-error-20: #690005;
+  --wy-error-10: #410002;
+
+  --wy-surface-1: var(--wy-primary-70);
+  --wy-surface-2: var(--wy-primary-80);
+  --wy-surface-3: var(--wy-primary-90);
+  --wy-surface-4: var(--wy-primary-95);
+  --wy-surface-5: var(--wy-primary-99);
+  --wy-surface-variant: var(--wy-neutral-90);
+  --wy-outline-variant: transparent;
+  --wy-background: var(--Surface-container);
+}
+
+.wy-dark {
+  --wy-primary-20: var(--wy-neutral-20); //hover
+  --wy-surface-1: var(--wy-primary-10);
+  --wy-surface-2: var(--wy-primary-20);
+  --wy-surface-3: var(--wy-primary-30);
+  --wy-surface-4: var(--wy-primary-45);
+  --wy-surface-5: var(--wy-primary-50);
+  --wy-surface-variant: var(--wy-neutral-20);
+  --wy-outline-variant: transparent;
+  --wy-background: var(--Surface-container);
+}
+
+.wy-messenger-provider {
+  height: calc(100vh - 80px);
+  padding: unset;
+  padding-bottom: 10px;
+  border-radius: 20px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wy-messenger-sidebar {
+    border-radius: 20px;
+    margin-right: 5px;
+    --wy-component-background-color: var(--Surface-container);
+  }
+  .wy-messenger-conversation {
+    border-radius: 20px;
+    .wy-messages {
+      border: none;
+    }
+  }
+
+  .wy-appbars {
+    box-shadow: 0 2px 3px var(--Surface-container-low);
+    .wy-appbar {
+      button {
+        --wy-component-background-color: var(--Surface-container);
+      }
+    }
+  }
+  .wy-appbars,
+  .wy-footerbar,
+  .wy-messenger-sidebar {
+    --wy-component-background-color: var(--Surface-container);
+    border: none;
+  }
+
+  .wy-message-editor-inputs {
+    button,
+    .cm-editor {
+      background-color: var(--Surface-container-highest);
+    }
+  }
+}

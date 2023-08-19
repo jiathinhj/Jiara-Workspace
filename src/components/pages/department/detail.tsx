@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { Tabs, Tab } from "react-bootstrap";
+import { Tabs, Tab, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import MemberTab from "./members";
@@ -19,11 +19,7 @@ const DepartmentDetail = () => {
 
   //get data of current group from Redux
   const detailGroup = useSelector((state: any) => state.group.detailGroup);
-  const { posts, groupName, managers, members, groupId } = detailGroup;
-
-  //get data of current user from UserContext
-  const { currentUser }: any = useContext(CurrentUserContext);
-  
+  // const { posts, groupName, managers, members, groupId } = detailGroup;
 
   const fetchGroupDetails = async () => {
     await getGroupById(id, dispatch).then(() => setLoading(false));
@@ -31,7 +27,7 @@ const DepartmentDetail = () => {
 
   useEffect(() => {
     fetchGroupDetails();
-  }, [id]);
+  }, []);
 
   return (
     <DepartmentMain>
@@ -42,23 +38,12 @@ const DepartmentDetail = () => {
           onSelect={(eventKey: any) => setTab(eventKey)}
         >
           <Tab eventKey="discussion" title="Discussion">
-            <FeedTab
-              posts={posts}
-              groupId={groupId}
-              currentAccount={currentUser}
-            />
+            <FeedTab />
           </Tab>
           <Tab eventKey="member" title="Member">
-            <MemberTab
-              managers={managers}
-              members={members}
-              groupId={groupId}
-            />
+            <MemberTab />
           </Tab>
-          {/* <Tab eventKey="settings" title="Settings">
-            <Profile />
-          </Tab> */}
-          <Tab disabled title={groupName || ""} />
+          <Tab disabled title={detailGroup.groupName || ""} />
         </Tabs>
       </div>
     </DepartmentMain>

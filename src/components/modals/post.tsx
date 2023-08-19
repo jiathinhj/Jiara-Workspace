@@ -1,7 +1,6 @@
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { Button, Image, Modal, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { XCircle } from "react-bootstrap-icons";
@@ -45,6 +44,11 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
     });
     // getBase64(files);
     console.log(imgs);
+  };
+
+  const onBlur = (e: any) => {
+    const tags = e.target.value.trim().split(",");
+    console.log(tags);
   };
 
   const onSubmit = async (value: any) => {
@@ -165,7 +169,28 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
                   placeholder="#hashtag"
                   name="tags"
                   id="tags"
+                  // onBlur={onBlur}
                 />
+                <div className="selection">
+                  {[
+                    "React.js",
+                    "SASS",
+                    "AngularJS",
+                    "JavaScript",
+                    "HTML5",
+                    "Cascading Style Sheets (CSS)",
+                    "Git",
+                    "jQuery",
+                    "Bootstrap",
+                    "TypeScript",
+                    "Web Development",
+                  ].map((option) => (
+                    <label key={`label-${option}`}>
+                      <Field type="checkbox" name="tags" value={option} />
+                      {option}
+                    </label>
+                  ))}
+                </div>
               </Row>
             </div>
           </Modal.Body>

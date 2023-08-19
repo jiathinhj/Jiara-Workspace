@@ -3,11 +3,11 @@ import { Button, Form, Image, InputGroup, Modal } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import Avatar from "../../avatar/Avatar";
 import { apiResquest } from "../../../api";
+import { useSelector } from "react-redux";
 
 const AddMemberModal = memo(function AddMemberModal({
   show,
   onHide,
-  groupId,
   addType,
   allAccounts,
   addMemberHandler,
@@ -16,7 +16,10 @@ const AddMemberModal = memo(function AddMemberModal({
   const [inputValue, setInputValue] = useState<string>();
   const [selectedUser, setSelectedUser] = useState<string[]>([]);
 
-  //handle search input and update list user from Redux store
+  //get data of current group from Redux
+  const detailGroup = useSelector((state: any) => state.group.detailGroup);
+
+  //handle search input
   const handleInputChange = (value: any) => {
     setInputValue(value);
 
@@ -46,7 +49,7 @@ const AddMemberModal = memo(function AddMemberModal({
     if (addType === "addManager") {
       await Promise.all(
         selectedUser.map((username) => {
-          const url = `/groups/${groupId}/managers/${username}`;
+          const url = `/groups/${detailGroup.groupId}/managers/${username}`;
           apiResquest({
             method: "post",
             url: url,
@@ -59,7 +62,7 @@ const AddMemberModal = memo(function AddMemberModal({
       });
     }
     if (addType === "addMember") {
-      const url = `/groups/${groupId}/members`;
+      const url = `/groups/${detailGroup.groupId}/members`;
       if (
         await apiResquest({
           method: "post",
@@ -73,6 +76,7 @@ const AddMemberModal = memo(function AddMemberModal({
     }
   };
 
+  console.log("render modal");
   useEffect(() => {
     setAccounts(allAccounts);
   }, [allAccounts]);
@@ -85,7 +89,7 @@ const AddMemberModal = memo(function AddMemberModal({
       show={show}
       onHide={onHide}
     >
-      <Modal.Header closeButton closeVariant="white">
+      <Modal.Header closeButton>
         <Modal.Title>Add new people</Modal.Title>
       </Modal.Header>
       <InputGroup className="search-bar">

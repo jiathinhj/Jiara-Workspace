@@ -3,22 +3,20 @@ import { Envelope } from "react-bootstrap-icons";
 
 import messageData from "../../data/peopleData";
 import { memo } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Message = memo(function Message({
-  activeHandler,
-}: {
-  activeHandler: (a: string) => void;
-}) {
-   console.log('Rerender')
+const Message = memo(function Message() {
+  const navigate = useNavigate();
+  console.log("Rerender");
   return (
     <>
       <div className="messages-btn cmn-btn position-relative">
-        <div className="icon-area" onClick={() => activeHandler("message")}>
+        <div className="icon-area" onClick={() => navigate("/chat")}>
           <Envelope />
           <span className="abs-area position-absolute mdtxt">4</span>
         </div>
       </div>
-      <div className="main-area mt-2 px-5 py-4 messages-content">
+      {/* <div className="main-area mt-2 px-5 py-4 messages-content">
         <h5>Messages</h5>
         {messageData.map((message) => {
           const { id, last_message, number_of_message, user_avt, user_name } =
@@ -51,7 +49,7 @@ const Message = memo(function Message({
         <div className="btn-area">
           <a href="/profile/chat">See all inbox</a>
         </div>
-      </div>
+      </div> */}
     </>
   );
 });

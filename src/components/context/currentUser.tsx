@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useCallback, useState } from "react";
 
 export const CurrentUserContext = createContext({});
 
@@ -21,17 +15,7 @@ export function CurrentUserProvider({ children }: any) {
     setCurrentUser(parsedUser);
   }, []);
 
-  const contextValue = useMemo(
-    () => ({
-      currentUser,
-      setUser,
-    }),
-    [currentUser, setUser]
-  );
-
-  useEffect(() => {
-    setUser();
-  }, []);
+  const contextValue = { currentUser, setUser };
 
   return (
     <CurrentUserContext.Provider value={contextValue}>
