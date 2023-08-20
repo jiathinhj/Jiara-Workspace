@@ -17,6 +17,7 @@ import {
   Offcanvas,
 } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
+import { useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const [windowHeight, setWindowHeight] = useState(0);
@@ -46,6 +47,9 @@ const NavBar = () => {
       window.removeEventListener("scroll", navBarTop);
     };
   }, []);
+
+  let location = useLocation();
+  useEffect(() => {}, [location]);
 
   return (
     <header className={`header-section ${windowHeight > 50 && "header-fixed"}`}>
@@ -79,12 +83,20 @@ const NavBar = () => {
             <Offcanvas.Body>
               <Col xs={12}>
                 <Nav className="nav-justified">
-                  <Nav.Item>
+                  <Nav.Item
+                    className={`${
+                      location.pathname === "/home" ? "active" : ""
+                    }`}
+                  >
                     <Nav.Link href={"/home"} eventKey="home">
                       Home
                     </Nav.Link>
                   </Nav.Item>
-                  <Nav.Item>
+                  <Nav.Item
+                    className={`${
+                      location.pathname === "/department" ? "active" : ""
+                    }`}
+                  >
                     <Nav.Link href={"/department"} eventKey="department">
                       Department
                     </Nav.Link>

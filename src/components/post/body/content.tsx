@@ -2,8 +2,8 @@ import React from "react";
 
 import { Badge, Image } from "react-bootstrap";
 
-import Action from "../actions/action";
-import { POST_ACTION } from "../../data/actionsData";
+import Action from "../../actions/action";
+import { POST_ACTION } from "../../../data/actionsData";
 
 const PostContent = ({ post }: any) => {
   // const { title, content, pictures, tags, username, avatar } = post;

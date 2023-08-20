@@ -1,7 +1,7 @@
 body {
   background: var(--Background);
   color: var(--On-background);
-  &::-webkit-scrollbar-track{
+  &::-webkit-scrollbar-track {
     background-color: transparent;
   }
 }
@@ -15,7 +15,7 @@ body {
   text-align: center;
   line-height: 18px;
   font-weight: 500;
-  color: var(--On-Noti);
+  color: var(--On-Noti) !important;
 }
 
 // action dropdown

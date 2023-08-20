@@ -25,7 +25,7 @@ const Spinner = styled.div`
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: #427ac2 transparent #427ac2 transparent;
+  border-color: var(--Primary) transparent var(--Primary) transparent;
   border-radius: 50%;
   animation: spin-anim 1.2s linear infinite;
   @keyframes spin-anim {

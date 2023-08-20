@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { getAPI } from "../../api";
 // import { useChatScript } from "../../hooks/useChatScript";
 import { WeavyProvider, WeavyClient, Messenger } from "@weavy/uikit-react";
@@ -10,7 +10,7 @@ const ChatBox = () => {
     url: "https://f1746aae94594612865d8f61eb9291e7.weavy.io",
     tokenFactory: async () => {
       const accessToken = await getAPI("/messages").then((response) => {
-        return response.data.accessToken;
+        return response?.data.accessToken;
       });
       console.log(accessToken);
       return accessToken;

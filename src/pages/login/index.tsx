@@ -120,7 +120,7 @@ const LogIn = () => {
             {auth.isFetching && (
               <Spinner
                 animation="border"
-                style={{ color: "var(--primary-color", alignSelf: "center" }}
+                style={{ color: "var(--Primary)", alignSelf: "center" }}
               />
             )}
           </Card>

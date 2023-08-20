@@ -14,26 +14,25 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <LoadingProvider>
-          <App />
-
-          <ToastContainer
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover
-            theme={"dark"}
-            limit={2}
-          />
-        </LoadingProvider>
-      </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <LoadingProvider>
+        <App />
+        <ToastContainer
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          theme={"dark"}
+          limit={1}
+        />
+      </LoadingProvider>
+    </BrowserRouter>
+  </Provider>
   // </React.StrictMode>
 );
 

@@ -285,10 +285,13 @@
     }
   }
   .form-check-input {
-    --bs-form-check-bg: transparent;
+    background-color: transparent;
     border-color: var(--Primary);
+    &:checked {
+      background-color: var(--Inverse-primary);
+    }
     &:disabled {
-      --bs-form-check-bg: var(--Surface-variant);
+      background-color: var(--Surface-variant);
     }
   }
 }
@@ -296,7 +299,7 @@
 //profile
 
 .profile-setting {
-  color: var(--text-primary-color);
+  color: var(--On-surface);
   background-color: var(--Surface-container);
   border-radius: 20px;
   margin: 0 10px;
@@ -357,7 +360,7 @@
       color: var(--On-surface-2nd);
       cursor: pointer;
       &:hover {
-        color: var(--Primary) !important;
+        color: var(--Primary);
       }
     }
     .change-password {

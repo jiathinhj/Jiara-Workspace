@@ -52,9 +52,15 @@
         color: var(--On-surface-variant);
       }
       .nav-link:hover {
-        color: var(--On-secondary-container);
+        color: var(--Primary);
         background-color: var(--Secondary-container);
         border-radius: 20px;
+      }
+      &.active {
+        a {
+          color: var(--Primary);
+          text-shadow: 2px 2px 2px var(--Inverse-primary);
+        }
       }
     }
   }
@@ -236,10 +242,12 @@
 .sider {
   &.right {
     .navbar-nav {
+      width: 100%;
+      padding-inline: 5px;
       display: block;
       .sidebar-item {
         &:first-child {
-          border-bottom: 1px solid var(--Outline-variant);
+          border-bottom: 0.5px solid var(--Outline-variant);
         }
       }
     }
@@ -268,7 +276,7 @@
       height: 20px;
       background: var(--Noti-color);
       border-radius: 50%;
-      color: var(--On-surface);
+      color: var(--On-noti) !important;
     }
   }
 }

@@ -17,10 +17,11 @@ export const postAPI = async ({
         authToken: `${getToken}`,
       },
     });
-    return apiRes;
+    if (apiRes !== undefined) {
+      return apiRes;
+    }
   } catch (error: any) {
     if (error && error.response && error.response.status === 401) {
-      console.log("error", error);
       toast.error("Your login session has expired! Please login again!");
       window.location.href = "/login";
     } else if (error && error.response) {
@@ -28,8 +29,6 @@ export const postAPI = async ({
     } else if (error && error.request) {
       toast.error("Please try again!");
     }
-    console.log(error);
-    return error;
   }
 };
 
@@ -42,7 +41,9 @@ export const getAPI = async (path: string) => {
       },
     });
     console.log(apiRes);
-    return apiRes;
+    if (apiRes !== undefined) {
+      return apiRes;
+    }
   } catch (error: any) {
     if (error && error.response && error.response.status === 401) {
       console.log("error", error);
@@ -53,8 +54,6 @@ export const getAPI = async (path: string) => {
     } else if (error && error.request) {
       toast.error("Please try again!");
     }
-    console.log(error);
-    return error;
   }
 };
 
@@ -81,7 +80,9 @@ export const apiResquest = async ({
     });
     toast.success(successMessage);
     console.log(apiRes);
-    return apiRes;
+    if (apiRes !== undefined) {
+      return apiRes;
+    }
   } catch (error: any) {
     if (error && error.response && error.response.status === 401) {
       console.log("error", error);
@@ -92,7 +93,5 @@ export const apiResquest = async ({
     } else if (error && error.request) {
       toast.error("Please try again!");
     }
-    console.log(error);
-    return error;
   }
 };

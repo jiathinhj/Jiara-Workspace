@@ -12,7 +12,6 @@ const MemberTab = memo(function MemberTab() {
   const [showAccount, setShowAccount] = useState(false);
   const [addType, setAddType] = useState([]);
   const [memberList, setMemberList] = useState<string[]>([]);
-  const [allAccounts, setAllAccounts] = useState<Object[]>([]);
 
   const dispatch = useDispatch();
 
@@ -34,30 +33,9 @@ const MemberTab = memo(function MemberTab() {
     setShowAccount(false);
   };
 
-  //get all user for add-member-modal
-  // const fetchAllUsers = async () => {
-  //   const res = await getAllAccount(dispatch);
-  //   setAllAccounts(res);
-  //   setMemberStatus();
-  // };
-
-  const setMemberStatus = useCallback(async () => {
-    await getAllAccount(dispatch).then((res) => {
-      let newAccounts: Object[] = [];
-      res.forEach((element: any) => {
-        const checkedMembers = {
-          ...element,
-          status:
-            detailGroup.members?.includes(element.username) === true
-              ? "already a member"
-              : "not a member",
-        };
-        newAccounts.push(checkedMembers);
-      });
-      setAllAccounts(newAccounts);
-      console.log("render");
-    });
-  }, [allAccounts]);
+  const handleGetAllAccounts = async () => {
+    await getAllAccount(dispatch);
+  };
 
   //display new added member
   const addMemberHandler = (newMembers: any) => {
@@ -90,7 +68,7 @@ const MemberTab = memo(function MemberTab() {
   }, []);
 
   useEffect(() => {
-    setMemberStatus();
+    handleGetAllAccounts();
   }, []);
 
   return (
@@ -107,11 +85,7 @@ const MemberTab = memo(function MemberTab() {
             </Button>
           ) : null}
         </div>
-        <PersonCard
-          type={"managers"}
-          data={detailGroup.managers}
-          allAccounts={allAccounts}
-        />
+        <PersonCard type={"managers"} data={detailGroup.managers} />
       </div>
       <div className="member">
         <div className="top-area">
@@ -131,7 +105,6 @@ const MemberTab = memo(function MemberTab() {
             (member: any) => !detailGroup.managers?.includes(member)
           )}
           groupId={detailGroup.groupId}
-          allAccounts={allAccounts}
           removeMemberHandler={(username: any) => removeMemberHandler(username)}
         />
       </div>
@@ -139,7 +112,6 @@ const MemberTab = memo(function MemberTab() {
         show={showAccount}
         onHide={handleCloseAccount}
         addType={addType}
-        allAccounts={allAccounts}
         addMemberHandler={addMemberHandler}
       />
     </div>

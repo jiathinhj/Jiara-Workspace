@@ -1,6 +1,6 @@
 import { NavigateFunction } from "react-router-dom";
 import { toast } from "react-toastify";
-import { loginStart, loginSuccess } from "./authSlice";
+import { loginFailure, loginStart, loginSuccess } from "./authSlice";
 import { getAPI, postAPI } from "../api";
 import { AppDispatch } from "./store";
 import { getAllGroupSuccess, getGroupByIdSuccess } from "./groupSlice";
@@ -11,12 +11,14 @@ export const loginUser = async (
   dispatch: AppDispatch,
   navigate: NavigateFunction
 ) => {
-  dispatch(loginStart);
-  await postAPI({ path: "/api/auth/login", body: account }).then((apiRes) => {
-    dispatch(loginSuccess(apiRes?.data));
-    console.log(apiRes?.data);
-    navigate("/department");
-  });
+  dispatch(loginStart());
+  await postAPI({ path: "/api/auth/login", body: account })
+    .then((apiRes) => {
+      dispatch(loginSuccess(apiRes?.data));
+      console.log(apiRes?.data);
+      navigate("/department");
+    })
+    .catch(() => dispatch(loginFailure()));
 };
 
 export const getAllGroup = async (dispatch: AppDispatch) => {

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { Button, Form, Image, InputGroup, Modal } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import Avatar from "../../avatar/Avatar";
@@ -9,7 +9,6 @@ const AddMemberModal = memo(function AddMemberModal({
   show,
   onHide,
   addType,
-  allAccounts,
   addMemberHandler,
 }: any) {
   const [accounts, setAccounts] = useState<object[]>([]);
@@ -19,16 +18,18 @@ const AddMemberModal = memo(function AddMemberModal({
   //get data of current group from Redux
   const detailGroup = useSelector((state: any) => state.group.detailGroup);
 
+  const allUser = useSelector((state: any) => state.user.allUser);
+
   //handle search input
   const handleInputChange = (value: any) => {
     setInputValue(value);
 
     const matchedUsers = accounts.filter((user: any) => {
-      return !inputValue
-        ? accounts
-        : inputValue &&
-            user &&
-            user.username.toLowerCase().includes(inputValue);
+      if (inputValue) {
+        return (
+          inputValue && user && user.username.toLowerCase().includes(inputValue)
+        );
+      } else return accounts;
     });
     setAccounts(matchedUsers);
   };
@@ -77,9 +78,26 @@ const AddMemberModal = memo(function AddMemberModal({
   };
 
   console.log("render modal");
+
+  const handleMemberStatus = useCallback(() => {
+    let newAccounts: Object[] = [];
+    allUser &&
+      allUser.forEach((element: any) => {
+        const checkedMembers = {
+          ...element,
+          status:
+            detailGroup.members?.includes(element.username) === true
+              ? "already a member"
+              : "not a member",
+        };
+        newAccounts.push(checkedMembers);
+      });
+    setAccounts(newAccounts);
+  }, [allUser, detailGroup.members]);
+
   useEffect(() => {
-    setAccounts(allAccounts);
-  }, [allAccounts]);
+    handleMemberStatus();
+  }, [handleMemberStatus]);
 
   return (
     <Modal

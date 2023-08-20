@@ -2,11 +2,11 @@ import { Button, Form, FormLabel, InputGroup } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 import ParentComment from "./comments/parents";
-import PostReaction from "./reaction";
+import PostReaction from "./body/reaction";
 import SiblingComment from "./comments/siblings";
 // import { getPostById, postAPI } from "../../redux/apiRequest";
 import { Cursor, EmojiLaughing, Images, X } from "react-bootstrap-icons";
-import PostContent from "./content";
+import PostContent from "./body/content";
 import { getAPI, postAPI } from "../../api";
 // import { useLoading } from "../preloader/LoadingContext";
 

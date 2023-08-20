@@ -1,19 +1,21 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Trash } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import Avatar from "../avatar/Avatar";
 
-const PersonCard = ({ data, type, allAccounts, removeMemberHandler }: any) => {
+const PersonCard = ({ data, type, removeMemberHandler }: any) => {
   const isManager = useSelector((state: any) => state.group.isManager);
   const [handledData, setHandledData] = useState<Object[]>([]);
+
+  const allUser = useSelector((state: any) => state.user.allUser);
 
   const handleMapInfo = () => {
     let newData: Object[] = [];
     data.forEach((element: any) => {
       const fullInfo = {
         username: element,
-        info: allAccounts.find((account: any) => account.username === element),
+        info: allUser.find((account: any) => account.username === element),
       };
       newData.push(fullInfo);
     });
@@ -22,8 +24,8 @@ const PersonCard = ({ data, type, allAccounts, removeMemberHandler }: any) => {
   };
 
   useEffect(() => {
-    data && data.length && allAccounts && allAccounts.length && handleMapInfo();
-  }, [data, allAccounts]);
+    data && data.length && allUser && allUser.length && handleMapInfo();
+  }, [data, allUser]);
 
   return (
     <Row className="person-card">
