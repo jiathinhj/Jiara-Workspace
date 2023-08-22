@@ -26,16 +26,24 @@
       }
 
       .post-img {
-        width: 100% !important;
         .single {
           flex: 0 0 calc(50% - 8px);
           align-self: center;
-          img {
-            width: 100%;
+          &.only {
+            object-fit: cover;
           }
           .avatar {
             position: relative;
           }
+        }
+        .double {
+          display: flex;
+          img {
+            width: 50%;
+          }
+        }
+        .only {
+          width: 100%;
         }
       }
     }

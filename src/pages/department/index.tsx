@@ -39,10 +39,10 @@ const DepartmentMain = ({ children }: any) => {
   return (
     <div className="toggler">
       <Row>
-        <Col sm={6} lg={3} xxl={3}>
+        <Col xs={3}>
           <LeftSider />
         </Col>
-        <Col sm={12} lg={8} xxl={9} className="main-content department">
+        <Col xs={12} sm={12} lg={9} xxl={9} className="main-content department">
           {loading ? <Preloader /> : <>{children} </>}
         </Col>
       </Row>

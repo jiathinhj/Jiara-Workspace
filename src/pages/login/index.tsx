@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import SignUp from "../../components/modals/signup";
-import { loginUser } from "../../redux/actions";
+import { loginUser } from "../../redux/actionReducer";
 
 const initialValues = {
   username: "",

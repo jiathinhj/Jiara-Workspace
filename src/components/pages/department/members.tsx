@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoading } from "../../context/loading";
-import { getAllAccount } from "../../../redux/actions";
+import { getAllAccount } from "../../../redux/actionReducer";
 import { apiResquest } from "../../../api";
 
 const MemberTab = memo(function MemberTab() {
@@ -38,12 +38,12 @@ const MemberTab = memo(function MemberTab() {
   };
 
   //display new added member
-  const addMemberHandler = (newMembers: any) => {
+  const handleAddMember = (newMembers: any) => {
     setMemberList([...memberList, ...newMembers]);
   };
 
   //delete member from group
-  const removeMemberHandler = async (username: any) => {
+  const handleRemoveMember = async (username: any) => {
     let selectedUser: string[] = [];
     var selectedList = [...selectedUser];
     selectedList = [...selectedUser, username];
@@ -105,14 +105,14 @@ const MemberTab = memo(function MemberTab() {
             (member: any) => !detailGroup.managers?.includes(member)
           )}
           groupId={detailGroup.groupId}
-          removeMemberHandler={(username: any) => removeMemberHandler(username)}
+          onRemoveMember={(username: any) => handleRemoveMember(username)}
         />
       </div>
       <AddMemberModal
         show={showAccount}
         onHide={handleCloseAccount}
         addType={addType}
-        addMemberHandler={addMemberHandler}
+        onAddMember={handleAddMember}
       />
     </div>
   );

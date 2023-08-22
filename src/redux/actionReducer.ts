@@ -1,5 +1,4 @@
 import { NavigateFunction } from "react-router-dom";
-import { toast } from "react-toastify";
 import { loginFailure, loginStart, loginSuccess } from "./authSlice";
 import { getAPI, postAPI } from "../api";
 import { AppDispatch } from "./store";

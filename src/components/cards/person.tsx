@@ -4,7 +4,7 @@ import { Trash } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import Avatar from "../avatar/Avatar";
 
-const PersonCard = ({ data, type, removeMemberHandler }: any) => {
+const PersonCard = ({ data, type, onRemoveMember }: any) => {
   const isManager = useSelector((state: any) => state.group.isManager);
   const [handledData, setHandledData] = useState<Object[]>([]);
 
@@ -28,15 +28,9 @@ const PersonCard = ({ data, type, removeMemberHandler }: any) => {
   }, [data, allUser]);
 
   return (
-    <Row className="person-card">
+    <div className="person-cards">
       {handledData.map(({ username, info }: any) => (
-        <Col
-          key={`person-card-${type}-${username}`}
-          xs={6}
-          sm={6}
-          lg={6}
-          xl={4}
-        >
+        <div className="person-card" key={`person-card-${type}-${username}`}>
           <Card>
             <Card.Body className="p-3">
               <div className="d-flex">
@@ -55,7 +49,7 @@ const PersonCard = ({ data, type, removeMemberHandler }: any) => {
                     <Card.Title>{username}</Card.Title>
                     {isManager && type === "members" ? (
                       <Button
-                        onClick={() => removeMemberHandler(username)}
+                        onClick={() => onRemoveMember(username)}
                         size="sm"
                         className="remove-btn"
                         variant="outline-danger"
@@ -80,9 +74,9 @@ const PersonCard = ({ data, type, removeMemberHandler }: any) => {
               </div>
             </Card.Body>
           </Card>
-        </Col>
+        </div>
       ))}
-    </Row>
+    </div>
   );
 };
 

@@ -46,22 +46,34 @@ const PostContent = ({ post }: any) => {
               } `}
             >
               {post.pictureUrls.length > 0 ? (
-                post.pictureUrls.length > 2 ? (
-                  <>
-                    <div className="single only">
+                post.pictureUrls.length > 1 ? (
+                  post.pictureUrls.length > 2 ? (
+                    <>
+                      <div className="single only">
+                        <Image
+                          src={`${post.pictureUrls[0]}` || ""}
+                          alt="image"
+                        />
+                      </div>
+                      <div className="double d-grid gap-3">
+                        <Image
+                          src={`${post.pictureUrls[1]}` || ""}
+                          alt="image"
+                        />
+                        <Image
+                          src={`${post.pictureUrls[2]}` || ""}
+                          alt="image"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <div className="double">
                       <Image src={`${post.pictureUrls[0]}` || ""} alt="image" />
-                    </div>
-                    <div className="single d-grid gap-3">
                       <Image src={`${post.pictureUrls[1]}` || ""} alt="image" />
-                      <Image src={`${post.pictureUrls[2]}` || ""} alt="image" />
                     </div>
-                  </>
+                  )
                 ) : (
-                  <Image
-                    src={`${post.pictureUrls[0]}`}
-                    alt="image"
-                    className="w-100"
-                  />
+                  <Image className="only" src={`${post.pictureUrls[0]}` || ""} alt="image" />
                 )
               ) : null}
             </div>

@@ -4,11 +4,14 @@
   .main-content {
     height: 100vh;
     padding: 10px 20px 0px 20px;
+    color: var(--On-surface-variant);
   }
 }
 .people-carousel {
+  background-color: transparent;
   .slick-arrow {
     opacity: 0;
+
     &.pull-right {
       position: absolute;
       top: 100px;
@@ -69,37 +72,42 @@
     font-size: 24px;
     font-weight: 600;
   }
-  .department-card {
-    cursor: pointer;
-    margin: 0 0 15px;
-    .card {
-      border: none;
-      &:hover {
-        background-color: var(--Surface-container-high);
-      }
-      height: 220px;
-      background-color: var(--Surface-container);
-      color: var(--On-surface);
-      .card-header {
+  .department-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+    column-gap: 10px;
+    .department-card {
+      cursor: pointer;
+      margin: 0 0 15px;
+      .card {
         border: none;
-        color: var(--On-secondary-container);
-        background-color: var(--Secondary-container);
-        font-weight: 600;
-        min-height: fit-content;
-        text-align: center;
-      }
-      .department-info {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-bottom: 10px;
+        &:hover {
+          background-color: var(--Surface-container-high);
+        }
+        height: 220px;
+        background-color: var(--Surface-container);
+        color: var(--On-surface);
+        .card-header {
+          border: none;
+          color: var(--On-secondary-container);
+          background-color: var(--Secondary-container);
+          font-weight: 600;
+          min-height: fit-content;
+          text-align: center;
+        }
+        .department-info {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          margin-bottom: 10px;
 
-        .badge {
-          background: transparent !important;
-          border: 0.2px solid var(--Tertiary);
-          color: var(--Tertiary);
-          font-size: 14px;
-          font-weight: unset;
+          .badge {
+            background: transparent !important;
+            border: 0.2px solid var(--Tertiary);
+            color: var(--Tertiary);
+            font-size: 14px;
+            font-weight: unset;
+          }
         }
       }
     }

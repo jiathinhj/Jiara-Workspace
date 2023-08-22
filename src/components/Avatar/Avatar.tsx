@@ -3,8 +3,9 @@ import {
   generatePlaceholderName,
   generateRandomColorNumber,
 } from "./avatarGenerator";
+import { memo } from "react";
 
-const Avatar = ({ firstname, lastname }: any) => {
+const Avatar = memo(function Avatar({ firstname, lastname }: any) {
   const avatarPlaceholder = generatePlaceholderName(firstname, lastname);
   const placeholderBackground = `hsl(${generateRandomColorNumber()}, 50% , 50%)`;
   return (
@@ -17,7 +18,7 @@ const Avatar = ({ firstname, lastname }: any) => {
       <p> {avatarPlaceholder}</p>
     </StyledAvatar>
   );
-};
+});
 const StyledAvatar = styled.div`
   display: flex;
   justify-content: center;

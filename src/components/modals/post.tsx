@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { Button, Image, Modal, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { XCircle } from "react-bootstrap-icons";
+import { Camera, CaretDownFill, XCircle } from "react-bootstrap-icons";
 import { useLoading } from "../context/loading";
 import { postAPI } from "../../api";
-import { getGroupById } from "../../redux/actions";
+import { getGroupById } from "../../redux/actionReducer";
 
 const initialValues: any = {
   title: "",
@@ -26,41 +26,34 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
   const { setLoading }: any = useLoading();
 
   const [imgs, setImgs] = useState<any>([]);
+  const [active, setActive] = useState(false);
 
   const handleConvertImg = (e: any) => {
-    let files = [...e.target.files];
-
-    files.forEach((file) => {
+    const files = [...e.target.files];
+    console.log(files);
+    files.forEach((file: File) => {
       if (file.size > 150000) {
-        console.log("File too large");
         toast.error("File is too large");
         return;
+      } else {
+        const reader: any = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          setImgs([...imgs, reader.result]); //base64encoded string
+        };
       }
-      const reader: any = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        setImgs([...imgs, reader.result]); //base64encoded string
-      };
     });
     // getBase64(files);
     console.log(imgs);
   };
 
-  const onBlur = (e: any) => {
-    const tags = e.target.value.trim().split(",");
-    console.log(tags);
-  };
-
   const onSubmit = async (value: any) => {
     const newPost = {
       ...value,
-      tags:
-        action === "Add" ||
-        (action === "Edit" && post && post.length && post.tags !== value.tags)
-          ? value.tags.split(",")
-          : post.tags,
+      tags: value.tags,
       pictures: imgs.map((img: string) => img.split(",")[1]),
     };
+    console.log(newPost);
     try {
       if (action === "Add") {
         await postAPI({ path: `/groups/${groupId}/posts`, body: newPost });
@@ -83,7 +76,7 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
     <Modal
       className="post-modal"
       show={showModal}
-      onHide={handleClose}
+      onHide={() => handleClose(setImgs([]))}
       centered
     >
       <Formik
@@ -129,31 +122,32 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
             {action === "Add" ? (
               <div>
                 <Row>
-                  <label htmlFor="pictures">Choose Images</label>
+                  <label htmlFor="pictures" className="pictures">
+                    Choose Images
+                    <Camera />
+                  </label>
                 </Row>
                 <Row>
                   <Field
                     id="pictures"
                     type="file"
                     name="pictures"
-                    placeholder="Choose Images"
+                    multiple={true}
                     onChange={handleConvertImg}
                   />
-                  {/* {errors ? (
-                    <Alert
-                      variant="danger"
-                      style={{ margin: "10px 0", padding: "5px 0" }}
-                    >
-                      {errors}
-                    </Alert>
-                  ) : null} */}
+
                   <div className="preview-image">
-                    {imgs.map((img: string, i: number) => (
-                      <div className="single-image">
-                        <Image key={`preview-image-${i}`} src={img} />
-                        <XCircle key={`close-label-${i}`} />
-                      </div>
-                    ))}
+                    {imgs
+                      ? imgs.map((img: string, i: number) => (
+                          <div className="single-image" key={`preview-${i}`}>
+                            <Image key={`preview-image-${i}`} src={img} />
+                            <XCircle
+                              key={`close-label-${i}`}
+                              onClick={() => setImgs(imgs.splice(i + 1, 1))}
+                            />
+                          </div>
+                        ))
+                      : null}
                   </div>
                 </Row>
               </div>
@@ -163,15 +157,21 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
                 <label htmlFor="tags">Tags</label>
               </Row>
               <Row>
-                <Field
-                  component="textarea"
-                  rows={2}
-                  placeholder="#hashtag"
-                  name="tags"
-                  id="tags"
-                  // onBlur={onBlur}
-                />
-                <div className="selection">
+                <div className="hashtag-selection">
+                  {/* <div> */}
+                  <Field
+                    component="textarea"
+                    placeholder="#hashtag"
+                    name="tags"
+                    id="tags"
+                    readOnly
+                    disabled
+                  />
+                  {/* </div> */}
+
+                  <Button onClick={() => setActive(!active)}>
+                    Select your hashtags <CaretDownFill />
+                  </Button>
                   {[
                     "React.js",
                     "SASS",
@@ -185,10 +185,12 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
                     "TypeScript",
                     "Web Development",
                   ].map((option) => (
-                    <label key={`label-${option}`}>
-                      <Field type="checkbox" name="tags" value={option} />
-                      {option}
-                    </label>
+                    <div className={`selection ${active ? "active" : ""}`}>
+                      <label key={`label-${option}`}>
+                        <Field type="checkbox" name="tags" value={option} />
+                        {option}
+                      </label>
+                    </div>
                   ))}
                 </div>
               </Row>
@@ -196,10 +198,17 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button
+              variant="secondary"
+              onClick={() => handleClose(setImgs([]))}
+            >
               Close
             </Button>
-            <Button variant="primary" type="submit" onClick={handleClose}>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={() => handleClose(setImgs([]))}
+            >
               Post
             </Button>
           </Modal.Footer>

@@ -92,7 +92,7 @@ const FollowPeople = () => {
   return (
     <>
       <div className="d-flex align-items-center justify-content-between mb-1">
-        <h6 className="mb-0 fw-bold text-white">Follow People</h6>
+        <h6 className="ps-1 mb-0 fw-bold">Follow People</h6>
         <Button className="border-0 bg-transparent">
           <ArrowRight className="inline-icon" />
         </Button>

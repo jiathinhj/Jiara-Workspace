@@ -7,7 +7,7 @@ import MemberTab from "./members";
 import FeedTab from "./feed";
 import DepartmentMain from "../../../pages/department";
 import { useLoading } from "../../context/loading";
-import { getGroupById } from "../../../redux/actions";
+import { getGroupById } from "../../../redux/actionReducer";
 import { CurrentUserContext } from "../../context/currentUser";
 
 const DepartmentDetail = () => {

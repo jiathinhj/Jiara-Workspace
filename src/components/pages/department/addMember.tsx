@@ -9,10 +9,10 @@ const AddMemberModal = memo(function AddMemberModal({
   show,
   onHide,
   addType,
-  addMemberHandler,
+  onAddMember,
 }: any) {
   const [accounts, setAccounts] = useState<object[]>([]);
-  const [inputValue, setInputValue] = useState<string>();
+  const [inputValue, setInputValue] = useState<string>("");
   const [selectedUser, setSelectedUser] = useState<string[]>([]);
 
   //get data of current group from Redux
@@ -21,16 +21,14 @@ const AddMemberModal = memo(function AddMemberModal({
   const allUser = useSelector((state: any) => state.user.allUser);
 
   //handle search input
-  const handleInputChange = (value: any) => {
-    setInputValue(value);
-
-    const matchedUsers = accounts.filter((user: any) => {
-      if (inputValue) {
-        return (
-          inputValue && user && user.username.toLowerCase().includes(inputValue)
-        );
-      } else return accounts;
-    });
+  const handleInputChange = (e: any) => {
+    const matchedUsers = allUser.filter((user: any) =>
+      inputValue !== "" && user
+        ? user.username.toLowerCase().includes(inputValue)
+        : allUser
+    );
+    console.log(allUser);
+    console.log(inputValue);
     setAccounts(matchedUsers);
   };
 
@@ -59,7 +57,7 @@ const AddMemberModal = memo(function AddMemberModal({
           });
         })
       ).then(() => {
-        addMemberHandler(selectedUser);
+        onAddMember(selectedUser);
       });
     }
     if (addType === "addMember") {
@@ -72,7 +70,7 @@ const AddMemberModal = memo(function AddMemberModal({
           successMessage: "Successfully added new members",
         })
       ) {
-        addMemberHandler(selectedUser);
+        onAddMember(selectedUser);
       }
     }
   };
@@ -117,7 +115,8 @@ const AddMemberModal = memo(function AddMemberModal({
         <Form.Control
           placeholder="Input someone name"
           value={inputValue}
-          onChange={(e) => handleInputChange(e.target.value)}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDownCapture={handleInputChange}
         />
       </InputGroup>
       <Modal.Body>

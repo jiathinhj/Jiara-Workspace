@@ -1,9 +1,6 @@
 body {
   background: var(--Background);
   color: var(--On-background);
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
 }
 
 // noti baloon
@@ -15,7 +12,7 @@ body {
   text-align: center;
   line-height: 18px;
   font-weight: 500;
-  color: var(--On-Noti) !important;
+  color: var(--On-noti) !important;
 }
 
 // action dropdown
@@ -178,6 +175,50 @@ body {
         }
       }
     }
+    .hashtag-selection {
+      display: flex;
+      flex-direction: column;
+      #tags {
+        background-color: transparent;
+      }
+      border: 1px solid var(--Tertiary);
+      border-radius: 20px;
+      padding: 5px 10px;
+
+      button {
+        text-align: left;
+        padding: unset;
+        background-color: transparent;
+        color: var(--Tertiary);
+        &:hover {
+          color: var(--Primary);
+        }
+      }
+      .selection {
+        opacity: 0;
+        height: 0;
+        &.active {
+          display: flex;
+          transition: ease-in-out;
+          transition-duration: 0.3s;
+          opacity: 1;
+          height: max-content;
+          label {
+            font-size: 15px;
+            color: var(--Primary);
+            font-weight: unset;
+            color: var(--Secondary);
+          }
+          input {
+            margin-right: 10px;
+            accent-color: var(--Inverse-primary);
+            &:disabled {
+              background-color: var(--Surface-variant);
+            }
+          }
+        }
+      }
+    }
   }
 }
 .add-new-post {
@@ -200,19 +241,28 @@ body {
     textarea,
     input {
       border: transparent;
-      background-color: var(--Surface-container-low);
+      background-color: var(--Surface-container);
       color: var(--On-surface);
       border-radius: 10px;
       &::placeholder {
         color: var(--On-surface-3rd);
       }
     }
-    input[type="file" i] {
+    .pictures {
+      svg {
+        width: 100%;
+        &:hover {
+          color: var(--Inverse-primary);
+        }
+      }
+    }
+    input[type="file"] {
       height: 45px;
+      display: none;
       &::file-selector-button {
         display: none;
       }
-      color: var(--On-surface-3rd);
+      color: transparent;
     }
   }
 }
@@ -253,31 +303,36 @@ body {
 }
 
 //PersonCard
-.person-card {
-  &:last-child {
-    margin-bottom: 20px;
-  }
-  .card {
-    color: var(--On-surface);
-    background-color: var(--Surface-container-highest);
-    border-radius: 15px;
-    margin: 10px 0;
-    border: none;
-  }
-  .remove-btn {
-    border: none;
-  }
-  .card-img,
-  .avatar-placeholder {
-    width: 80px;
-    aspect-ratio: 1/1;
-    border-radius: 10px;
-    p {
-      font-size: 30px;
+
+.person-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 290px);
+  column-gap: 10px;
+  .person-card {
+    &:last-child {
+      margin-bottom: 20px;
+    }
+    .card {
+      color: var(--On-surface);
+      background-color: var(--Surface-container-highest);
+      border-radius: 15px;
+      margin: 10px 0;
+      border: none;
+    }
+    .remove-btn {
+      border: none;
+    }
+    .card-img,
+    .avatar-placeholder {
+      width: 80px;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      p {
+        font-size: 30px;
+      }
     }
   }
 }
-
 // .selection {
 //   label {
 //     display: block;
