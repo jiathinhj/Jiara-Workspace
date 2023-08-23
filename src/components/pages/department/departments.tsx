@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import DepartmentMain from "../../../pages/department";
 import { useLoading } from "../../context/loading";
-import { getAllGroup } from "../../../redux/actionReducer";
+import { getAllGroup } from "../../../redux/apiRequests";
 
 const MyDepartment = () => {
   const dispatch = useDispatch();

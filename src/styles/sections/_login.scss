@@ -54,11 +54,13 @@
   .sign-up-area {
     text-align: center;
     margin-top: 20px;
+
     .btn-sign-up {
       text-decoration: underline;
       background-color: transparent;
       border: transparent;
       color: var(--On-surface-2nd);
+      padding: 5px;
       &:hover {
         color: var(--Primary);
         background-color: var(--Inverse-primary);
@@ -91,9 +93,10 @@
   //   .row {
   //     justify-content: center;
   //   }
-  //   img {
-  //     width: 200px;
-  //   }
+  img {
+    width: 200px;
+    align-self: center;
+  }
   //   h2 {
   //     color: var(--Primary);
   //     text-align: center;

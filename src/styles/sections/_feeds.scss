@@ -159,9 +159,10 @@
         list-style: none;
       }
       button {
+        margin-right: 10px;
         background: none;
         border: none;
-        color: var(--On-surface);
+        color: var(--On-surface-2nd);
         &:hover {
           color: var(--Inverse-primary);
         }
@@ -184,6 +185,13 @@
     }
     .comment-form {
       margin-top: 24px;
+    }
+    .avatar-item {
+      img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+      }
     }
   }
 }

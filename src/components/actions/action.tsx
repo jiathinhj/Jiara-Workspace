@@ -4,7 +4,7 @@ import { ThreeDots } from "react-bootstrap-icons";
 import PostModal from "../modals/post";
 import { useDispatch } from "react-redux";
 import { apiResquest } from "../../api";
-import { getGroupById } from "../../redux/actionReducer";
+import { getGroupById } from "../../redux/apiRequests";
 
 const Action = ({
   actionList,

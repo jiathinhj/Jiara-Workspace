@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Trash } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import Avatar from "../avatar/Avatar";
+import Avatar from "../avatar/avatar";
 
 const PersonCard = ({ data, type, onRemoveMember }: any) => {
   const isManager = useSelector((state: any) => state.group.isManager);

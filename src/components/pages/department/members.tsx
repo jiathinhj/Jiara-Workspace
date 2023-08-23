@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useLoading } from "../../context/loading";
-import { getAllAccount } from "../../../redux/actionReducer";
+import { getAllAccount } from "../../../redux/apiRequests";
 import { apiResquest } from "../../../api";
 
 const MemberTab = memo(function MemberTab() {
@@ -101,7 +101,7 @@ const MemberTab = memo(function MemberTab() {
         </div>
         <PersonCard
           type={"members"}
-          data={memberList.filter(
+          data={memberList?.filter(
             (member: any) => !detailGroup.managers?.includes(member)
           )}
           groupId={detailGroup.groupId}

@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { Button, Form, Image, InputGroup, Modal } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
-import Avatar from "../../avatar/Avatar";
+import Avatar from "../../avatar/avatar";
 import { apiResquest } from "../../../api";
 import { useSelector } from "react-redux";
 

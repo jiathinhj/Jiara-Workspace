@@ -8,7 +8,6 @@ import { Camera, Check2, X } from "react-bootstrap-icons";
 import imageCompression from "browser-image-compression";
 import { CurrentUserContext } from "../../components/context/currentUser";
 import { apiResquest, postAPI } from "../../api";
-import { useLoading } from "../../components/context/loading";
 import Preloader from "../../components/preloader";
 
 const Profile = () => {
@@ -20,7 +19,6 @@ const Profile = () => {
   const [showAvtBtn, setShowAvtBtn] = useState<any>(false);
 
   const { currentUser, setUser }: any = useContext(CurrentUserContext);
-  const { loading, setLoading }: any = useLoading();
 
   // const phoneNumberInput = useRef<any>(null);
   // useEffect(() => {
@@ -312,14 +310,10 @@ const Profile = () => {
                   <Col sm="6">
                     <Form.Control
                       name="newPhoneNumber"
-                      value={
-                        editable
-                          ? input.newPhoneNumber
-                          : currentUser.phoneNumber
-                      }
+                      value={currentUser.phoneNumber}
                       onChange={handleChange}
                       readOnly={editable ? false : true}
-                      defaultValue={currentUser.phoneNumber}
+                      // defaultValue={currentUser.phoneNumber}
                       style={
                         editable
                           ? { backgroundColor: "var(--hover-color)" }

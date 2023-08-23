@@ -8,14 +8,13 @@ import Layout from "../components/layout";
 import LogIn from "../pages/login";
 import ChatBox from "../pages/chat";
 
-
 const Router = () => {
   return useRoutes([
     {
       path: "/",
       element: <Layout />,
       children: [
-        { path: "", element: <Navigate to={"home"} /> },
+        { path: "", element: <Navigate to={"deppartment"} /> },
         { path: "home", element: <HomeMain /> },
         { path: "profile", element: <Profile /> },
         { path: "department", element: <MyDepartment /> },

@@ -2,7 +2,7 @@ import { memo, useContext, useEffect, useState } from "react";
 import { Image } from "react-bootstrap";
 import { Gear, Power } from "react-bootstrap-icons";
 import { DarkModeToggle } from "../themeToggle";
-import Avatar from "../avatar/Avatar";
+import Avatar from "../avatar/avatar";
 import { CurrentUserContext } from "../context/currentUser";
 
 const Setting = memo(function Setting({

@@ -6,6 +6,7 @@ import * as Yup from "yup";
 
 import logo from "../../appLogo.png";
 import { postAPI } from "../../api";
+import { toast } from "react-toastify";
 
 const initialValues = {
   email: "",
@@ -16,6 +17,11 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email format!").required("Required!"),
   username: Yup.string().required("Required!"),
   password: Yup.string().required("Required!"),
+  firstname: Yup.string().required("Required!"),
+  lastname: Yup.string().required("Required!"),
+  phoneNumber: Yup.number().required("Required!"),
+  avatar: Yup.object().required("Required!"),
+  gender: Yup.string().required("Required!"),
 });
 //add more validationSchema here
 
@@ -33,6 +39,7 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
         console.log(response?.data);
         //navigate to verify email page
         // navigate("/success");
+        toast.success("Please check your email and verify to finish");
       })
       .catch((err) => {
         console.log(err);
@@ -63,9 +70,9 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                   height: "900px",
                 }}
               >
-                <Row className="g-0">
-                  <Col sm="5" className="">
-                    <Card.Img src={logo} className="rounded-start" />
+                <Row>
+                  <Col sm="5" className="d-flex flex-column">
+                    <Card.Img src={logo} />
                     <div className="header">
                       REGISTER NOW TO JOIN YOUR COMMUNITY!
                     </div>
@@ -86,7 +93,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             name="email"
                           />
                           <div className="error-message">
-                            {" "}
                             <ErrorMessage name="email" />{" "}
                           </div>
                         </Col>
@@ -104,7 +110,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             name="firstname"
                           />
                           <div className="error-message">
-                            {" "}
                             <ErrorMessage name="firstname" />{" "}
                           </div>
                         </Col>
@@ -122,7 +127,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             name="lastname"
                           />
                           <div className="error-message">
-                            {" "}
                             <ErrorMessage name="lastname" />{" "}
                           </div>
                         </Col>
@@ -140,7 +144,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             name="phoneNumber"
                           />
                           <div className="error-message">
-                            {" "}
                             <ErrorMessage name="phoneNumber" />{" "}
                           </div>
                         </Col>
@@ -158,7 +161,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             name="username"
                           />
                           <div className="error-message">
-                            {" "}
                             <ErrorMessage name="username" />{" "}
                           </div>
                         </Col>
@@ -176,7 +178,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             name="password"
                           />
                           <div className="error-message">
-                            {" "}
                             <ErrorMessage name="password" />{" "}
                           </div>
                         </Col>
@@ -194,7 +195,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             name="avatar"
                           />
                           <div className="error-message">
-                            {" "}
                             <ErrorMessage name="avatar" />{" "}
                           </div>
                         </Col>
@@ -204,17 +204,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                           <label htmlFor="gender">Gender</label>
                         </Col>
                         <Col sm="9">
-                          {/* <Field
-                        className="w-100"
-                        id="gender"
-                        type="text"
-                        size="lg"
-                        name="gender"
-                        as="radio"
-                      >
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                      </Field> */}
                           <div
                             role="group"
                             className="radio-group"
@@ -234,7 +223,6 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             </label>
                           </div>
                           <div className="error-message">
-                            {" "}
                             <ErrorMessage name="gender" />{" "}
                           </div>
                         </Col>

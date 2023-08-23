@@ -10,23 +10,23 @@ const Center = () => {
     return isActive ? "active" : "";
   };
 
-  const [windowWidth, setWindowWidth] = useState(0);
-  const handleResize = () => {
-    if (window !== undefined) {
-      let width = window.innerWidth;
-      setWindowWidth(width);
-    }
-  };
-  console.log("navBarRender");
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // const [windowWidth, setWindowWidth] = useState(0);
+  // const handleResize = () => {
+  //   if (window !== undefined) {
+  //     let width = window.innerWidth;
+  //     setWindowWidth(width);
+  //   }
+  // };
+  // console.log("navBarRender");
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   return (
-    <div className={`center-area ${windowWidth < 992 ? "row" : ""}`}>
+    <div className={`center-area`}>
       <div className="navbar-nav">
         <NavLink className={`${navLinkClass}`} to={"/home"}>
           Home

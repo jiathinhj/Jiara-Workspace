@@ -21,18 +21,18 @@ export const loginUser = async (
 };
 
 export const getAllGroup = async (dispatch: AppDispatch) => {
-  await getAPI("/groups").then((apiRes: any) =>
-    dispatch(getAllGroupSuccess(apiRes.data.groups))
-  );
+  await getAPI("/groups")
+    .then((apiRes: any) => dispatch(getAllGroupSuccess(apiRes.data.groups)))
+    .catch((error) => {});
 };
 
 export const getGroupById = async (
   id: string | undefined,
   dispatch: AppDispatch
 ) => {
-  await getAPI(`/groups/${id}`).then((apiRes: any) =>
-    dispatch(getGroupByIdSuccess(apiRes.data))
-  );
+  await getAPI(`/groups/${id}`)
+    .then((apiRes: any) => dispatch(getGroupByIdSuccess(apiRes.data)))
+    .catch((error) => {});
 };
 
 export const getAllAccount = async (dispatch: AppDispatch) => {

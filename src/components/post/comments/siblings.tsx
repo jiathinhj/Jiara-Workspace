@@ -4,6 +4,7 @@ import { COMMENT_ACTION } from "../../../data/actionsData";
 
 import Action from "../../actions/action";
 import CommentReply from "./reply";
+import { useProfile } from "../../hooks/useProfile";
 
 // interface CommentProps {
 //   id: number;
@@ -19,7 +20,8 @@ const SiblingComment = ({
   reply: any;
   clss: string;
 }) => {
-  const { replyId, content, username, avatar } = reply;
+  const { replyId, content, username } = reply;
+  const { info } = useProfile(username);
 
   return (
     <div
@@ -28,7 +30,7 @@ const SiblingComment = ({
     >
       <div className="d-flex gap-2">
         <div className="avatar-item">
-          <Image className="avatar-img" src={avatar} alt="avatar" />
+          <Image className="avatar-img" src={info.avatarUrl} alt="avatar" />
         </div>
         <div className="info-item">
           <div className="top-area px-4 pt-2 d-flex gap-2 align-items-start justify-content-between">

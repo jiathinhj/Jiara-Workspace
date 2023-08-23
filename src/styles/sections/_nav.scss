@@ -72,10 +72,12 @@
         font-weight: 600;
         color: var(--On-surface-variant);
         text-decoration: none;
+        padding: 10px;
         &:hover {
           color: var(--Primary);
           background-color: var(--Secondary-container);
           border-radius: 20px;
+          padding: 10px;
         }
         &.active {
           color: var(--Primary);

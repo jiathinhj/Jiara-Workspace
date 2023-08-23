@@ -4,9 +4,11 @@ import { Badge, Image } from "react-bootstrap";
 
 import Action from "../../actions/action";
 import { POST_ACTION } from "../../../data/actionsData";
+import { useProfile } from "../../hooks/useProfile";
 
 const PostContent = ({ post }: any) => {
-  // const { title, content, pictures, tags, username, avatar } = post;
+  const { info } = useProfile(post.username);
+
   return (
     <>
       {post ? (
@@ -16,7 +18,7 @@ const PostContent = ({ post }: any) => {
               <div className="avatar position-relative">
                 <Image
                   className="avatar-img"
-                  src={post.avatar}
+                  src={`${info.avatarUrl}`}
                   alt={post.username}
                 />
               </div>
@@ -73,7 +75,11 @@ const PostContent = ({ post }: any) => {
                     </div>
                   )
                 ) : (
-                  <Image className="only" src={`${post.pictureUrls[0]}` || ""} alt="image" />
+                  <Image
+                    className="only"
+                    src={`${post.pictureUrls[0]}` || ""}
+                    alt="image"
+                  />
                 )
               ) : null}
             </div>

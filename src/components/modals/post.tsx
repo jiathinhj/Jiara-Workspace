@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { Camera, CaretDownFill, XCircle } from "react-bootstrap-icons";
 import { useLoading } from "../context/loading";
 import { postAPI } from "../../api";
-import { getGroupById } from "../../redux/actionReducer";
+import { getGroupById } from "../../redux/apiRequests";
 
 const initialValues: any = {
   title: "",
@@ -185,8 +185,11 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
                     "TypeScript",
                     "Web Development",
                   ].map((option) => (
-                    <div className={`selection ${active ? "active" : ""}`}>
-                      <label key={`label-${option}`}>
+                    <div
+                      key={`label-${option}`}
+                      className={`selection ${active ? "active" : ""}`}
+                    >
+                      <label>
                         <Field type="checkbox" name="tags" value={option} />
                         {option}
                       </label>
