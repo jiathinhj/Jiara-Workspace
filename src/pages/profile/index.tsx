@@ -9,6 +9,7 @@ import imageCompression from "browser-image-compression";
 import { CurrentUserContext } from "../../components/context/currentUser";
 import { apiResquest, postAPI } from "../../api";
 import Preloader from "../../components/preloader";
+import { useFileResize } from "../../components/hooks/useFileResize";
 
 const Profile = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -19,6 +20,8 @@ const Profile = () => {
   const [showAvtBtn, setShowAvtBtn] = useState<any>(false);
 
   const { currentUser, setUser }: any = useContext(CurrentUserContext);
+
+  const resizeFile = useFileResize();
 
   // const phoneNumberInput = useRef<any>(null);
   // useEffect(() => {
@@ -42,7 +45,6 @@ const Profile = () => {
       setExpanded(false);
       setInput("");
       setShowPassword(false);
-      console.log(body);
     }
   };
 
@@ -56,9 +58,7 @@ const Profile = () => {
         data: body,
         successMessage: "An email has been sent. Please check your email",
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   //change phone number
@@ -86,42 +86,19 @@ const Profile = () => {
     }
   };
 
-  //change img to base64
-  const getBase64 = (file: any) => {
-    return new Promise((resolve) => {
-      let baseURL = "";
-      const reader: any = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        baseURL = reader.result;
-        resolve(baseURL);
-      };
-    });
-  };
-
   //change avatar
   const handleChangeAvatar = async (e: any) => {
     setShowAvtBtn(true);
     let { file } = avatar;
     file = e.target.files[0];
-    const options = {
-      maxSizeMB: 0.3,
-      maxWidthOrHeight: 200,
-      useWebWorker: true,
-    }; // compress img settings
-    const compressedFile = await imageCompression(file, options);
-    getBase64(compressedFile).then((result) => {
-      file["base64"] = result;
-      setAvatar(file);
-    });
+    resizeFile(file).then((result) => setAvatar(result.base64));
   };
 
   //submit avatar to server
   const handleSubmitAvatar = async () => {
-    console.log(avatar);
     const body = {
       phoneNumber: currentUser.phoneNumber,
-      base64Avatar: avatar?.base64.split(",")[1] || undefined,
+      base64Avatar: avatar.split(",")[1] || undefined,
     };
 
     await postAPI({ path: "/personal", body: body })
@@ -154,9 +131,7 @@ const Profile = () => {
             <Col className="top-area" sm="4">
               <div className="avatar-area">
                 <Image
-                  src={
-                    showAvtBtn ? `${avatar.base64}` : `${currentUser.avatarUrl}`
-                  }
+                  src={showAvtBtn ? `${avatar}` : `${currentUser.avatarUrl}`}
                 />
 
                 <Form.Label htmlFor="avatar">

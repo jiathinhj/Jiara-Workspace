@@ -12,7 +12,6 @@ const ChatBox = () => {
       const accessToken = await getAPI("/messages").then((response) => {
         return response?.data.accessToken;
       });
-      console.log(accessToken);
       return accessToken;
     },
   });

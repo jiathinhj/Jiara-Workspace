@@ -20,7 +20,7 @@ const validationSchema = Yup.object({
   firstname: Yup.string().required("Required!"),
   lastname: Yup.string().required("Required!"),
   phoneNumber: Yup.number().required("Required!"),
-  avatar: Yup.object().required("Required!"),
+  // avatar: Yup.object().required("Required!"),
   gender: Yup.string().required("Required!"),
 });
 //add more validationSchema here
@@ -36,13 +36,11 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
     const body = values;
     await postAPI({ path: "/api/auth/signup", body: body })
       .then((response) => {
-        console.log(response?.data);
         //navigate to verify email page
         // navigate("/success");
         toast.success("Please check your email and verify to finish");
       })
       .catch((err) => {
-        console.log(err);
         //display error message
       });
   };
@@ -182,7 +180,7 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                           </div>
                         </Col>
                       </Row>
-                      <Row>
+                      {/* <Row>
                         <Col sm="3">
                           <label htmlFor="avatar">Avatar</label>
                         </Col>
@@ -198,7 +196,7 @@ const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
                             <ErrorMessage name="avatar" />{" "}
                           </div>
                         </Col>
-                      </Row>
+                      </Row> */}
                       <Row>
                         <Col sm="3">
                           <label htmlFor="gender">Gender</label>

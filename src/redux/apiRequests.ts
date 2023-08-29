@@ -14,7 +14,6 @@ export const loginUser = async (
   await postAPI({ path: "/api/auth/login", body: account })
     .then((apiRes) => {
       dispatch(loginSuccess(apiRes?.data));
-      console.log(apiRes?.data);
       navigate("/department");
     })
     .catch(() => dispatch(loginFailure()));
@@ -39,7 +38,6 @@ export const getAllAccount = async (dispatch: AppDispatch) => {
   const apiRes = await getAPI("/accounts");
   if (apiRes && apiRes.data) {
     dispatch(getAllUserSuccess(apiRes.data.data));
-    console.log(apiRes.data.data);
     return apiRes.data.data;
   }
 };

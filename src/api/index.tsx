@@ -40,13 +40,11 @@ export const getAPI = async (path: string) => {
         authToken: `${getToken}`,
       },
     });
-    console.log(apiRes);
     if (apiRes !== undefined) {
       return apiRes;
     }
   } catch (error: any) {
     if (error && error.response && error.response.status === 401) {
-      console.log("error", error);
       toast.error("Your login session has expired! Please login again!");
       window.location.href = "/login";
     } else if (error && error.response) {
@@ -79,13 +77,11 @@ export const apiResquest = async ({
       },
     });
     toast.success(successMessage);
-    console.log(apiRes);
     if (apiRes !== undefined) {
       return apiRes;
     }
   } catch (error: any) {
     if (error && error.response && error.response.status === 401) {
-      console.log("error", error);
       toast.error("Your login session has expired! Please login again!");
       window.location.href = "/login";
     } else if (error && error.response) {

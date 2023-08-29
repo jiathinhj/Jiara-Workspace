@@ -51,13 +51,11 @@ const PostContent = ({ post }: any) => {
                 post.pictureUrls.length > 1 ? (
                   post.pictureUrls.length > 2 ? (
                     <>
-                      <div className="single only">
+                      <div className="multiple">
                         <Image
                           src={`${post.pictureUrls[0]}` || ""}
                           alt="image"
                         />
-                      </div>
-                      <div className="double d-grid gap-3">
                         <Image
                           src={`${post.pictureUrls[1]}` || ""}
                           alt="image"

@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 const Message = memo(function Message() {
   const navigate = useNavigate();
-  console.log("Rerender");
   return (
     <>
       <div className="messages-btn cmn-btn position-relative">

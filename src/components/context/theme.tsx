@@ -43,7 +43,6 @@ export const useDarkMode = () => {
       localStorage.setItem("theme", "dark");
     }
     setIsDark(!isDark);
-    console.log(isDark);
   };
 
   useEffect(() => {

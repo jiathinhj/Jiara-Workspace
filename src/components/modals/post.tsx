@@ -7,6 +7,7 @@ import { Camera, CaretDownFill, XCircle } from "react-bootstrap-icons";
 import { useLoading } from "../context/loading";
 import { postAPI } from "../../api";
 import { getGroupById } from "../../redux/apiRequests";
+import { useFileResize } from "../hooks/useFileResize";
 
 const initialValues: any = {
   title: "",
@@ -25,27 +26,26 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
 
   const { setLoading }: any = useLoading();
 
-  const [imgs, setImgs] = useState<any>([]);
+  const [imgs, setImgs] = useState<string[]>([]);
   const [active, setActive] = useState(false);
 
-  const handleConvertImg = (e: any) => {
-    const files = [...e.target.files];
-    console.log(files);
-    files.forEach((file: File) => {
-      if (file.size > 150000) {
-        toast.error("File is too large");
-        return;
-      } else {
-        const reader: any = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-          setImgs([...imgs, reader.result]); //base64encoded string
-        };
-      }
-    });
-    // getBase64(files);
-    console.log(imgs);
+  const resizeFile = useFileResize();
+
+  const selectFiles = (e: any) => {
+    const images: any = [];
+    for (let i = 0; i < e.target.files.length; i++) {
+      resizeFile(e.target.files[i]).then((compressedFile) => {
+        images.push(compressedFile.base64);
+        setImgs([...imgs, ...images]);
+      });
+    }
   };
+
+  const deleteFiles = (i: number) => {
+    imgs.splice(i, 1);
+    setImgs([...imgs]);
+  };
+  // getBase64(files);
 
   const onSubmit = async (value: any) => {
     const newPost = {
@@ -53,23 +53,20 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
       tags: value.tags,
       pictures: imgs.map((img: string) => img.split(",")[1]),
     };
-    console.log(newPost);
     try {
       if (action === "Add") {
         await postAPI({ path: `/groups/${groupId}/posts`, body: newPost });
       }
       if (action === "Edit") {
-        console.log(groupId);
         await postAPI({
           path: `/groups/${groupId}/${post.postId}`,
           body: newPost,
         });
       }
-      console.log(groupId);
+      console.log(newPost);
+      toast.update("Please wait");
       getGroupById(groupId, dispatch);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (
@@ -133,7 +130,7 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
                     type="file"
                     name="pictures"
                     multiple={true}
-                    onChange={handleConvertImg}
+                    onChange={selectFiles}
                   />
 
                   <div className="preview-image">
@@ -143,7 +140,7 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
                             <Image key={`preview-image-${i}`} src={img} />
                             <XCircle
                               key={`close-label-${i}`}
-                              onClick={() => setImgs(imgs.splice(i + 1, 1))}
+                              onClick={() => deleteFiles(i)}
                             />
                           </div>
                         ))
@@ -207,11 +204,7 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
             >
               Close
             </Button>
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={() => handleClose(setImgs([]))}
-            >
+            <Button variant="primary" type="submit" onClick={handleClose}>
               Post
             </Button>
           </Modal.Footer>

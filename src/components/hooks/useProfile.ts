@@ -19,7 +19,7 @@ export const useProfile = (username: string) => {
       );
 
     setInfo(queryResult);
-  }, [username, accounts]);
+  }, []);
 
   useEffect(() => {
     handleGetAllAccounts();

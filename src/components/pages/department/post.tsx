@@ -22,7 +22,6 @@ const GroupPost = () => {
     const res = await getAPI(`/groups/${groupId}/${postId}`);
     setPost(res?.data.postData);
     setComments(res?.data.postData.comments);
-    console.log(res?.data.postData);
     setLoading(false);
   };
 

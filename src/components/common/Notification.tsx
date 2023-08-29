@@ -12,7 +12,6 @@ const Notification = memo(function Notification({
 }: {
   activeHandler: (a: string) => void;
 }) {
-  console.log('notification render')
   return (
     <>
       <div className="notification-btn cmn-btn position-relative ">

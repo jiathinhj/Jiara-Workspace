@@ -188,16 +188,18 @@
 // post card
 .group-post {
   padding-top: 10px;
+  column-count: 2;
+  padding: 10px 5px;
 }
 .single-group-post {
-  padding: 0 5px 10px;
-
-  &.even {
-    float: left;
-  }
-  &.odd {
-    float: right;
-  }
+  padding-bottom: 10px;
+  break-inside: avoid;
+  // &.even {
+  //   float: left;
+  // }
+  // &.odd {
+  //   float: right;
+  // }
   .card {
     border: none;
     color: var(--On-surface);

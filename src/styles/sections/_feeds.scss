@@ -24,18 +24,17 @@
         font-weight: 600;
         font-size: 20px;
       }
-
       .post-img {
-        .single {
-          flex: 0 0 calc(50% - 8px);
-          align-self: center;
-          &.only {
-            object-fit: cover;
-          }
-          .avatar {
-            position: relative;
-          }
+        img {
+          width: 100%;
         }
+        .multiple {
+          display: grid;
+          width: 100%;
+          grid-template-columns: repeat(2, 50%);
+          column-gap: 10px;
+        }
+
         .double {
           display: flex;
           img {
@@ -61,6 +60,7 @@
       background: none;
       border: none;
       color: var(--On-surface-3rd);
+      margin-right: 10px;
     }
   }
   .like-comment-share {

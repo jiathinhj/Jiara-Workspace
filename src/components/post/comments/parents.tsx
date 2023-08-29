@@ -43,7 +43,6 @@ const ParentComment = ({ comment, path, deleteCommentHandler }: any) => {
         toast.success("Comment updated successfully");
       })
       .catch((error) => {
-        console.log(error.response.message);
         toast.error("Failed");
       });
   };

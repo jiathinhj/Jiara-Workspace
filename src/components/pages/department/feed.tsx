@@ -30,7 +30,7 @@ const FeedTab = () => {
           groupId={detailGroup.groupId}
           placeholder="Start a discussion"
         />
-        <Col className="group-post">
+        <div className="group-post">
           {detailGroup && detailGroup.posts
             ? detailGroup.posts.map((post: any, i: any) => {
                 const {
@@ -42,13 +42,9 @@ const FeedTab = () => {
                   username,
                 }: any = post;
                 return (
-                  <Col
-                    xs={12}
-                    xl={6}
+                  <div
                     key={`group-post${postId}`}
-                    className={`${
-                      i % 2 === 0 ? "even " : "odd "
-                    }single-group-post`}
+                    className="single-group-post"
                   >
                     <Card key={postId}>
                       <Card.Header className="d-flex justify-content-between">
@@ -101,11 +97,11 @@ const FeedTab = () => {
                         </div>
                       </Card.Footer>
                     </Card>
-                  </Col>
+                  </div>
                 );
               })
             : null}
-        </Col>
+        </div>
       </div>
     </>
   );

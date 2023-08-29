@@ -20,7 +20,6 @@ const PersonCard = ({ data, type, onRemoveMember }: any) => {
       newData.push(fullInfo);
     });
     setHandledData(newData);
-    console.log(handledData);
   };
 
   useEffect(() => {

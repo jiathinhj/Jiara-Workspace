@@ -4,7 +4,6 @@ import { Switch } from "antd";
 
 export const DarkModeToggle = memo(function DarkModeToggle() {
   const { isDark, themeToggler }: any = useDarkMode();
-  console.log(isDark);
 
   return (
     <Switch

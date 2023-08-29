@@ -27,8 +27,6 @@ const AddMemberModal = memo(function AddMemberModal({
         ? user.username.toLowerCase().includes(inputValue)
         : allUser
     );
-    console.log(allUser);
-    console.log(inputValue);
     setAccounts(matchedUsers);
   };
 
@@ -75,7 +73,6 @@ const AddMemberModal = memo(function AddMemberModal({
     }
   };
 
-  console.log("render modal");
 
   const handleMemberStatus = useCallback(() => {
     let newAccounts: Object[] = [];

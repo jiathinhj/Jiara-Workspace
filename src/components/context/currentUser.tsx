@@ -7,7 +7,6 @@ export function CurrentUserProvider({ children }: any) {
 
   // const value: any = { currentUser, setCurrentUser };
 
-  console.log(currentUser);
 
   const setUser = useCallback(() => {
     const localUser: any = localStorage.getItem("currentUser");
