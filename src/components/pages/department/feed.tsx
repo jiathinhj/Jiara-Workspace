@@ -27,11 +27,11 @@ const FeedTab = () => {
     <>
       <div className="d-flex flex-column">
         <AddNewPost
-          groupId={detailGroup.groupId}
+          groupId={detailGroup?.groupId}
           placeholder="Start a discussion"
         />
         <div className="group-post">
-          {detailGroup && detailGroup.posts
+          {detailGroup?.posts
             ? detailGroup.posts.map((post: any, i: any) => {
                 const {
                   postId,

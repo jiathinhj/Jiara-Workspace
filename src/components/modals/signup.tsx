@@ -5,8 +5,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 import logo from "../../appLogo.png";
-import { postAPI } from "../../api";
 import { toast } from "react-toastify";
+import axios from "../../api/axios";
 
 const initialValues = {
   email: "",
@@ -26,18 +26,10 @@ const validationSchema = Yup.object({
 //add more validationSchema here
 
 const SignUp = ({ openSignUp, closeSignUpHandler }: any) => {
-  //   const formik = useFormik({
-  //     initialValues,
-  //     onSubmit,
-  //     validationSchema,
-  //   });
-
   const onSubmit = async (values: any) => {
     const body = values;
-    await postAPI({ path: "/api/auth/signup", body: body })
+    await axios({ method: "post", url: "/api/auth/signup", data: body })
       .then((response) => {
-        //navigate to verify email page
-        // navigate("/success");
         toast.success("Please check your email and verify to finish");
       })
       .catch((err) => {

@@ -2,8 +2,12 @@ import React, { memo, useCallback, useEffect, useState } from "react";
 import { Button, Form, Image, InputGroup, Modal } from "react-bootstrap";
 import { Search } from "react-bootstrap-icons";
 import Avatar from "../../avatar/avatar";
-import { apiResquest } from "../../../api";
+import { apiRequest } from "../../../api";
 import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { axiosPrivate } from "../../../api/axios";
+import { useQuery } from "react-query";
+import useAllAccounts from "../../hooks/useAllAccounts";
 
 const AddMemberModal = memo(function AddMemberModal({
   show,
@@ -18,7 +22,21 @@ const AddMemberModal = memo(function AddMemberModal({
   //get data of current group from Redux
   const detailGroup = useSelector((state: any) => state.group.detailGroup);
 
-  const allUser = useSelector((state: any) => state.user.allUser);
+  const handleMemberStatus = (res: any) => {
+    let newAccounts: Object[] = [];
+    res.forEach((element: any) => {
+      const checkedMembers = {
+        ...element,
+        status:
+          detailGroup.members?.includes(element.username) === true
+            ? "already a member"
+            : "not a member",
+      };
+      newAccounts.push(checkedMembers);
+    });
+    setAccounts(newAccounts);
+  };
+  const { data: allUser } = useAllAccounts(handleMemberStatus);
 
   //handle search input
   const handleInputChange = (e: any) => {
@@ -47,11 +65,10 @@ const AddMemberModal = memo(function AddMemberModal({
       await Promise.all(
         selectedUser.map((username) => {
           const url = `/groups/${detailGroup.groupId}/managers/${username}`;
-          apiResquest({
+          axiosPrivate({
             method: "post",
             url: url,
             data: {},
-            successMessage: "Successfully added new managers",
           });
         })
       ).then(() => {
@@ -60,39 +77,16 @@ const AddMemberModal = memo(function AddMemberModal({
     }
     if (addType === "addMember") {
       const url = `/groups/${detailGroup.groupId}/members`;
-      if (
-        await apiResquest({
+      try {
+        await axiosPrivate({
           method: "post",
           url: url,
           data: selectedUser,
-          successMessage: "Successfully added new members",
-        })
-      ) {
+        });
         onAddMember(selectedUser);
-      }
+      } catch (error) {}
     }
   };
-
-
-  const handleMemberStatus = useCallback(() => {
-    let newAccounts: Object[] = [];
-    allUser &&
-      allUser.forEach((element: any) => {
-        const checkedMembers = {
-          ...element,
-          status:
-            detailGroup.members?.includes(element.username) === true
-              ? "already a member"
-              : "not a member",
-        };
-        newAccounts.push(checkedMembers);
-      });
-    setAccounts(newAccounts);
-  }, [allUser, detailGroup.members]);
-
-  useEffect(() => {
-    handleMemberStatus();
-  }, [handleMemberStatus]);
 
   return (
     <Modal

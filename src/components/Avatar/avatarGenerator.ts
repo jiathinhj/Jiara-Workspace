@@ -4,6 +4,6 @@ export function generateRandomColorNumber() {
 }
 export function generatePlaceholderName(firstname: string, lastname?: string) {
   let initials =
-    firstname.charAt(0).toUpperCase() + lastname?.charAt(0).toUpperCase();
+    firstname?.charAt(0).toUpperCase() + lastname?.charAt(0).toUpperCase();
   return `${initials}`;
 }

@@ -5,11 +5,11 @@ import LeftSider from "../../components/layout/menu/left";
 import { toast } from "react-toastify";
 import { Camera, Check2, X } from "react-bootstrap-icons";
 
-import imageCompression from "browser-image-compression";
 import { CurrentUserContext } from "../../components/context/currentUser";
-import { apiResquest, postAPI } from "../../api";
+
 import Preloader from "../../components/preloader";
 import { useFileResize } from "../../components/hooks/useFileResize";
+import useAxiosPrivate from "../../components/hooks/useAxiosPrivate";
 
 const Profile = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -20,7 +20,7 @@ const Profile = () => {
   const [showAvtBtn, setShowAvtBtn] = useState<any>(false);
 
   const { currentUser, setUser }: any = useContext(CurrentUserContext);
-
+  const axiosPrivate = useAxiosPrivate();
   const resizeFile = useFileResize();
 
   // const phoneNumberInput = useRef<any>(null);
@@ -40,7 +40,13 @@ const Profile = () => {
       currentPassword: input.currentPassword,
       newPassword: input.newPassword,
     };
-    if (await postAPI({ path: "/personal/resetPassword", body: body })) {
+    if (
+      await axiosPrivate({
+        method: "post",
+        url: "/personal/resetPassword",
+        data: body,
+      })
+    ) {
       toast.success("Password has been changed successfully");
       setExpanded(false);
       setInput("");
@@ -52,11 +58,10 @@ const Profile = () => {
   const handleSendEmail = async () => {
     const body = { username: currentUser.username, email: currentUser.email };
     try {
-      await apiResquest({
+      await axiosPrivate({
         method: "patch",
         url: "/personal/resetPassword",
         data: body,
-        successMessage: "An email has been sent. Please check your email",
       });
     } catch (error) {}
   };
@@ -65,7 +70,7 @@ const Profile = () => {
   const handleChangePhoneNumber = async () => {
     const body = { phoneNumber: input.newPhoneNumber };
     try {
-      await postAPI({ path: "/personal", body: body });
+      await axiosPrivate({ method: "post", url: "/personal", data: body });
       setEditable(false);
       toast("Successfully changed your phone number");
       setUser(
@@ -101,7 +106,7 @@ const Profile = () => {
       base64Avatar: avatar.split(",")[1] || undefined,
     };
 
-    await postAPI({ path: "/personal", body: body })
+    await axiosPrivate({ method: "post", url: "/personal", data: body })
       .then(() => {
         setUser(
           localStorage.setItem(

@@ -1,30 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Card } from "react-bootstrap";
 import { Trash } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import Avatar from "../avatar/avatar";
+import useAllAccounts from "../hooks/useAllAccounts";
 
 const PersonCard = ({ data, type, onRemoveMember }: any) => {
   const isManager = useSelector((state: any) => state.group.isManager);
   const [handledData, setHandledData] = useState<Object[]>([]);
 
-  const allUser = useSelector((state: any) => state.user.allUser);
-
-  const handleMapInfo = () => {
+  const handleMapInfo = (res: any) => {
     let newData: Object[] = [];
     data.forEach((element: any) => {
       const fullInfo = {
         username: element,
-        info: allUser.find((account: any) => account.username === element),
+        info: res.find((account: any) => account.username === element),
       };
       newData.push(fullInfo);
     });
     setHandledData(newData);
   };
-
-  useEffect(() => {
-    data && data.length && allUser && allUser.length && handleMapInfo();
-  }, [data, allUser]);
+  const { data: allUser } = useAllAccounts(handleMapInfo);
 
   return (
     <div className="person-cards">
@@ -45,10 +41,10 @@ const PersonCard = ({ data, type, onRemoveMember }: any) => {
                 </div>
                 <div className="flex-grow-1 ms-3">
                   <div className="d-flex justify-content-between">
-                    <Card.Title>{username}</Card.Title>
+                    <Card.Title>{info.username}</Card.Title>
                     {isManager && type === "members" ? (
                       <Button
-                        onClick={() => onRemoveMember(username)}
+                        onClick={() => onRemoveMember(info.username)}
                         size="sm"
                         className="remove-btn"
                         variant="outline-danger"

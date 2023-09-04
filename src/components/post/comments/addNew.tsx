@@ -1,18 +1,19 @@
 import { Cursor, EmojiLaughing, Images } from "react-bootstrap-icons";
 import { Button, Form, FormLabel, InputGroup } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { postAPI } from "../../../api";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 const WriteComment = ({ postId }: any) => {
   const groupId = useSelector((state: any) => state.group.detailGroup.groupId);
+  const axiosPrivate = useAxiosPrivate();
+
   const [comment, setComment] = useState<string>();
 
   const handleComment = async () => {
     let body = { content: comment };
     const path = `/groups/${groupId}/${postId}`;
-    await postAPI({ path: `${path}/comments`, body: body });
+    await axiosPrivate({ method: "post", url: `${path}/comments`, data: body });
   };
 
   return (

@@ -1,21 +1,17 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import AddMemberModal from "./addMember";
 import PersonCard from "../../cards/person";
 import { Button } from "react-bootstrap";
 import { Plus } from "react-bootstrap-icons";
-import { useDispatch, useSelector } from "react-redux";
-import { useLoading } from "../../context/loading";
-import { getAllAccount } from "../../../redux/apiRequests";
-import { apiResquest } from "../../../api";
+import { useSelector } from "react-redux";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-const MemberTab = memo(function MemberTab() {
+const MemberTab = () => {
   const [showAccount, setShowAccount] = useState(false);
   const [addType, setAddType] = useState([]);
   const [memberList, setMemberList] = useState<string[]>([]);
 
-  const dispatch = useDispatch();
-
-  const { setLoading }: any = useLoading();
+  const axiosPrivate = useAxiosPrivate();
 
   //get manager status from Redux
   const isManager = useSelector((state: any) => state.group.isManager);
@@ -33,10 +29,6 @@ const MemberTab = memo(function MemberTab() {
     setShowAccount(false);
   };
 
-  const handleGetAllAccounts = async () => {
-    await getAllAccount(dispatch);
-  };
-
   //display new added member
   const handleAddMember = (newMembers: any) => {
     setMemberList([...memberList, ...newMembers]);
@@ -48,28 +40,18 @@ const MemberTab = memo(function MemberTab() {
     var selectedList = [...selectedUser];
     selectedList = [...selectedUser, username];
     const url = `groups/${detailGroup.groupId}/members`;
-    if (
-      await apiResquest({
+    try {
+      await axiosPrivate({
         method: "patch",
         url: url,
         data: selectedList,
-        successMessage: "Successfully removed the member",
-      })
-    ) {
+      });
       const remainingMembers = memberList.filter(
         (member: any) => !member.includes(username)
       );
       setMemberList(remainingMembers);
-    }
+    } catch (error) {}
   };
-
-  useEffect(() => {
-    setMemberList(detailGroup.members);
-  }, []);
-
-  useEffect(() => {
-    handleGetAllAccounts();
-  }, []);
 
   return (
     <div className="member-tab">
@@ -102,7 +84,7 @@ const MemberTab = memo(function MemberTab() {
         <PersonCard
           type={"members"}
           data={memberList?.filter(
-            (member: any) => !detailGroup.managers?.includes(member)
+            (member: any) => !detailGroup.managers.includes(member)
           )}
           groupId={detailGroup.groupId}
           onRemoveMember={(username: any) => handleRemoveMember(username)}
@@ -116,6 +98,6 @@ const MemberTab = memo(function MemberTab() {
       />
     </div>
   );
-});
+};
 
 export default MemberTab;

@@ -5,9 +5,10 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { Camera, CaretDownFill, XCircle } from "react-bootstrap-icons";
 import { useLoading } from "../context/loading";
-import { postAPI } from "../../api";
 import { getGroupById } from "../../redux/apiRequests";
 import { useFileResize } from "../hooks/useFileResize";
+import { apiRequest } from "../../api";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const initialValues: any = {
   title: "",
@@ -23,8 +24,7 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
   };
 
   const dispatch = useDispatch();
-
-  const { setLoading }: any = useLoading();
+  const axiosPrivate = useAxiosPrivate();
 
   const [imgs, setImgs] = useState<string[]>([]);
   const [active, setActive] = useState(false);
@@ -55,12 +55,17 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
     };
     try {
       if (action === "Add") {
-        await postAPI({ path: `/groups/${groupId}/posts`, body: newPost });
+        await axiosPrivate({
+          method: "post",
+          url: `/groups/${groupId}/posts`,
+          data: newPost,
+        });
       }
       if (action === "Edit") {
-        await postAPI({
-          path: `/groups/${groupId}/${post.postId}`,
-          body: newPost,
+        await axiosPrivate({
+          method: "post",
+          url: `/groups/${groupId}/${post.postId}`,
+          data: newPost,
         });
       }
       console.log(newPost);

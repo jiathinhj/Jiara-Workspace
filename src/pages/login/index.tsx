@@ -4,7 +4,7 @@ import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { Google } from "react-bootstrap-icons";
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import SignUp from "../../components/modals/signup";
@@ -27,7 +27,10 @@ const validationSchema = Yup.object({
 });
 const LogIn = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
+  const from = location.state?.from?.pathname || "/department";
+
   const auth = useSelector((state: any) => state.auth);
 
   const [openSignUp, setOpenSignUp] = useState<boolean>(false);
@@ -42,7 +45,10 @@ const LogIn = () => {
   // call API to login
   const onLogin = async (values: any) => {
     const account = values;
-    await loginUser(account, dispatch, navigate);
+    try {
+      await loginUser(account, dispatch);
+      navigate(from, { replace: true });
+    } catch (error) {}
   };
 
   return (

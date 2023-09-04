@@ -46,6 +46,7 @@
 
   .btn-gg {
     background-color: var(--Noti-color);
+    color: var(--On-noti);
     &:hover {
       background-color: var(--Error-container);
       color: var(--On-error-container);
@@ -59,7 +60,7 @@
       text-decoration: underline;
       background-color: transparent;
       border: transparent;
-      color: var(--On-surface-2nd);
+      color: var(--On-surface);
       padding: 5px;
       &:hover {
         color: var(--Primary);

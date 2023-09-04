@@ -6,22 +6,24 @@ import PostReaction from "./body/reaction";
 import SiblingComment from "./comments/siblings";
 import { Cursor, EmojiLaughing, Images, X } from "react-bootstrap-icons";
 import PostContent from "./body/content";
-import { getAPI, postAPI } from "../../api";
-// import { useLoading } from "../preloader/LoadingContext";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const Post = ({ post, comments, groupId, postId }: any) => {
   const [newComment, setNewComment] = useState<string>();
   const [commentList, setCommentList] = useState<any>([]);
 
-  
+  const axiosPrivate = useAxiosPrivate();
 
-  // const { setLoading }: any = useLoading();
   const path = `/groups/${groupId}/${postId}`;
   const addCommentHandler = async () => {
     let body = { content: newComment };
     try {
-      await postAPI({ path: `${path}/comments`, body: body });
-      const res = await getAPI(path);
+      await axiosPrivate({
+        method: "post",
+        url: `${path}/comments`,
+        data: body,
+      });
+      const res = await axiosPrivate({ method: "get", url: path });
       setCommentList(res?.data.postData.comments);
     } catch (e) {}
     setNewComment("");

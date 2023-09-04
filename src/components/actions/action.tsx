@@ -3,8 +3,10 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 import { ThreeDots } from "react-bootstrap-icons";
 import PostModal from "../modals/post";
 import { useDispatch } from "react-redux";
-import { apiResquest } from "../../api";
+import { apiRequest } from "../../api";
 import { getGroupById } from "../../redux/apiRequests";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const Action = ({
   actionList,
@@ -16,6 +18,7 @@ const Action = ({
   editCommentHandler,
 }: any) => {
   const dispatch = useDispatch();
+  const axiosPrivate = useAxiosPrivate();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -40,31 +43,27 @@ const Action = ({
   };
 
   const handleDeletePost = async () => {
-    if (
-      await apiResquest({
+    try {
+      await axiosPrivate({
         method: "delete",
         url: `/groups/${groupId}/${data.postId}`,
         data: {},
-        successMessage: "Successfully deleted",
-      })
-    ) {
+      });
       getGroupById(groupId, dispatch);
-    }
+    } catch (error) {}
   };
 
   const handleDeleteComment = async () => {
-    if (
-      await apiResquest({
+    try {
+      await axiosPrivate({
         method: "delete",
         url: `${path}/comments`,
         data: {
           commentId: data.commentId,
         },
-        successMessage: "Successfully deleted",
-      })
-    ) {
+      });
       deleteCommentHandler();
-    }
+    } catch (error) {}
   };
 
   const handleEditComment = () => {
