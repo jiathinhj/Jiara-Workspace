@@ -69,7 +69,6 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
         });
       }
       console.log(newPost);
-      toast.update("Please wait");
       getGroupById(groupId, dispatch);
     } catch (error) {}
   };

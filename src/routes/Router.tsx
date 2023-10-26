@@ -4,9 +4,9 @@ import DepartmentDetail from "../components/pages/department/detail";
 import MyDepartment from "../components/pages/department/departments";
 import GroupPost from "../components/pages/department/post";
 import Profile from "../pages/profile";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import LogIn from "../pages/login";
-import ChatBox from "../pages/chat";
+import ChatBox from "../pages/ChatBox";
 
 const Router = () => {
   return useRoutes([

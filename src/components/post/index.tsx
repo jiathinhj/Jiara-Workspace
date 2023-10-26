@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import ParentComment from "./comments/parents";
 import PostReaction from "./body/reaction";
 import SiblingComment from "./comments/siblings";
-import { Cursor, EmojiLaughing, Images, X } from "react-bootstrap-icons";
+import { Cursor, EmojiLaughing, Images } from "react-bootstrap-icons";
 import PostContent from "./body/content";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
@@ -42,7 +42,7 @@ const Post = ({ post, comments, groupId, postId }: any) => {
 
   return (
     post && (
-      <div className="post-item d-flex flex-column gap-3 ">
+      <div className="post-item">
         <div key={post.postId} className="post-single-box">
           {/* Post */}
           <PostContent post={post} />

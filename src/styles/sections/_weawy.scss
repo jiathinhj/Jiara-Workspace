@@ -8,15 +8,15 @@
   /* Primary color  */
   --wy-primary-99: #f9f7fb;
   --wy-primary-95: #f3f1f8;
-  --wy-primary-90: #e1dcee;
-  --wy-primary-80: #ccc4e2;
-  --wy-primary-70: #b8acd7;
-  --wy-primary-60: #a394cb;
-  --wy-primary-50: #8f7cbf;
-  --wy-primary-40: #6750a4;
-  --wy-primary-30: #513f82; //bubble chat
-  --wy-primary-20: #3c2f5f; //hover
-  --wy-primary-10: #261e3d;
+  --wy-primary-90: #dadae8; //text
+  --wy-primary-80: #e2e1e3; //reaction
+  --wy-primary-70: #ccc9d4;
+  --wy-primary-60: #beb9cc;
+  --wy-primary-50: #aaa3bd;
+  --wy-primary-40: #9f9ca8;
+  --wy-primary-30: #39383b; //bubble chat
+  --wy-primary-20: #58565e; //hover
+  --wy-primary-10: rgb(48, 46, 56);
 
   /* neutral color */
   --wy-neutral-99: #190f41;
@@ -44,68 +44,74 @@
   --wy-error-20: #690005;
   --wy-error-10: #410002;
 
-  --wy-surface-1: var(--wy-primary-70);
+  --wy-surface-1: var(--Background); //component background
   --wy-surface-2: var(--wy-primary-80);
-  --wy-surface-3: var(--wy-primary-90);
+  --wy-surface-3: var( --wy-primary-90);
   --wy-surface-4: var(--wy-primary-95);
   --wy-surface-5: var(--wy-primary-99);
   --wy-surface-variant: var(--wy-neutral-90);
   --wy-outline-variant: transparent;
-  --wy-background: var(--Surface-container);
+  --wy-background: var( --wy-primary-90);
 }
 
 .wy-dark {
-  --wy-primary-20: var(--wy-neutral-20); //hover
-  --wy-surface-1: var(--wy-primary-10);
+  --wy-primary-20: var( --wy-primary-30); //hover
+  --wy-surface-1: var(--Background); //component background
   --wy-surface-2: var(--wy-primary-20);
-  --wy-surface-3: var(--wy-primary-30);
+  --wy-surface-3: var( --wy-primary-30);
   --wy-surface-4: var(--wy-primary-45);
   --wy-surface-5: var(--wy-primary-50);
   --wy-surface-variant: var(--wy-neutral-20);
   --wy-outline-variant: transparent;
-  --wy-background: var(--Surface-container);
+  --wy-background: var( --wy-primary-30);
 }
 
-.wy-messenger-provider {
-  height: calc(100vh - 80px);
-  padding: unset;
-  padding-bottom: 10px;
-  border-radius: 20px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+// .wy-messenger-provider {
+//   height: calc(100vh - 80px);
+//   padding: unset;
+//   padding-bottom: 10px;
+//   border-radius: 20px;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
 
-  .wy-messenger-sidebar {
-    border-radius: 20px;
-    margin-right: 5px;
-    --wy-component-background-color: var(--Surface-container);
-  }
-  .wy-messenger-conversation {
-    border-radius: 20px;
-    .wy-messages {
-      border: none;
-    }
-  }
+// .wy-messenger-sidebar {
+//   border-radius: 20px;
+//   margin-right: 5px;
+//   --wy-component-background-color: var(--Surface-container);
+// }
+// .wy-messenger-conversation {
+//   border-radius: 20px;
+//   .wy-messages {
+//     border: none;
+//   }
+// }
 
-  .wy-appbars {
-    box-shadow: 0 2px 3px var(--Surface-container-low);
-    .wy-appbar {
-      button {
-        --wy-component-background-color: var(--Surface-container);
-      }
-    }
-  }
-  .wy-appbars,
-  .wy-footerbar,
-  .wy-messenger-sidebar {
-    --wy-component-background-color: var(--Surface-container);
-    border: none;
-  }
+.wy-appbars {
+  // border-bottom: 1px solid var(--Surface-container-low);
+  // height: 4rem;
+  position: absolute;
+  right: 0;
+  top: -4rem;
+}
 
-  .wy-message-editor-inputs {
-    button,
-    .cm-editor {
-      background-color: var(--Surface-container-highest);
-    }
+.wy-message-editor-inputs {
+  button,
+  .cm-editor {
+    background-color: var(--Surface-container-high);
   }
+}
+// }
+
+.wy-message-editor {
+  border-top: 1px solid var(--Surface-container-low);
+  background-color: var(--Background);
+}
+
+.wy-conversations {
+  height: 100%;
+}
+.wy-footerbar::after {
+  display: none;
 }

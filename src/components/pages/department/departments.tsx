@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Badge, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";

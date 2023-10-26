@@ -38,7 +38,7 @@ const SiblingComment = ({
               <h6>
                 <a href="/">{username}</a>
               </h6>
-              <p className="mdtxt">{content}</p>
+              <p>{content}</p>
             </div>
             <Action actionList={COMMENT_ACTION} />
           </div>

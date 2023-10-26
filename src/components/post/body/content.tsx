@@ -1,24 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Badge, Image } from "react-bootstrap";
 
 import Action from "../../actions/action";
 import { POST_ACTION } from "../../../data/actionsData";
-import { useProfile } from "../../hooks/useProfile";
+import { useSelector } from "react-redux";
 
 const PostContent = ({ post }: any) => {
-  const { info } = useProfile(post.username);
+  const [info, setInfo] = useState<any>({});
+  const allUser = useSelector((state: any) => state.user.allUser)
+  const getUserInfo = (data: any) => {
+    const queryResult = data.find((dt: any) =>
+      dt.username.toLowerCase().includes(post.username)
+    );
+    return queryResult ? setInfo(queryResult) : undefined;
+  };
 
+  useEffect(() => {
+    allUser && getUserInfo(allUser)
+  },[])
   return (
     <>
-      {post ? (
+      {!post ? (
+       <div>Loading...</div>
+      ) : (
         <div className="top-area pb-3">
           <div className="profile-area d-flex justify-content-between">
             <div className="avatar-item d-flex gap-3 align-items-center">
               <div className="avatar position-relative">
                 <Image
                   className="avatar-img"
-                  src={`${info.avatarUrl}`}
+                  src={info !== undefined ? info.avatarUrl : ""}
                   alt={post.username}
                 />
               </div>
@@ -44,7 +56,7 @@ const PostContent = ({ post }: any) => {
           {post.pictures && post.pictures.length ? (
             <div
               className={`post-img ${
-                post.pictures?.length > 1 ? "d-flex gap-2" : ""
+                post.pictures?.length > 1 ? "d-flex" : ""
               } `}
             >
               {post.pictureUrls.length > 0 ? (
@@ -83,7 +95,7 @@ const PostContent = ({ post }: any) => {
             </div>
           ) : null}
         </div>
-      ) : null}
+      )}
     </>
   );
 };

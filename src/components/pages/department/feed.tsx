@@ -6,6 +6,7 @@ import { AUTHOR_ACTION, DELETE } from "../../../data/actionsData";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../../context/currentUser";
+import Post from "../../common/post";
 
 const FeedTab = () => {
   const navigate = useNavigate();
@@ -14,9 +15,6 @@ const FeedTab = () => {
   const isManager = useSelector((state: any) => state.group.isManager);
   //get data of current group from Redux
   const detailGroup = useSelector((state: any) => state.group.detailGroup);
-  //get data of current user from UserContext
-  const { currentUser }: any = useContext(CurrentUserContext);
-
   //navigate to post detail page
   const handleShowPost = (selectedPostId: string) => {
     const path = `/department/${detailGroup.groupId}/${selectedPostId}`;
@@ -32,74 +30,15 @@ const FeedTab = () => {
         />
         <div className="group-post">
           {detailGroup?.posts
-            ? detailGroup.posts.map((post: any, i: any) => {
-                const {
-                  postId,
-                  title,
-                  content,
-                  pictureUrls,
-                  tags,
-                  username,
-                }: any = post;
-                return (
-                  <div
-                    key={`group-post${postId}`}
-                    className="single-group-post"
-                  >
-                    <Card key={postId}>
-                      <Card.Header className="d-flex justify-content-between">
-                        <div className="username">{username}</div>
-                        {currentUser.username === username ? (
-                          isManager ? (
-                            <Action
-                              actionList={AUTHOR_ACTION}
-                              // postId={postId}
-                              groupId={detailGroup.groupId}
-                              data={post}
-                              component={"post"}
-                            />
-                          ) : (
-                            <Action
-                              actionList={DELETE}
-                              groupId={detailGroup.groupId}
-                              data={post}
-                              component={"post"}
-                            />
-                          )
-                        ) : null}
-                      </Card.Header>
-                      <Card.Body>
-                        <Card.Title>{title}</Card.Title>
-                        <Card.Text>{content}</Card.Text>
-                        <Card.Text className="hashtag justify-content-center d-flex gap-2">
-                          {tags.map((tag: any) => (
-                            <Badge key={tag}>#{tag}</Badge>
-                          ))}
-                        </Card.Text>
-                        {pictureUrls && pictureUrls.length ? (
-                          <Card.Img
-                            src={`${
-                              pictureUrls[
-                                Math.floor(Math.random() * pictureUrls?.length)
-                              ]
-                            }`}
-                          ></Card.Img>
-                        ) : null}
-                      </Card.Body>
-                      <Card.Footer>
-                        <div className="btn-footer">
-                          <Button
-                            variant="outline-primary"
-                            onClick={() => handleShowPost(postId)}
-                          >
-                            See more
-                          </Button>
-                        </div>
-                      </Card.Footer>
-                    </Card>
-                  </div>
-                );
-              })
+            ? detailGroup.posts.map((post: any) => (
+                <Post
+                  clss="single-group-post"
+                  post={post}
+                  handleShowPost={handleShowPost}
+                  isManager={isManager}
+                  groupId={detailGroup.groupId}
+                />
+              ))
             : null}
         </div>
       </div>

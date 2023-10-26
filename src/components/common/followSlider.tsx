@@ -12,13 +12,9 @@ import {
 
 import peopleData from "../../data/peopleData";
 
-const Next = ({ style, onClick }: any) => {
+const Next = ({ onClick }: any) => {
   return (
-    <div
-      onClick={onClick}
-      className="pull-left slick-arrow"
-      style={{ ...style }}
-    >
+    <div onClick={onClick} className="pull-left slick-arrow">
       <Button>
         <ArrowLeftCircle />
       </Button>
@@ -26,13 +22,9 @@ const Next = ({ style, onClick }: any) => {
   );
 };
 
-const Prev = ({ style, onClick }: any) => {
+const Prev = ({ onClick }: any) => {
   return (
-    <div
-      onClick={onClick}
-      className="pull-right slick-arrow"
-      style={{ ...style }}
-    >
+    <div onClick={onClick} className="pull-right slick-arrow">
       <Button>
         <ArrowRightCircle />
       </Button>
@@ -45,11 +37,10 @@ const FollowPeople = () => {
     infinite: false,
     autoplay: false,
     centerMode: false,
-    centerPadding: "0px 50px",
     focusOnSelect: true,
     speed: 1000,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 2,
     arrows: true,
     prevArrow: <Next />,
     nextArrow: <Prev />,
@@ -71,19 +62,20 @@ const FollowPeople = () => {
         breakpoint: 768,
         settings: {
           slidesToShow: 4,
-          arrows: false,
         },
       },
       {
         breakpoint: 576,
         settings: {
           slidesToShow: 3,
+          arrows: false,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
+          arrows: false,
         },
       },
     ],
@@ -100,7 +92,7 @@ const FollowPeople = () => {
       <Slider {...settings} className="people-carousel">
         {peopleData.map((itm) => (
           <div className="single-slide">
-            <Card className="user-list-item mx-1 p-2 justify-content-center text-center">
+            <Card className="user-list-item">
               <div className="position-relative d-flex justify-content-center">
                 <Card.Img
                   variant="top"

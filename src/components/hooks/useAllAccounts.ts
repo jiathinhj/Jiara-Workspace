@@ -11,7 +11,7 @@ const useAllAccounts = (onSuccess: Function) => {
     });
   };
 
-  return useQuery("all-accounts", getAllAccounts, {
+  return useQuery("accounts", getAllAccounts, {
     select: (data) => {
       return data.data.data;
     },

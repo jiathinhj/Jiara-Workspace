@@ -1,3 +1,77 @@
+//add new post input
+.add-new-post {
+  height: 60px;
+  input {
+    height: 55px;
+    background-color: var(--Surface-container) !important;
+  }
+}
+
+//slider
+.people-carousel {
+  background-color: transparent;
+  .slick-arrow {
+    opacity: 0;
+    &.pull-right {
+      position: absolute;
+      top: 100px;
+      z-index: 999;
+    }
+    &.pull-left {
+      position: absolute;
+      top: 100px;
+      z-index: 999;
+    }
+  }
+  &:hover {
+    .slick-arrow {
+      opacity: 0.8;
+      &.pull-right {
+        position: absolute;
+        top: 100px;
+        right: -5px;
+        z-index: 999;
+      }
+      &.pull-left {
+        position: absolute;
+        top: 100px;
+        left: -5px;
+        z-index: 999;
+      }
+    }
+  }
+
+  //follow people card
+  .slick-slide {
+    .single-slide {
+      position: relative;
+      z-index: 1;
+      .card {
+        margin-inline: 3px;
+      }
+      .user-list-item {
+        color: var(--On-surface);
+        background: var(--Surface-container);
+        border: transparent;
+        border-radius: 10px;
+        min-height: 220px;
+        max-height: 220px;
+        padding: 0.75rem;
+        justify-content: center;
+        text-align: center;
+        //image follow people size
+        .img-fluid {
+          height: 60px;
+          width: 60px;
+        }
+        .card-text {
+          max-height: 30px;
+        }
+      }
+    }
+  }
+}
+
 .post-item {
   color: var(--On-surface);
   .post-single-box {
@@ -37,6 +111,7 @@
 
         .double {
           display: flex;
+          column-gap: 10px;
           img {
             width: 50%;
           }
@@ -55,21 +130,32 @@
     }
   }
   //PostReaction
-  .react-list {
-    button {
-      background: none;
-      border: none;
-      color: var(--On-surface-3rd);
-      margin-right: 10px;
+  .total-react-share {
+    display: flex;
+    justify-content: space-between;
+    .react-list {
+      button {
+        background: none;
+        border: none;
+        color: var(--On-surface-3rd);
+        margin-right: 10px;
+      }
     }
   }
   .like-comment-share {
     border-top: 1px solid var(--Outline-variant);
     border-bottom: 1px solid var(--Outline-variant);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    margin: 1rem 0;
     button {
       background: transparent;
       border: transparent;
       color: var(--On-surface);
+      svg {
+        margin-right: 5px;
+      }
       &:hover {
         color: var(--Inverse-primary) !important;
       }
@@ -193,5 +279,15 @@
         height: 40px;
       }
     }
+  }
+}
+
+.home-post {
+  .post-item {
+    .post-single-box {
+      background-color: var(--Surface-container) !important;
+      box-shadow: unset;
+    }
+    margin-top: 1rem;
   }
 }

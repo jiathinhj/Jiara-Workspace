@@ -23,10 +23,6 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
-    // persistLogIn: (state, action) => {
-    //   state.isFetching = false;
-    //   state.currentUser = action.payload;
-    // },
   },
 });
 

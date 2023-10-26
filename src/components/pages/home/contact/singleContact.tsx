@@ -19,7 +19,7 @@ const SingleContact = ({ data }: { data: ContactProps }) => {
         </div>
         <div className="info-area">
           <h6 className="m-0">
-            <a href="/link" className="mdtxt">
+            <a href="/link">
               {user_name}
             </a>
           </h6>

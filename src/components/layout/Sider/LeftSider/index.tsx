@@ -10,6 +10,8 @@ import {
   People,
   Sliders,
 } from "react-bootstrap-icons";
+import BrandLogo from "./BrandLogo";
+import { NavLink } from "react-router-dom";
 
 const lEFT_SIDER = [
   { label: "Home", icon: <HouseDoor />, href: "/home" },
@@ -43,19 +45,19 @@ const LeftSider = () => {
           </span>
         </Button>
       </div>
-      <Navbar className={`sider left ${activeProfile && "active"}`}>
-        <Nav>
+      <nav className={`sider left ${activeProfile && "active"}`}>
+        <div className="sider-top">
+          <BrandLogo />
+        </div>
+        <div className="sider-main">
           {lEFT_SIDER.map((items) => (
-            <div
-              key={`leftSider${items.label}`}
-              className="d-flex m-4 mt-1 sidebar-item"
-            >
+            <div key={`leftSider${items.label}`} className="sidebar-item">
               {items.icon}
-              <Nav.Link href={items.href}>{items.label}</Nav.Link>
+              <NavLink to={items.href}>{items.label}</NavLink>
             </div>
           ))}
-        </Nav>
-      </Navbar>
+        </div>
+      </nav>
     </>
   );
 };

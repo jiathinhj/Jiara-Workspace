@@ -1,80 +1,12 @@
-.main-container {
-  padding: 80px 0 0;
-
-  .main-content {
-    height: 100vh;
-    padding: 10px 20px 0px 20px;
-    color: var(--On-surface-variant);
-  }
-}
-.people-carousel {
-  background-color: transparent;
-  .slick-arrow {
-    opacity: 0;
-
-    &.pull-right {
-      position: absolute;
-      top: 100px;
-      z-index: 999;
-    }
-    &.pull-left {
-      position: absolute;
-      top: 100px;
-      z-index: 999;
-    }
-  }
-  &:hover {
-    .slick-arrow {
-      opacity: 0.8;
-      &.pull-right {
-        position: absolute;
-        top: 100px;
-        right: -5px;
-        z-index: 999;
-      }
-      &.pull-left {
-        position: absolute;
-        top: 100px;
-        left: -5px;
-        z-index: 999;
-      }
-    }
-  }
-
-  //follow people card
-  .single-slide {
-    position: relative;
-    z-index: 1;
-    .card {
-      color: var(--On-surface);
-      background: var(--Surface-container);
-      border: transparent;
-      border-radius: 10px;
-    }
-    .user-list-item {
-      min-height: 220px;
-      max-height: 220px;
-      //image follow people size
-      .img-fluid {
-        height: 60px;
-        width: 60px;
-      }
-      .card-text {
-        max-height: 30px;
-      }
-    }
-  }
-}
-
 // department tab------------------------------------------------
-.department {
+.department-page {
   .header-area {
     font-size: 24px;
     font-weight: 600;
   }
   .department-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 49%));
     column-gap: 10px;
     .department-card {
       cursor: pointer;
@@ -190,16 +122,13 @@
   padding-top: 10px;
   column-count: 2;
   padding: 10px 5px;
+  @include media-breakpoint-down(xl) {
+    column-count: 1;
+  }
 }
 .single-group-post {
   padding-bottom: 10px;
   break-inside: avoid;
-  // &.even {
-  //   float: left;
-  // }
-  // &.odd {
-  //   float: right;
-  // }
   .card {
     border: none;
     color: var(--On-surface);

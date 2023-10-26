@@ -1,30 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllAccount } from "../../redux/apiRequests";
+import { useState } from "react";
+import useAllAccounts from "./useAllAccounts";
 
 export const useProfile = (username: string) => {
-  const dispatch = useDispatch();
-  const accounts = useSelector((state: any) => state.user.allUser);
   const [info, setInfo] = useState<any>({});
 
-  const handleGetAllAccounts = async () => {
-    await getAllAccount(dispatch);
+  const getUserInfo = (data: any) => {
+    const queryResult = data.find((dt: any) =>
+      dt.username.toLowerCase().includes(username)
+    );
+    return queryResult ? setInfo(queryResult) : undefined;
   };
+  const { isLoading } = useAllAccounts(getUserInfo);
 
-  const getUserInfo = useCallback(() => {
-    const queryResult =
-      accounts !== null &&
-      accounts.find((account: any) =>
-        account.username.toLowerCase().includes(username)
-      );
-
-    setInfo(queryResult);
-  }, []);
-
-  useEffect(() => {
-    handleGetAllAccounts();
-    getUserInfo();
-  }, []);
-
-  return { info };
+  return { info, isLoading };
 };
+
+//ignore this file

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Col, Form, Image, InputGroup, Row } from "react-bootstrap";
-import LeftSider from "../../components/layout/menu/left";
+import LeftSider from "../../components/Layout/Sider/LeftSider";
 import { toast } from "react-toastify";
 import { Camera, Check2, X } from "react-bootstrap-icons";
 
@@ -124,219 +124,210 @@ const Profile = () => {
 
   return (
     <>
-      <Col xs={3}>
-        <LeftSider />
-      </Col>
+      {currentUser && currentUser.username === undefined ? (
+        <Preloader />
+      ) : (
+        <Row className="profile-setting">
+          <Col className="top-area" sm="4">
+            <div className="avatar-area">
+              <Image
+                src={showAvtBtn ? `${avatar}` : `${currentUser.avatarUrl}`}
+              />
 
-      <Col xs={9} className="main-content">
-        {currentUser && currentUser.username === undefined ? (
-          <Preloader />
-        ) : (
-          <Row className="profile-setting">
-            <Col className="top-area" sm="4">
-              <div className="avatar-area">
-                <Image
-                  src={showAvtBtn ? `${avatar}` : `${currentUser.avatarUrl}`}
-                />
-
-                <Form.Label htmlFor="avatar">
-                  <Camera className="change-avatar-icon" />
-                </Form.Label>
-                <Form.Control
-                  className="d-none"
-                  type="file"
-                  name="avatar"
-                  id="avatar"
-                  onChange={handleChangeAvatar}
-                />
-              </div>
-              {showAvtBtn ? (
-                <Button
-                  variant="outline-primary"
-                  className="mt-2"
-                  onClick={handleSubmitAvatar}
-                >
-                  Save avatar
-                </Button>
-              ) : null}
-              <h3>{`${currentUser.lastname} ${currentUser.firstname}`}</h3>
-            </Col>
-            <Col className="info-area" sm="8">
-              <Row>
-                <InputGroup as={Row}>
-                  <Col sm="3">
-                    <label htmlFor="">Username</label>
-                  </Col>
-                  <Col sm="8">
-                    <Form.Control
-                      readOnly
-                      defaultValue={currentUser.username}
-                    />
-                  </Col>
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup as={Row}>
-                  <Col sm="3">
-                    <label htmlFor="">Password</label>
-                  </Col>
-                  <Col sm="6">
-                    <Form.Control
-                      type="password"
-                      readOnly
-                      defaultValue={"password"}
-                    />
-                  </Col>
-                  <Col sm="3">
-                    <span
-                      className="txtsm"
-                      onClick={() => {
-                        setExpanded(!expanded);
-                        setInput({});
+              <Form.Label htmlFor="avatar">
+                <Camera className="change-avatar-icon" />
+              </Form.Label>
+              <Form.Control
+                className="d-none"
+                type="file"
+                name="avatar"
+                id="avatar"
+                onChange={handleChangeAvatar}
+              />
+            </div>
+            {showAvtBtn ? (
+              <Button
+                variant="outline-primary"
+                className="mt-2"
+                onClick={handleSubmitAvatar}
+              >
+                Save avatar
+              </Button>
+            ) : null}
+            <h3>{`${currentUser.lastname} ${currentUser.firstname}`}</h3>
+          </Col>
+          <Col className="info-area" sm="8">
+            <Row>
+              <InputGroup as={Row}>
+                <Col sm="3">
+                  <label htmlFor="">Username</label>
+                </Col>
+                <Col sm="8">
+                  <Form.Control readOnly defaultValue={currentUser.username} />
+                </Col>
+              </InputGroup>
+            </Row>
+            <Row>
+              <InputGroup as={Row}>
+                <Col sm="3">
+                  <label htmlFor="">Password</label>
+                </Col>
+                <Col sm="6">
+                  <Form.Control
+                    type="password"
+                    readOnly
+                    defaultValue={"password"}
+                  />
+                </Col>
+                <Col sm="3">
+                  <span
+                    className="txtsm"
+                    onClick={() => {
+                      setExpanded(!expanded);
+                      setInput({});
+                    }}
+                  >
+                    {expanded ? "Close" : "Change password"}
+                  </span>
+                </Col>
+              </InputGroup>
+              <Form action="reply-comment">
+                <AnimatePresence initial={false}>
+                  {expanded && (
+                    <motion.div
+                      className="change-password d-flex gap-3 ms-4"
+                      key="content"
+                      initial="collapsed"
+                      animate="open"
+                      exit="collapsed"
+                      variants={{
+                        open: {
+                          opacity: 1,
+                          height: "auto",
+                        },
+                        collapsed: { opacity: 0, height: 0, marginTop: 0 },
+                      }}
+                      transition={{
+                        duration: 0.2,
+                        ease: [0.04, 0.62, 0.23, 0.98],
                       }}
                     >
-                      {expanded ? "Close" : "Change password"}
-                    </span>
-                  </Col>
-                </InputGroup>
-                <Form action="reply-comment">
-                  <AnimatePresence initial={false}>
-                    {expanded && (
-                      <motion.div
-                        className="change-password d-flex gap-3 ms-4"
-                        key="content"
-                        initial="collapsed"
-                        animate="open"
-                        exit="collapsed"
-                        variants={{
-                          open: {
-                            opacity: 1,
-                            height: "auto",
-                          },
-                          collapsed: { opacity: 0, height: 0, marginTop: 0 },
-                        }}
-                        transition={{
-                          duration: 0.2,
-                          ease: [0.04, 0.62, 0.23, 0.98],
-                        }}
-                      >
-                        <Row>
-                          <InputGroup as={Row}>
-                            <Col sm="4">
-                              <label htmlFor="currentPassword">Password</label>
-                            </Col>
-                            <Col sm="8">
-                              <Form.Control
-                                name="currentPassword"
-                                value={input.currentPassword}
-                                onChange={handleChange}
-                                type={showPassword ? "text" : "password"}
-                              />
-                            </Col>
-                          </InputGroup>
-                          <InputGroup as={Row}>
-                            <Col sm="4">
-                              <label htmlFor="newPassword">New password</label>
-                            </Col>
-                            <Col sm="8">
-                              <Form.Control
-                                name="newPassword"
-                                value={input.newPassword}
-                                onChange={handleChange}
-                                type={showPassword ? "text" : "password"}
-                              />
-                            </Col>
-                          </InputGroup>
-
-                          <Col className="action">
-                            <span
-                              className="txtsm"
-                              onClick={() => setShowPassword(!showPassword)}
-                            >
-                              {showPassword ? "Hide Password" : "Show Password"}
-                            </span>
-                            <span className="txtsm" onClick={handleSendEmail}>
-                              Forgot password? Reset via Email
-                            </span>
-                            <Button
-                              size="sm"
-                              variant="outline-primary"
-                              onClick={handleChangePassword}
-                            >
-                              Confirm
-                            </Button>
+                      <Row>
+                        <InputGroup as={Row}>
+                          <Col sm="4">
+                            <label htmlFor="currentPassword">Password</label>
                           </Col>
-                        </Row>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </Form>
-              </Row>
-              <Row>
-                <InputGroup as={Row}>
-                  <Col sm="3">
-                    <label htmlFor="">Email</label>
-                  </Col>
-                  <Col sm="8">
-                    <Form.Control readOnly defaultValue={currentUser.email} />
-                  </Col>
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup as={Row}>
-                  <Col sm="3">
-                    <label htmlFor="phoneNumber">Phone number</label>
-                  </Col>
-                  <Col sm="6">
-                    <Form.Control
-                      name="newPhoneNumber"
-                      value={currentUser.phoneNumber}
-                      onChange={handleChange}
-                      readOnly={editable ? false : true}
-                      // defaultValue={currentUser.phoneNumber}
-                      style={
-                        editable
-                          ? { backgroundColor: "var(--hover-color)" }
-                          : { backgroundColor: "" }
-                      }
-                      onKeyDown={handleKeyDown}
-                      // ref={phoneNumberInput}
-                    />
-                  </Col>
+                          <Col sm="8">
+                            <Form.Control
+                              name="currentPassword"
+                              value={input.currentPassword}
+                              onChange={handleChange}
+                              type={showPassword ? "text" : "password"}
+                            />
+                          </Col>
+                        </InputGroup>
+                        <InputGroup as={Row}>
+                          <Col sm="4">
+                            <label htmlFor="newPassword">New password</label>
+                          </Col>
+                          <Col sm="8">
+                            <Form.Control
+                              name="newPassword"
+                              value={input.newPassword}
+                              onChange={handleChange}
+                              type={showPassword ? "text" : "password"}
+                            />
+                          </Col>
+                        </InputGroup>
 
-                  <Col sm="3">
-                    {editable ? (
-                      <>
-                        <Button className="btn-transparent">
-                          <Check2
-                            className="inline-icon"
-                            onClick={handleChangePhoneNumber}
-                          />
-                        </Button>
-                        <Button className="btn-transparent">
-                          <X
-                            className="inline-icon"
-                            onClick={() => setEditable(false)}
-                          />
-                        </Button>
-                      </>
-                    ) : (
-                      <span
-                        onClick={() => {
-                          setEditable(!editable);
-                        }}
-                        className="txtsm"
-                      >
-                        Edit phone numbers
-                      </span>
-                    )}
-                  </Col>
-                </InputGroup>
-              </Row>
-            </Col>
-          </Row>
-        )}
-      </Col>
+                        <Col className="action">
+                          <span
+                            className="txtsm"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? "Hide Password" : "Show Password"}
+                          </span>
+                          <span className="txtsm" onClick={handleSendEmail}>
+                            Forgot password? Reset via Email
+                          </span>
+                          <Button
+                            size="sm"
+                            variant="outline-primary"
+                            onClick={handleChangePassword}
+                          >
+                            Confirm
+                          </Button>
+                        </Col>
+                      </Row>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Form>
+            </Row>
+            <Row>
+              <InputGroup as={Row}>
+                <Col sm="3">
+                  <label htmlFor="">Email</label>
+                </Col>
+                <Col sm="8">
+                  <Form.Control readOnly defaultValue={currentUser.email} />
+                </Col>
+              </InputGroup>
+            </Row>
+            <Row>
+              <InputGroup as={Row}>
+                <Col sm="3">
+                  <label htmlFor="phoneNumber">Phone number</label>
+                </Col>
+                <Col sm="6">
+                  <Form.Control
+                    name="newPhoneNumber"
+                    value={currentUser.phoneNumber}
+                    onChange={handleChange}
+                    readOnly={editable ? false : true}
+                    // defaultValue={currentUser.phoneNumber}
+                    style={
+                      editable
+                        ? { backgroundColor: "var(--hover-color)" }
+                        : { backgroundColor: "" }
+                    }
+                    onKeyDown={handleKeyDown}
+                    // ref={phoneNumberInput}
+                  />
+                </Col>
+
+                <Col sm="3">
+                  {editable ? (
+                    <>
+                      <Button className="btn-transparent">
+                        <Check2
+                          className="inline-icon"
+                          onClick={handleChangePhoneNumber}
+                        />
+                      </Button>
+                      <Button className="btn-transparent">
+                        <X
+                          className="inline-icon"
+                          onClick={() => setEditable(false)}
+                        />
+                      </Button>
+                    </>
+                  ) : (
+                    <span
+                      onClick={() => {
+                        setEditable(!editable);
+                      }}
+                      className="txtsm"
+                    >
+                      Edit phone numbers
+                    </span>
+                  )}
+                </Col>
+              </InputGroup>
+            </Row>
+          </Col>
+        </Row>
+      )}
     </>
   );
 };

@@ -29,7 +29,7 @@ const LogIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const from = location.state?.from?.pathname || "/department";
+  const from = location.state?.from?.pathname || "department";
 
   const auth = useSelector((state: any) => state.auth);
 

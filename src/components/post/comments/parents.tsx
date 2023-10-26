@@ -55,7 +55,11 @@ const ParentComment = ({ comment, path, deleteCommentHandler }: any) => {
       } d-flex gap-2 `}
     >
       <div className="avatar-item">
-        <Image className="avatar-img" src={info.avatarUrl} alt="avatar" />
+        <Image
+          className="avatar-img"
+          src={info !== undefined ? info.avatarUrl : ""}
+          alt="avatar"
+        />
       </div>
       <div className="info-item w-50">
         <div className="top-area px-4 pt-2 d-flex gap-2 align-items-start justify-content-between">
