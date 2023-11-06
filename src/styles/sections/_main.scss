@@ -6,6 +6,15 @@ body {
 div.row {
   --bs-gutter-x: 0;
 }
+
+.layout-center {
+  height: 100vh;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .main-container {
   position: relative;
   height: 100%;

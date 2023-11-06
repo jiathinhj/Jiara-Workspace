@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { useDarkMode } from "../context/theme";
+import { useDarkMode } from "../Context/ThemeContext";
 import { Switch } from "antd";
 
 export const DarkModeToggle = memo(function DarkModeToggle() {

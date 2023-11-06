@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { CurrentUserContext } from "../components/context/currentUser";
-import { useLocation, useNavigate } from "react-router-dom";
-import { axiosPrivate } from "../api/axios";
+import { CurrentUserContext } from "../Components/Context/CurrentUserContext";
 
 const Auth = ({ children }: { children: React.ReactNode }) => {
   const { setUser }: any = useContext(CurrentUserContext);

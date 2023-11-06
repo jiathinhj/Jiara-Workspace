@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Trash } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
-import Avatar from "../avatar/avatar";
-import useAllAccounts from "../hooks/useAllAccounts";
+import Avatar from "../Avatar";
+import useAllAccounts from "../Hooks/useAllAccounts";
 
 const PersonCard = ({ data, type, onRemoveMember }: any) => {
   const isManager = useSelector((state: any) => state.group.isManager);

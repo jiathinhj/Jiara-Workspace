@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Nav, Navbar } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import {
   Bookmarks,
   CalendarEvent,
@@ -10,8 +10,8 @@ import {
   People,
   Sliders,
 } from "react-bootstrap-icons";
-import BrandLogo from "./BrandLogo";
 import { NavLink } from "react-router-dom";
+import BrandLogo from "./BrandLogo";
 
 const lEFT_SIDER = [
   { label: "Home", icon: <HouseDoor />, href: "/home" },

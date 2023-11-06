@@ -5,7 +5,6 @@ import React, {
   useMemo,
   useState,
 } from "react";
-// import { useMediaQuery } from "react-responsive";
 
 export const ThemeContext = createContext({
   isDark: true,

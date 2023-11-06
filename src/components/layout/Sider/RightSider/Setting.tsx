@@ -1,7 +1,7 @@
 import { memo, useContext } from "react";
 import { Gear, Person, Power } from "react-bootstrap-icons";
-import { DarkModeToggle } from "../../../themeToggle";
-import { CurrentUserContext } from "../../../context/currentUser";
+import { DarkModeToggle } from "../../../ThemeToggle";
+import { CurrentUserContext } from "../../../Context/CurrentUserContext";
 
 const Setting = memo(function Setting() {
   const { currentUser }: any = useContext(CurrentUserContext);

@@ -1,12 +1,12 @@
 import { Button, Form, FormLabel, InputGroup } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
-import ParentComment from "./comments/parents";
-import PostReaction from "./body/reaction";
-import SiblingComment from "./comments/siblings";
+import ParentComment from "./Comments/ParentComment";
+import PostReaction from "./Body/PostReaction";
+import SiblingComment from "./Comments/SiblingComments";
 import { Cursor, EmojiLaughing, Images } from "react-bootstrap-icons";
-import PostContent from "./body/content";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import PostContent from "./Body/PostContent";
+import useAxiosPrivate from "../Hooks/useAxiosPrivate";
 
 const Post = ({ post, comments, groupId, postId }: any) => {
   const [newComment, setNewComment] = useState<string>();

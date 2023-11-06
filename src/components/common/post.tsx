@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Badge, Button, Card } from "react-bootstrap";
-import Action from "../actions/action";
-import { AUTHOR_ACTION, DELETE } from "../../data/actionsData";
-import { CurrentUserContext } from "../context/currentUser";
+import { AUTHOR_ACTION, DELETE } from "../../Constants/CrudActions";
+import { CurrentUserContext } from "../Context/CurrentUserContext";
+import CrudActions from "../Actions/CrudActions";
 
 const Post = ({
   clss = "",
@@ -27,14 +27,14 @@ const Post = ({
           <div className="username">{post.username}</div>
           {currentUser.username === post.username ? (
             isManager ? (
-              <Action
+              <CrudActions
                 actionList={AUTHOR_ACTION}
                 groupId={groupId ? groupId : null}
                 data={post}
                 component={"post"}
               />
             ) : (
-              <Action
+              <CrudActions
                 actionList={DELETE}
                 groupId={groupId ? groupId : null}
                 data={post}

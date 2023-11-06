@@ -4,11 +4,9 @@ import Setting from "./Setting";
 import Notification from "./Notification";
 import { Bell, Envelope } from "react-bootstrap-icons";
 import { Image } from "react-bootstrap";
-import Avatar from "../../../avatar/avatar";
-import { CurrentUserContext } from "../../../context/currentUser";
-import Message from "./Message";
+import { CurrentUserContext } from "../../../Context/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
-import WeawyChat from "../../../WeawyChat";
+import Message from "./Message";
 
 const RightSider = () => {
   const [active, setActive] = useState<string>("");
@@ -39,7 +37,11 @@ const RightSider = () => {
               }}
             >
               <Envelope />
-              <span className="abs-area">{<ConversationBadge /> || 0}</span>
+              {(<ConversationBadge />).key !== null ? (
+                <span className="abs-area">
+                  <ConversationBadge />
+                </span>
+              ) : null}
             </div>
           </div>
         </div>
@@ -60,14 +62,12 @@ const RightSider = () => {
               className="icon-btn"
               onClick={() => activeHandler("settings")}
             >
-              {currentUser?.avatarUrl ? (
+              {currentUser?.avatarUrl && (
                 <Image
                   className="avatar-img"
                   src={`${currentUser?.avatarUrl}` || ""}
                   alt="avatar"
                 />
-              ) : (
-                <Avatar firstname={"J"} lastname={"R"} />
               )}
             </span>
           </div>

@@ -1,4 +1,4 @@
-import { Chat, ConversationList } from "@weavy/uikit-react";
+import { ConversationList } from "@weavy/uikit-react";
 import React from "react";
 
 const Message = () => {

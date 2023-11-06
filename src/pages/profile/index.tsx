@@ -1,15 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Col, Form, Image, InputGroup, Row } from "react-bootstrap";
-import LeftSider from "../../components/Layout/Sider/LeftSider";
 import { toast } from "react-toastify";
 import { Camera, Check2, X } from "react-bootstrap-icons";
 
-import { CurrentUserContext } from "../../components/context/currentUser";
+import { CurrentUserContext } from "../../Components/Context/CurrentUserContext";
 
-import Preloader from "../../components/preloader";
-import { useFileResize } from "../../components/hooks/useFileResize";
-import useAxiosPrivate from "../../components/hooks/useAxiosPrivate";
+import Preloader from "../../Components/Preloader";
+import { useFileResize } from "../../Components/Hooks/useFileResize";
+import useAxiosPrivate from "../../Components/Hooks/useAxiosPrivate";
 
 const Profile = () => {
   const [expanded, setExpanded] = useState<boolean>(false);

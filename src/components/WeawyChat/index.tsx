@@ -3,10 +3,9 @@ import {
   WeavyProvider,
   WeavyClient,
   MessengerProvider,
-  Chat,
 } from "@weavy/uikit-react";
-import { useDarkMode } from "../context/theme";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useDarkMode } from "../Context/ThemeContext";
+import useAxiosPrivate from "../Hooks/useAxiosPrivate";
 
 const WeawyChat = ({ children }: any) => {
   const { isDark } = useDarkMode();
@@ -29,8 +28,6 @@ const WeawyChat = ({ children }: any) => {
     []
   );
 
-  useEffect(() => {}, [weavyClient]);
-
   useEffect(() => {
     if (isDark) {
       document.body.classList.add("wy-dark");
@@ -42,9 +39,7 @@ const WeawyChat = ({ children }: any) => {
 
   return (
     <>
-      <WeavyProvider client={weavyClient}>
-        <MessengerProvider>{children}</MessengerProvider>
-      </WeavyProvider>
+      <WeavyProvider client={weavyClient}>{children}</WeavyProvider>
     </>
   );
 };

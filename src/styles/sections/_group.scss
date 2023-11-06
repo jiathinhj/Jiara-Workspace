@@ -5,27 +5,34 @@
     font-weight: 600;
   }
   .department-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 49%));
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 49%));
     column-gap: 10px;
+    column-count: 2;
     .department-card {
       cursor: pointer;
-      margin: 0 0 15px;
+      margin: 0 0 1rem;
+
       .card {
         border: none;
+
         &:hover {
           background-color: var(--Surface-container-high);
         }
-        height: 220px;
+        height: max-content;
+        break-inside: avoid;
         background-color: var(--Surface-container);
         color: var(--On-surface);
         .card-header {
           border: none;
           color: var(--On-secondary-container);
-          background-color: var(--Secondary-container);
+          border-bottom: 1px solid var(--Surface-container-high);
           font-weight: 600;
           min-height: fit-content;
           text-align: center;
+        }
+        .card-body {
+          min-height: fit-content;
         }
         .department-info {
           display: flex;

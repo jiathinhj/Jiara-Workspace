@@ -1,10 +1,8 @@
-import { Location, NavigateFunction } from "react-router-dom";
-import { loginFailure, loginStart, loginSuccess } from "./authSlice";
-import { apiRequest } from "../api";
-import { AppDispatch } from "./store";
-import { getAllGroupSuccess, getGroupByIdSuccess } from "./groupSlice";
-import { getAllUserSuccess } from "./userSlice";
-import { AxiosResponse } from "axios";
+import { loginFailure, loginStart, loginSuccess } from "./AuthSlice";
+import { apiRequest } from "../Api";
+import { AppDispatch } from "./Store";
+import { getAllGroupSuccess, getGroupByIdSuccess } from "./GroupSlice";
+import { getAllUserSuccess } from "./UserSlice";
 
 export const loginUser = async (account: Object, dispatch: AppDispatch) => {
   dispatch(loginStart());

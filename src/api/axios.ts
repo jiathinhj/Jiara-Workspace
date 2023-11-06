@@ -1,5 +1,4 @@
 import axios from "axios";
-import { toast } from "react-toastify";
 
 const BASE_URL = "https://jiara-workspace-server.onrender.com";
 

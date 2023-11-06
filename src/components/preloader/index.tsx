@@ -10,7 +10,6 @@ const Preloader = () => {
 };
 
 const LoaderContainer = styled.div`
-
   width: 100vh;
   height: 100vh;
   display: flex;

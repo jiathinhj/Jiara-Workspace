@@ -7,8 +7,8 @@ import * as Yup from "yup";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import SignUp from "../../components/modals/signup";
-import { loginUser } from "../../redux/apiRequests";
+import SignUp from "../../Components/Modals/SignUpModal";
+import { loginUser } from "../../Redux/ApiRequests";
 
 const initialValues = {
   username: "",
@@ -25,11 +25,11 @@ const validationSchema = Yup.object({
     // )
     .required("Required!"),
 });
-const LogIn = () => {
+const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const from = location.state?.from?.pathname || "department";
+  const from = location.state?.from?.pathname || "/home";
 
   const auth = useSelector((state: any) => state.auth);
 
@@ -42,7 +42,6 @@ const LogIn = () => {
     setOpenSignUp(false);
   };
 
-  // call API to login
   const onLogin = async (values: any) => {
     const account = values;
     try {
@@ -138,4 +137,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default Login;
