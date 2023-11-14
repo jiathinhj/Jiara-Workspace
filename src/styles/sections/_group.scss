@@ -1,7 +1,7 @@
 // department tab------------------------------------------------
 .department-page {
   .header-area {
-    font-size: 24px;
+    font-size: 1.2rem;
     font-weight: 600;
   }
   .department-cards {
@@ -19,21 +19,21 @@
         &:hover {
           background-color: var(--Surface-container-high);
         }
-        height: max-content;
+        // height: max-content;
         break-inside: avoid;
         background-color: var(--Surface-container);
         color: var(--On-surface);
         .card-header {
           border: none;
           color: var(--On-secondary-container);
-          border-bottom: 1px solid var(--Surface-container-high);
+          border-bottom: 1px solid var(--Surface-container-highest);
           font-weight: 600;
           min-height: fit-content;
           text-align: center;
         }
-        .card-body {
-          min-height: fit-content;
-        }
+        // .card-body {
+        //   min-height: fit-content;
+        // }
         .department-info {
           display: flex;
           flex-wrap: wrap;
@@ -42,9 +42,9 @@
 
           .badge {
             background: transparent !important;
-            border: 0.2px solid var(--Tertiary);
+            border: 0.1px solid var(--Tertiary);
             color: var(--Tertiary);
-            font-size: 14px;
+            font-size: 0.8rem;
             font-weight: unset;
           }
         }
@@ -60,16 +60,17 @@
     &.disabled {
       color: var(--On-surface-3rd);
       font-weight: 700;
-      position: absolute;
-      right: 0;
       font-size: 24px;
     }
   }
   .group-area {
     border-bottom: none;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
     li {
-      padding: 10px 0;
-      font-size: 19px;
+      padding-block: 1rem;
+      font-size: 1.2rem;
       border-bottom: none !important;
       &:last-child {
         a,
@@ -103,11 +104,15 @@
         }
       }
     }
+    .tab {
+      top: 5rem;
+    }
   }
   .member-tab {
     background-color: var(--Surface-container);
     border-radius: 15px;
-    padding: 10px 20px;
+    margin-top: 4rem;
+    padding: 1rem;
     .top-area {
       display: flex;
       justify-content: space-between;
@@ -126,9 +131,9 @@
 
 // post card
 .group-post {
-  padding-top: 10px;
   column-count: 2;
-  padding: 10px 5px;
+  margin-top: 4rem;
+  padding: 1rem;
   @include media-breakpoint-down(xl) {
     column-count: 1;
   }
@@ -266,17 +271,13 @@
 
       border-radius: 20px;
       opacity: 1;
-      // transition: 0.5s ease;
-      // backface-visibility: hidden;
     }
     .change-avatar-icon {
-      // transition: 0.5s ease;
       opacity: 0;
       position: absolute;
       top: calc(50%); //exclude div padding
       left: 50%;
-      // transform: translate(-50%, -50%);
-      // -ms-transform: translate(-50%, -50%);
+
       text-align: center;
     }
     &:hover {

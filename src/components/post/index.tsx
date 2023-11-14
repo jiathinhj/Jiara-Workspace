@@ -8,6 +8,8 @@ import { Cursor, EmojiLaughing, Images } from "react-bootstrap-icons";
 import PostContent from "./Body/PostContent";
 import useAxiosPrivate from "../Hooks/useAxiosPrivate";
 
+import { motion } from "framer-motion";
+
 const Post = ({ post, comments, groupId, postId }: any) => {
   const [newComment, setNewComment] = useState<string>();
   const [commentList, setCommentList] = useState<any>([]);
@@ -41,15 +43,25 @@ const Post = ({ post, comments, groupId, postId }: any) => {
   }, [comments]);
 
   return (
-    post && (
-      <div className="post-item">
-        <div key={post.postId} className="post-single-box">
+    <div
+      className={`${!post ? "animate-pulse" : ""} post-item`}
+      style={{ background: "rgb(176, 190, 197)", borderRadius: "0.8rem" }}
+    >
+      {post && (
+        <motion.div
+          key={post.postId}
+          className="post-single-box"
+          initial={{ height: "16rem", opacity: 0 }}
+          animate={{
+            height: "auto",
+            opacity: 1,
+          }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+        >
           {/* Post */}
           <PostContent post={post} />
-
           {/* Post Reaction */}
           <PostReaction />
-
           {/* Write Comment */}
           <div className="write-comment d-flex gap-3">
             <InputGroup className="d-flex">
@@ -113,9 +125,9 @@ const Post = ({ post, comments, groupId, postId }: any) => {
                 </div>
               ))
             : null}
-        </div>
-      </div>
-    )
+        </motion.div>
+      )}
+    </div>
   );
 };
 

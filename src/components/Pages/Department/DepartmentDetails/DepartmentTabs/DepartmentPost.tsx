@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
-import DepartmentMain from "../../../../Pages/Department";
-import Post from "../../../Post";
+import DepartmentMain from "../../../../../Pages/Department";
+import Post from "../../../../Post";
 import { X } from "react-bootstrap-icons";
-import useAxiosPrivate from "../../../Hooks/useAxiosPrivate";
+import useAxiosPrivate from "../../../../Hooks/useAxiosPrivate";
 import { useQuery } from "react-query";
-import Preloader from "../../../Preloader";
+import Preloader from "../../../../Preloader";
 
 const DepartmentPost = () => {
   const axiosPrivate = useAxiosPrivate();

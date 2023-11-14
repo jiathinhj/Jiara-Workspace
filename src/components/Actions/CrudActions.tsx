@@ -3,7 +3,7 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 import { ThreeDots } from "react-bootstrap-icons";
 import PostModal from "../Modals/PostModal";
 import { useDispatch } from "react-redux";
-import { getGroupById } from "../../Redux/ApiRequests";
+import { getGroupById } from "../../Redux/apiRequests";
 import useAxiosPrivate from "../Hooks/useAxiosPrivate";
 
 const CrudActions = ({

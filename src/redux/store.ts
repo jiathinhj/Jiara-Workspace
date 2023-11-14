@@ -1,12 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import authReducer from "./AuthSlice";
-import groupReducer from "./GroupSlice";
-import userReducer from "./UserSlice";
+import authReducer from "./authSlice";
+import groupReducer from "./groupSlice";
+import userReducer from "./userSlice";
+import globalReducer from "./globalSlice";
 
 const rootReducer = combineReducers({
   auth: authReducer,
   group: groupReducer,
   user: userReducer,
+  global: globalReducer,
 });
 
 const store = configureStore({

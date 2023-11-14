@@ -2,21 +2,21 @@
   .toggler {
     position: relative;
     display: block;
-    .sider {
-      &.left {
-        position: absolute;
-        transform: translateX(-200px);
-        top: initial;
-        z-index: 2;
-        opacity: 0;
-        min-width: 290px;
-        transition: 0.3s;
-        &.active {
-          transform: translateX(0px);
-          opacity: 1;
-        }
-      }
-    }
+    // .sider {
+    //   &.left {
+    //     position: absolute;
+    //     transform: translateX(-200px);
+    //     top: initial;
+    //     z-index: 2;
+    //     opacity: 0;
+    //     min-width: 290px;
+    //     transition: 0.3s;
+    //     &.active {
+    //       transform: translateX(0px);
+    //       opacity: 1;
+    //     }
+    //   }
+    // }
     .main-content {
       margin-top: 0px;
       z-index: 1;
@@ -27,11 +27,11 @@
 @include media-breakpoint-up(lg) {
   .main-container {
     .sider {
-      &.left {
-        overflow-x: hidden;
-        width: 100%;
-        transition: all 0.5s;
-      }
+      // &.left {
+      //   overflow-x: hidden;
+      //   width: 100%;
+      //   transition: all 0.5s;
+      // }
     }
   }
 }

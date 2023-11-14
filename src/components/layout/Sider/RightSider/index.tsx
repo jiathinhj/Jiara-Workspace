@@ -1,17 +1,37 @@
-import { ConversationBadge } from "@weavy/uikit-react";
-import { useCallback, useContext, useState } from "react";
-import Setting from "./Setting";
-import Notification from "./Notification";
-import { Bell, Envelope } from "react-bootstrap-icons";
-import { Image } from "react-bootstrap";
-import { CurrentUserContext } from "../../../Context/CurrentUserContext";
-import { useNavigate } from "react-router-dom";
-import Message from "./Message";
+import React, { useCallback, useContext, useState } from "react";
+import { Badge, Button, Image, OverlayTrigger, Tooltip } from "react-bootstrap";
+import {
+  Bell,
+  Bookmarks,
+  CalendarEvent,
+  Gear,
+  Globe,
+  HouseDoor,
+  JournalText,
+  People,
+  Sliders,
+} from "react-bootstrap-icons";
+import { NavLink, useParams } from "react-router-dom";
+import Divider from "../../../Divider/Divider";
 
-const RightSider = () => {
+import appLogo from "../../../../appLogo.png";
+import SideBar from "../LeftSider/SideBar";
+import { CurrentUserContext } from "../../../Context/CurrentUserContext";
+import Setting from "./Setting";
+
+const lEFT_SIDER = [
+  { label: "Notification", icon: <Bell />, href: "/home" },
+  { label: "Home", icon: <HouseDoor />, href: "/home" },
+  { label: "People", icon: <Globe />, href: "#" },
+  { label: "Department", icon: <People />, href: "/department" },
+  { label: "Saved", icon: <Bookmarks />, href: "#" },
+  { label: "Scheduler", icon: <CalendarEvent />, href: "/scheduler" },
+  { label: "My Note", icon: <JournalText />, href: "#" },
+  { label: "Setting", icon: <Gear />, href: "#" },
+];
+const LeftSider = () => {
   const [active, setActive] = useState<string>("");
   const { currentUser }: any = useContext(CurrentUserContext);
-  const navigate = useNavigate();
 
   const activeHandler = useCallback(
     (opt: string) => {
@@ -23,69 +43,58 @@ const RightSider = () => {
     },
     [active]
   );
-
   return (
-    <div className="sider right">
-      <div className="sider-top">
-        <div className="sider-item">
-          <div className="icon-btn">
-            <div
-              className="icon-area"
-              onClick={() => {
-                activeHandler("messages");
-                navigate("chat");
-              }}
-            >
-              <Envelope />
-              {(<ConversationBadge />).key !== null ? (
-                <span className="abs-area">
-                  <ConversationBadge />
-                </span>
-              ) : null}
-            </div>
-          </div>
+    <div>
+      <nav className="sider left">
+        <ProfileItem
+          currentUser={currentUser}
+          onClick={() => activeHandler("settings")}
+        />
+        <Divider clss={"divider-lg"} />
+        <div className="sider-main">
+          {lEFT_SIDER.map((item) => (
+            <SiderBarItem item={item} />
+          ))}
+          <Divider clss={"divider-lg"} />
+          {/* <Setting/> */}
         </div>
-        <div className="sider-item">
-          <div className="icon-btn">
-            <div
-              className="icon-area"
-              onClick={() => activeHandler("notification")}
-            >
-              <Bell />
-              <span className="abs-area">3</span>
-            </div>
-          </div>
-        </div>
-        <div className="sider-item">
-          <div className="profile-pic">
-            <span
-              className="icon-btn"
-              onClick={() => activeHandler("settings")}
-            >
-              {currentUser?.avatarUrl && (
-                <Image
-                  className="avatar-img"
-                  src={`${currentUser?.avatarUrl}` || ""}
-                  alt="avatar"
-                />
-              )}
-            </span>
-          </div>
-        </div>
-      </div>
-      <div className="sider-main">
-        {active === "messages" ? (
-          <Message />
-        ) : active === "notification" ? (
-          <Notification />
-        ) : active === "settings" ? (
-          <Setting />
-        ) : (
-          <Setting />
-        )}
-      </div>
+      </nav>
     </div>
   );
 };
 
-export default RightSider;
+const ProfileItem = ({ currentUser, onClick }: any) => (
+  <div className="profile-pic">
+    <span className="icon-btn" onClick={onClick}>
+      {currentUser?.avatarUrl && (
+        <Image
+          roundedCircle
+          className="avatar-img"
+          src={`${currentUser?.avatarUrl}` || ""}
+          alt="avatar"
+        />
+      )}
+    </span>
+  </div>
+);
+const SiderBarItem = ({ item }: any) => (
+  <OverlayTrigger
+    placement="right"
+    delay={{ show: 250, hide: 400 }}
+    overlay={<Tooltip>{item.label}</Tooltip>}
+  >
+    <div key={`leftSider${item.label}`} className="sidebar-item">
+      <div className="sider-badge"></div>
+      <NavLink
+        to={item.href}
+        className={({ isActive }) =>
+          isActive ? "active sidebar-icon" : "sidebar-icon"
+        }
+      >
+        {item.icon}
+      </NavLink>
+    </div>
+  </OverlayTrigger>
+);
+
+export default LeftSider;

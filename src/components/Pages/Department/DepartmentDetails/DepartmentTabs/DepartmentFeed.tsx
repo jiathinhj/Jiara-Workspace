@@ -20,10 +20,10 @@ const DepartmentFeed = () => {
   return (
     <>
       <div className="d-flex flex-column">
-        <AddNewPost
+        {/* <AddNewPost
           groupId={detailGroup?.groupId}
           placeholder="Start a discussion"
-        />
+        /> */}
         <div className="group-post">
           {detailGroup?.posts
             ? detailGroup.posts.map((post: any) => (

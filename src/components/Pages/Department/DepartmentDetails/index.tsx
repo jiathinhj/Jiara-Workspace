@@ -9,7 +9,7 @@ import { useQuery } from "react-query";
 import {
   getGroupByIdSuccess,
   getMemberStatus,
-} from "../../../../Redux/GroupSlice";
+} from "../../../../Redux/groupSlice";
 import Preloader from "../../../Preloader";
 import useAxiosPrivate from "../../../Hooks/useAxiosPrivate";
 import DepartmentMembers from "./DepartmentTabs/DepartmentMembers";
@@ -58,7 +58,7 @@ const DepartmentDetail = () => {
       {isLoading ? (
         <Preloader />
       ) : (
-        <div className="group-detail position-relative">
+        <div className="group-detail">
           <Tabs
             className="group-area"
             activeKey={tab}
@@ -70,7 +70,7 @@ const DepartmentDetail = () => {
             <Tab eventKey="member" title="Member">
               <DepartmentMembers />
             </Tab>
-            <Tab disabled title={data?.data.groupName || ""} />
+            {/* <Tab disabled title={data?.data.groupName || ""} /> */}
           </Tabs>
         </div>
       )}

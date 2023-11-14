@@ -6,8 +6,6 @@ import { CurrentUserProvider } from "./Components/Context/CurrentUserContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Router from "./Routes";
-import WeawyChat from "./Components/WeawyChat";
-import { MessengerProvider } from "@weavy/uikit-react";
 
 function App() {
   const queryClient = new QueryClient();
@@ -22,11 +20,7 @@ function App() {
       <ThemeProvider>
         <CurrentUserProvider>
           <QueryClientProvider client={queryClient}>
-            <WeawyChat>
-              <MessengerProvider>
-                <Router />
-              </MessengerProvider>
-            </WeawyChat>
+            <Router />
             <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
           </QueryClientProvider>
         </CurrentUserProvider>

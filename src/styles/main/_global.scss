@@ -1,6 +1,5 @@
 :root {
   font-size: 16px;
-  font-family: "Nunito", sans-serif !important;
   --Primary: #6750a4;
   --Primary-container: #eaddff;
   --On-primary: #ffffff;
@@ -44,12 +43,24 @@
   --On-noti: #ffffff;
   --On-surface-2nd: rgb(0, 0, 0, 60%);
   --On-surface-3rd: rgb(0, 0, 0, 38%);
+
+  --grey-900: #202225;
+  --grey-800: #2f3136;
+  --grey-700: #36393f;
+  --grey-600: #4f545c;
+  --grey-400: #d4d7dc;
+  --grey-300: #e3e5e8;
+  --grey-200: #ebedef;
+  --grey-100: #f2f3f5;
+
+  --shadow-bottom-high: 0 3px 2px -1px rgba(0, 0, 0, 0.2);
+  --shadow-right-high: 3px 0px 2px -1px rgba(0, 0, 0, 0.2);
+  --shadow-left-high: 3px 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 //dark-theme
 body.dark {
   font-size: 16px;
-  font-family: "Nunito", sans-serif !important;
 
   --Primary: #d0bcff;
   --Primary-container: #4f378b;
@@ -80,7 +91,7 @@ body.dark {
   --Background: #141218;
   --On-background: #e6e1e5;
   --Error: #f2b8b5;
-  --Error-container: #8c1d18;
+  --Error-container: #a75551;
   --On-error: #601410;
   --On-error-container: #f9dedc;
   --Outline: #938f99;
@@ -94,4 +105,13 @@ body.dark {
   --On-Noti: #ffffff;
   --On-surface-2nd: rgb(255, 255, 255, 60%);
   --On-surface-3rd: rgb(255, 255, 255, 38%);
+
+  --grey-900: #202225;
+  --grey-800: #2f3136;
+  --grey-700: #36393f;
+  --grey-600: #4f545c;
+  --grey-400: #d4d7dc;
+  --grey-300: #e3e5e8;
+  --grey-200: #ebedef;
+  --grey-100: #f2f3f5;
 }

@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import store from "./Redux/Store";
+import store from "./Redux/store";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { LoadingProvider } from "./Components/Context/LoadingContext";
+import { ThemeProvider } from "@material-tailwind/react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,7 +18,9 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <LoadingProvider>
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
         <ToastContainer
           autoClose={2000}
           hideProgressBar={false}

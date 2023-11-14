@@ -6,7 +6,7 @@ import HomePost from "../../Components/Pages/Home/HomePosts";
 const HomeMain = () => {
   return (
     <div className="home-page">
-      <AddNewPost />
+      {/* <AddNewPost /> */}
       <HomePost />
     </div>
   );

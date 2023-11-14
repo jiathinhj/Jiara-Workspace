@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button, Image, Modal, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Camera, CaretDownFill, XCircle } from "react-bootstrap-icons";
-import { getGroupById } from "../../Redux/ApiRequests";
+import { getGroupById } from "../../Redux/apiRequests";
 import { useFileResize } from "../Hooks/useFileResize";
 import useAxiosPrivate from "../Hooks/useAxiosPrivate";
 

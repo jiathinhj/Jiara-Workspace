@@ -4,7 +4,7 @@ import axios from "../../../Api/axios";
 import { useInfiniteQuery, useQuery } from "react-query";
 import useAxiosPrivate from "../../Hooks/useAxiosPrivate";
 import { useDispatch } from "react-redux";
-import { getAllUserSuccess } from "../../../Redux/UserSlice";
+import { getAllUserSuccess } from "../../../Redux/userSlice";
 
 const HomePost = () => {
   console.log("error");

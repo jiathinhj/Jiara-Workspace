@@ -1,249 +1,65 @@
-//--------------Siders--------------------------------------
-.sider {
-  height: 100vh;
-  display: block;
+//navbar
+.navbar {
+  height: 4rem;
+  padding-inline: 1rem;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: calc(100% - 24rem);
+  background-color: var(--Body) !important;
+  border-bottom: 1px solid var(--Surface-container-high);
+  opacity: 1;
+  z-index: 1000;
 
-  .sider-top {
-    height: 4rem;
-  }
-  .sider-main {
-    border-block: 1px solid var(--Surface-container);
-  }
-}
+  .search-bar {
+    height: 100%;
+    display: flex;
 
-//------------- Left Sider --------------------------------
-.sider {
-  &.left {
-    border-right: 1px solid var(--Surface-container);
-    display: block;
-    padding-block: 0;
-    .brand {
-      padding: 0.75rem;
-      a {
-        display: flex;
-        text-decoration: none;
-        gap: 0.75rem;
-        align-items: center;
-        .logo {
-          width: 2.5rem;
-          align-items: center;
-        }
-        h6 {
-          color: var(--On-surface);
-          font-weight: 600;
-          margin: 0;
-        }
-      }
-    }
-    .sidebar-item {
-      display: flex;
-      padding-block: 1rem;
-      border-bottom: 3px solid transparent;
+    .input-group {
       border-radius: 1rem;
-      &:hover {
-        border-bottom-color: var(--Secondary-container);
+      align-self: center;
+    }
+    input {
+      border-radius: 0.5rem;
+      background-color: var(--Surface-container-highest);
+      &:focus {
+        background-color: var(--Surface-container-highest);
       }
-      &:active {
-        color: var(--On-secondary-container);
-      }
-      a {
-        color: var(--On-surface-variant);
-        display: flex;
-        align-self: center;
-        letter-spacing: 1px;
-        font-weight: 600;
-        text-decoration: none;
-      }
-      svg {
-        color: var(--On-surface-variant);
-        align-self: center;
-        margin: 0 1rem;
-      }
+    }
+    .search-button {
+      background-color: var(--Surface-container-highest);
+      border-radius: 0.5rem;
     }
   }
-}
 
-//------------- Right Sider --------------------------------
-
-.sider {
-  &.right {
-    border-left: 1px solid var(--Surface-container);
-    //top icon area
-    .sider-top {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .sider-item {
-        padding: 0.75rem;
-      }
-      .profile-pic {
-        position: relative;
-        display: flex;
-        align-items: center;
-        img {
-          width: 2.5rem;
-          height: 2.5rem;
-          border-radius: 50%;
-        }
-        .avatar {
-          &::before {
-            position: absolute;
-            content: "";
-            width: 0.8rem;
-            height: 0.8rem;
-            background: var(--Active-color);
-            border-radius: 50%;
-            top: -4px;
-            left: 0;
-          }
-        }
-      }
-    }
-    //main area
-    .sider-main {
-      padding-block: 0.5rem;
-
-      //profile & setting
-      h5 {
-        font-weight: 600;
-        color: var(--On-surface-variant);
-        text-align: center;
-        margin-block: 0.6rem;
-      }
-      .avatar-img {
-        width: 45px;
-        height: 45px;
-      }
-
-      h6 {
-        font-weight: 600;
-        color: var(--On-surface-variant);
-      }
-
-      header.wy-appbars {
-        display: none;
-      }
-
-      .profile-area {
-        .info-area {
-          text-align: center;
-          h6 {
-            margin: 0;
-            color: var(--On-primary-container);
-            font-weight: 600;
-          }
-          p {
-            color: var(--On-primary-container);
-          }
-        }
-
-        ul {
-          list-style: none;
-          padding-left: unset;
-          li {
-            padding: 0.75rem;
-            min-height: 4rem;
-            display: flex;
-            align-items: center;
-            svg {
-              margin-right: 0.75rem;
-            }
-            &:hover {
-              background-color: var(--Surface-container-high);
-            }
-          }
-          a {
-            align-items: center;
-            color: var(--On-surface);
-            text-decoration: none;
-          }
-        }
-        .switch {
-          color: var(--Primary);
-          padding: 0.75rem;
-        }
-        .ant-switch-checked {
-          background-color: var(--Tertiary);
-          &:hover {
-            background-color: var(--Tertiary);
-          }
-        }
-      }
-
-      //notifications area
-      .notifications-area {
-        padding-inline: 0.75rem;
-        .notifications {
-          .notification {
-            &:hover {
-              background-color: var(--Surface-container-high);
-            }
-          }
-
-          .row {
-            align-items: center;
-            padding-block: 0.75rem;
-            h6,
-            p {
-              margin: 0;
-              padding: 0.2rem;
-            }
-          }
-        }
-      }
-
-      //messages area{
-      .messages-area {
-        height: 100%;
-        .message-btn {
-          height: 5%;
-          text-align: center;
-          padding-block: 0.5rem;
-          a {
-            color: var(--Primary);
-          }
-          &:hover {
-            color: var(--Tertiary);
-          }
-        }
-      }
-    }
-    .wy-badge {
-      background-color: unset;
-      color: unset;
-      padding: unset;
-      font-size: 0.8rem;
-    }
+  .icon-items {
+    display: flex;
+    gap: 1rem;
   }
 }
-
-.navbar-center {
-  height: calc(4rem + 1px);
-  border-bottom: 1px solid var(--Surface-container);
-  padding-inline: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-.search-bar {
-  width: 30%;
-  height: 100%;
+.profile-pic {
   display: flex;
-
-  .input-group {
-    height: 60%;
-    border: 1px solid var(--Surface-container);
-    border-radius: 1rem;
-    align-self: center;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
   }
-  input {
-    border-radius: 0.5rem;
-    background-color: transparent;
-    &:focus {
-      background-color: transparent;
-    }
-  }
-  .search-button {
-    background-color: transparent;
-    border-radius: 0.5rem;
-  }
+}
+.siderbar-item {
+  position: relative;
+}
+.sider-badge {
+  content: "";
+  position: absolute;
+  right: 0.3rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: var(--Error-container);
+  text-align: center;
+  line-height: 0.7rem;
+  font-weight: 500;
 }

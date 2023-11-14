@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import DepartmentMain from "../../../../Pages/Department";
 import { useQuery } from "react-query";
-import { getAllGroupSuccess } from "../../../../Redux/GroupSlice";
+import { getAllGroupSuccess } from "../../../../Redux/groupSlice";
 import Preloader from "../../../Preloader";
 import useAxiosPrivate from "../../../Hooks/useAxiosPrivate";
 

@@ -1,8 +1,8 @@
-import { loginFailure, loginStart, loginSuccess } from "./AuthSlice";
+import { loginFailure, loginStart, loginSuccess } from "./authSlice";
 import { apiRequest } from "../Api";
-import { AppDispatch } from "./Store";
-import { getAllGroupSuccess, getGroupByIdSuccess } from "./GroupSlice";
-import { getAllUserSuccess } from "./UserSlice";
+import { AppDispatch } from "./store";
+import { getAllGroupSuccess, getGroupByIdSuccess } from "./groupSlice";
+import { getAllUserSuccess } from "./userSlice";
 
 export const loginUser = async (account: Object, dispatch: AppDispatch) => {
   dispatch(loginStart());

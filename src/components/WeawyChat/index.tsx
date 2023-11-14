@@ -39,7 +39,9 @@ const WeawyChat = ({ children }: any) => {
 
   return (
     <>
-      <WeavyProvider client={weavyClient}>{children}</WeavyProvider>
+      {weavyClient ? (
+        <WeavyProvider client={weavyClient}>{children}</WeavyProvider>
+      ) : null}
     </>
   );
 };

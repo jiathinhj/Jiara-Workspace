@@ -4,26 +4,25 @@ import { Outlet } from "react-router-dom";
 import Auth from "../../Auth";
 
 import RightSider from "./Sider/RightSider";
-import LeftSider from "./Sider/LeftSider";
 import Navbar from "./Navbar";
+import SideBar from "./Sider/LeftSider/SideBar";
+import LeftSider from "./Sider/RightSider";
 
 const Layout = () => {
   return (
     <Auth>
-      <Row>
-        <Col lg={2}>
-          <LeftSider />
-        </Col>
-        <Col lg={7} className="layout-center">
-          <Navbar />
-          <div className="main-container">
-            <Outlet />
-          </div>
-        </Col>
-        <Col lg={3}>
-          <RightSider />
-        </Col>
-      </Row>
+      <div className="layout">
+        <div>
+          <SideBar />
+        </div>
+        <div className="main-container">
+          {/* <Navbar /> */}
+          <Outlet />
+        </div>
+      </div>
+      <div>
+        <LeftSider />
+      </div>
     </Auth>
   );
 };

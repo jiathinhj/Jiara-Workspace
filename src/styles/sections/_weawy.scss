@@ -2,6 +2,8 @@
 
 // weawy.
 
+@import "../main/global";
+
 :root {
   /* Tones based on #00ff00 generated using Material Theme Builder */
 
@@ -14,11 +16,11 @@
   --wy-primary-60: #beb9cc;
   --wy-primary-50: #aaa3bd;
   --wy-primary-40: #9f9ca8;
-  --wy-primary-30: #39383b; //bubble chat
-  --wy-primary-20: #58565e; //hover
+  --wy-primary-30: var(--Surface-container); //bubble chat
+  --wy-primary-20: var(--Surface-container-low); //hover
   --wy-primary-10: rgb(48, 46, 56);
 
-  /* neutral color */
+  // /* neutral color */
   --wy-neutral-99: #190f41;
   --wy-neutral-95: #0b0b0b;
   --wy-neutral-90: #dfdde4;
@@ -27,43 +29,32 @@
   --wy-neutral-60: #8e8d91;
   --wy-neutral-50: #757279;
   --wy-neutral-40: #5c595f;
-  --wy-neutral-30: #454347;
-  --wy-neutral-20: #2e2c30;
+  --wy-neutral-30: var(--Surface-container-low); //bubble chat & selected chat
+  --wy-neutral-20: var(--Surface-container-low); //receiver mess
   --wy-neutral-10: #1a171c;
 
-  /* error color */
-  --wy-error-99: #fffbff;
-  --wy-error-95: #ffedea;
-  --wy-error-90: #ffdad6;
-  --wy-error-80: #ffb4ab;
-  --wy-error-70: #ff897d;
-  --wy-error-60: #ff5449;
-  --wy-error-50: #de3730;
-  --wy-error-40: #ba1a1a;
-  --wy-error-30: #93000a;
-  --wy-error-20: #690005;
-  --wy-error-10: #410002;
-
   --wy-surface-1: var(--Background); //component background
-  --wy-surface-2: var(--wy-primary-80);
-  --wy-surface-3: var( --wy-primary-90);
+  --wy-surface-2: var(--Surface-container);
+  --wy-surface-3: var(--Surface-container);
   --wy-surface-4: var(--wy-primary-95);
   --wy-surface-5: var(--wy-primary-99);
   --wy-surface-variant: var(--wy-neutral-90);
   --wy-outline-variant: transparent;
-  --wy-background: var( --wy-primary-90);
+  --wy-background: var(--wy-primary-90);
 }
 
-.wy-dark {
-  --wy-primary-20: var( --wy-primary-30); //hover
+body.wy-dark {
+  --wy-neutral-20: var(--Surface-container-low); //receiver mess
+  --wy-primary-30: var(--Surface-container); //bubble chat & selected chat
+  --wy-primary-20: var(--Surface-container-lowest); //hover
   --wy-surface-1: var(--Background); //component background
-  --wy-surface-2: var(--wy-primary-20);
-  --wy-surface-3: var( --wy-primary-30);
+  --wy-surface-2: var(--Surface-container);
+  --wy-surface-3: var(--Surface-container);
   --wy-surface-4: var(--wy-primary-45);
   --wy-surface-5: var(--wy-primary-50);
   --wy-surface-variant: var(--wy-neutral-20);
   --wy-outline-variant: transparent;
-  --wy-background: var( --wy-primary-30);
+  --wy-background: var(--wy-primary-30);
 }
 
 // .wy-messenger-provider {
@@ -89,8 +80,6 @@
 // }
 
 .wy-appbars {
-  // border-bottom: 1px solid var(--Surface-container-low);
-  // height: 4rem;
   position: absolute;
   right: 0;
   top: -4rem;
@@ -99,14 +88,19 @@
 .wy-message-editor-inputs {
   button,
   .cm-editor {
-    background-color: var(--Surface-container-high);
+    background-color: var(--Background) !important;
   }
 }
 // }
 
 .wy-message-editor {
   border-top: 1px solid var(--Surface-container-low);
-  background-color: var(--Background);
+  background-color: var(--Background) !important;
+}
+
+.wy-message-editor .cm-editor {
+  background-color: var(--Background) !important;
+  border: unset !important;
 }
 
 .wy-conversations {
