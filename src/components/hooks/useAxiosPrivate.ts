@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { axiosPrivate } from "../../Api/axios";
+import { axiosPrivate } from "../../Apis/axiosConfig";
 import { toast } from "react-toastify";
 
 const useAxiosPrivate = () => {

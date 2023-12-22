@@ -1,14 +1,25 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 
 import { Google } from "react-bootstrap-icons";
 import { ErrorMessage, Field, Formik, Form } from "formik";
 import * as Yup from "yup";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import logo from "../../logo.png";
 
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+  Avatar,
+} from "@material-tailwind/react";
 import SignUp from "../../Components/Modals/SignUpModal";
-import { loginUser } from "../../Redux/apiRequests";
+import InputWrapper from "../../Components/Form/InputWrapper";
+import { setLoading } from "../../Redux/Slice/globalSlice";
+import { loginUser } from "../../Apis/requests";
 
 const initialValues = {
   username: "",
@@ -31,8 +42,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const from = location.state?.from?.pathname || "/home";
 
-  const auth = useSelector((state: any) => state.auth);
-
   const [openSignUp, setOpenSignUp] = useState<boolean>(false);
 
   const openSignUpHandler = () => {
@@ -43,97 +52,77 @@ const Login = () => {
   };
 
   const onLogin = async (values: any) => {
+    console.log(values);
     const account = values;
     try {
+      setLoading(true);
       await loginUser(account, dispatch);
       navigate(from, { replace: true });
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (
-    <Container fluid>
-      <Row className="sign-in d-flex justify-content-center align-items-center h-100">
-        <Col col="12">
-          <Card
-            className="login-form my-5 mx-auto"
-            style={{ borderRadius: "1rem", maxWidth: "600px" }}
-          >
-            <Card.Body className="p-5 w-100 d-flex flex-column">
-              <h2 className="fw-bold text-center">Sign in</h2>
-              <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={onLogin}
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onLogin}
+      >
+        <Form>
+          <div className="flex justify-center mt-[20vh]">
+            <Card className="w-96">
+              <CardHeader
+                variant="gradient"
+                className="mb-4 grid h-28 place-items-center bg-gray-900"
               >
-                <Form>
-                  <Row>
-                    <Col sm="3">
-                      <label htmlFor="username">Username</label>
-                    </Col>
-                    <Col sm="9">
-                      <Field
-                        className="w-100"
-                        id="username"
-                        type="text"
-                        size="lg"
-                        name="username"
-                      />
-                      <div className="error-message">
-                        <ErrorMessage name="username" />
-                      </div>
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col sm="3">
-                      <label htmlFor="password">Password</label>
-                    </Col>
-                    <Col sm="9">
-                      <Field
-                        className="w-100"
-                        id="password"
-                        type="password"
-                        size="lg"
-                        name="password"
-                      />
-                      <div className="error-message">
-                        <ErrorMessage name="password" />
-                      </div>
-                    </Col>
-                  </Row>
-                  {/* end form fields  */}
-                  <Button type="submit" className="btn-login w-100" size="lg">
-                    SIGN IN
-                  </Button>
-                </Form>
-              </Formik>
-
-              <hr className="my-4" />
-              <Button className="btn-gg mb-2 w-100" size="lg">
-                <Google /> Sign in with google
-              </Button>
-              <div className="sign-up-area">
-                <p className="mb-0">
-                  Don't have an account?
-                  <button className="btn-sign-up" onClick={openSignUpHandler}>
-                    Sign Up
-                  </button>
-                </p>
-              </div>
-              {/* end button group */}
-              {/* {auth.error && <Alert variant={"danger"}>{auth.error}</Alert>} */}
-            </Card.Body>
-            {auth.isFetching && (
-              <Spinner
-                animation="border"
-                style={{ color: "var(--Primary)", alignSelf: "center" }}
-              />
-            )}
-          </Card>
-        </Col>
-      </Row>
+                <Typography variant="h3" color="white">
+                  <Avatar src={logo} size="sm" /> Welcome!
+                </Typography>
+              </CardHeader>
+              <CardBody className="flex flex-col gap-4">
+                <InputWrapper name="username" label="Username" size="lg" />
+                <InputWrapper
+                  name="password"
+                  type="password"
+                  label="Password"
+                  size="lg"
+                />
+              </CardBody>
+              <CardFooter className="pt-0">
+                <Button variant="gradient" fullWidth type="submit">
+                  Sign In
+                  {/* {newActivityRes.loading || updateActivityRes.loading ? (
+                    <BeatLoader color="#d0914e" />
+                  ) : (
+                    <span>{activityForm.isNew ? "Create" : "Update"}</span>
+                  )} */}
+                </Button>
+                <Typography
+                  variant="small"
+                  className="mt-6 flex justify-center"
+                >
+                  Don&apos;t have an account?
+                  <Typography
+                    as="a"
+                    href="#signup"
+                    variant="small"
+                    color="blue-gray"
+                    className="ml-1 font-bold"
+                    onClick={openSignUpHandler}
+                  >
+                    Sign up
+                  </Typography>
+                </Typography>
+              </CardFooter>
+            </Card>
+          </div>
+        </Form>
+      </Formik>
 
       <SignUp openSignUp={openSignUp} closeSignUpHandler={closeSignUpHandler} />
-    </Container>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const DepartmentMain = ({ children }: any) => {
+const SpaceMainLayout = ({ children }: any) => {
   return (
     <div className="department-page">
       <>{children} </>
@@ -8,4 +8,4 @@ const DepartmentMain = ({ children }: any) => {
   );
 };
 
-export default DepartmentMain;
+export default SpaceMainLayout;

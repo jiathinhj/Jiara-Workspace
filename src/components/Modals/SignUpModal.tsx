@@ -4,9 +4,9 @@ import { Button, Card, Col, Modal, Row } from "react-bootstrap";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-import logo from "../../appLogo.png";
+import logo from "../../logo.png";
 import { toast } from "react-toastify";
-import axios from "../../Api/axios";
+import axios from "../../Apis/axiosConfig";
 
 const initialValues = {
   email: "",

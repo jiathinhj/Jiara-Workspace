@@ -2,13 +2,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useContext, useState } from "react";
 import { Button, Col, Form, Image, InputGroup, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
-import { Camera, Check2, X } from "react-bootstrap-icons";
-
 import { CurrentUserContext } from "../../Components/Context/CurrentUserContext";
 
-import Preloader from "../../Components/Preloader";
 import { useFileResize } from "../../Components/Hooks/useFileResize";
 import useAxiosPrivate from "../../Components/Hooks/useAxiosPrivate";
+import { CameraIcon, CheckBadgeIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Spinner } from "@material-tailwind/react";
 
 const Profile = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
@@ -124,7 +123,7 @@ const Profile = () => {
   return (
     <>
       {currentUser && currentUser.username === undefined ? (
-        <Preloader />
+        <Spinner />
       ) : (
         <Row className="profile-setting">
           <Col className="top-area" sm="4">
@@ -134,7 +133,7 @@ const Profile = () => {
               />
 
               <Form.Label htmlFor="avatar">
-                <Camera className="change-avatar-icon" />
+                <CameraIcon className="change-avatar-icon" />
               </Form.Label>
               <Form.Control
                 className="d-none"
@@ -299,13 +298,13 @@ const Profile = () => {
                   {editable ? (
                     <>
                       <Button className="btn-transparent">
-                        <Check2
+                        <CheckBadgeIcon
                           className="inline-icon"
                           onClick={handleChangePhoneNumber}
                         />
                       </Button>
                       <Button className="btn-transparent">
-                        <X
+                        <XMarkIcon
                           className="inline-icon"
                           onClick={() => setEditable(false)}
                         />

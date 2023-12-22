@@ -1,7 +1,5 @@
 import React from "react";
 
-import "./Styles/globals.scss";
-import { ThemeProvider } from "./Components/Context/ThemeContext";
 import { CurrentUserProvider } from "./Components/Context/CurrentUserContext";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -17,14 +15,14 @@ function App() {
 
   return (
     <>
-      <ThemeProvider>
-        <CurrentUserProvider>
-          <QueryClientProvider client={queryClient}>
-            <Router />
-            <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-          </QueryClientProvider>
-        </CurrentUserProvider>
-      </ThemeProvider>
+      {/* <ThemeProvider> */}
+      <CurrentUserProvider>
+        <QueryClientProvider client={queryClient}>
+          <Router />
+          <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+        </QueryClientProvider>
+      </CurrentUserProvider>
+      {/* </ThemeProvider> */}
     </>
   );
 }

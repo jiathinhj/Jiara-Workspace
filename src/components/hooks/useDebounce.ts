@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setSearchText } from "../../Redux/globalSlice";
+import { setSearchText } from "../../Redux/Slice/globalSlice";
 
 const useDebounce = (searchText: string) => {
   const dispatch = useDispatch();

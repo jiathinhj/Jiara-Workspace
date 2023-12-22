@@ -1,5 +1,4 @@
 import { useCallback, useMemo } from "react";
-import { styled } from "styled-components";
 
 const Avatar = ({ firstname, lastname }: any) => {
   const generateRandomColorNumber = useCallback(() => {
@@ -25,24 +24,15 @@ const Avatar = ({ firstname, lastname }: any) => {
     [firstname, lastname]
   );
   return (
-    <StyledAvatar
-      className="avatar-placeholder"
+    <div
       style={{
         backgroundColor: placeholderBackground,
       }}
+      className="!rounded-full w-12 h-12 flex justify-center items-center "
     >
-      <p> {avatarPlaceholder}</p>
-    </StyledAvatar>
+      <p className="text-white font-semibold"> {avatarPlaceholder}</p>
+    </div>
   );
 };
-const StyledAvatar = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  p {
-    margin-bottom: unset;
-    font-weight: 600;
-  }
-`;
 
 export default Avatar;

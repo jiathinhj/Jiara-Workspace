@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { Button, Image, Modal, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Camera, CaretDownFill, XCircle } from "react-bootstrap-icons";
-import { getGroupById } from "../../Redux/apiRequests";
 import { useFileResize } from "../Hooks/useFileResize";
 import useAxiosPrivate from "../Hooks/useAxiosPrivate";
+import { getGroupById } from "../../Apis/requests";
 
 const initialValues: any = {
   title: "",
@@ -133,7 +133,7 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
                     multiple={true}
                     onChange={selectFiles}
                   />
-
+                  {/* 
                   <div className="preview-image">
                     {imgs
                       ? imgs.map((img: string, i: number) => (
@@ -147,6 +147,44 @@ const PostModal = ({ showModal, handleClose, post, groupId, action }: any) => {
                         ))
                       : null}
                   </div>
+                  <div className="grid grid-cols-3 gap-3">
+                <label
+                  htmlFor="photos"
+                  className="flex flex-col items-center justify-center max-h-25 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100"
+                >
+                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                    <Typography>Add photos</Typography>
+                    <BiCamera className="mt-3" />
+                  </div>
+                  <input
+                    id="photos"
+                    type="file"
+                    multiple
+                    hidden
+                    onChange={selectFiles}
+                  ></input>
+                </label>
+                {imgs
+                  ? imgs.map((img,i) => (
+                      <div className="relative h-25" key={`preview-${img}`}>
+                        <img
+                          className="rounded-lg cursor-pointer bg-gray-50 hover:blur-[1px] w-full"
+                          key={`preview-img-${img}`}
+                          src={img}
+                        />
+                        <div className="absolute cursor-pointer flex items-center justify-center opacity-0 hover:opacity-100 w-full h-full top-0 rounded-lg bg-gray-600 bg-opacity-30 text-gray-100">
+                          <Typography
+                            key={`close-label-${img}`}
+                            onClick={() => deleteFiles(i)}
+                            className="text-center text-sm"
+                          >
+                            Remove
+                          </Typography>
+                        </div>
+                      </div>
+                    ))
+                  : null}
+              </div> */}
                 </Row>
               </div>
             ) : null}

@@ -3,12 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^5.1.4",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
+    "@heroicons/react": "^2.0.18",
     "@material-tailwind/react": "^2.1.4",
-    "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.13.6",
     "@reduxjs/toolkit": "^1.9.5",
     "@tanstack/react-query": "^4.33.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -21,7 +17,6 @@
     "@weavy/uikit-react": "^17.2.0",
     "antd": "^5.6.3",
     "axios": "^1.4.0",
-    "bootstrap-scss": "^5.3.0",
     "browser-image-compression": "^2.0.2",
     "formik": "^2.4.2",
     "framer-motion": "^10.12.18",
@@ -31,7 +26,8 @@
     "node-sass": "^9.0.0",
     "npm": "^9.8.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.8.0",
+    "react-bootstrap": "^2.9.1",
+    "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
     "react-redux": "^8.1.1",
@@ -76,6 +72,9 @@
   "devDependencies": {
     "@types/node": "^20.4.7",
     "@types/react-slick": "^0.23.10",
-    "@types/redux-logger": "^3.0.9"
+    "@types/redux-logger": "^3.0.9",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5"
   }
 }

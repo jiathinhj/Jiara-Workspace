@@ -2,11 +2,10 @@ import { Navigate, useRoutes } from "react-router-dom";
 import HomeMain from "../Pages/Home";
 import Profile from "../Pages/Profile";
 import Layout from "../Components/Layout";
-import DepartmentDetail from "../Components/Pages/Department/DepartmentDetails";
-import DepartmentLists from "../Components/Pages/Department/DepartmentLists";
 import Login from "../Pages/Login";
-import DepartmentPost from "../Components/Pages/Department/DepartmentDetails/DepartmentTabs/DepartmentPost";
 import Scheduler from "../Pages/Scheduler";
+import SpaceList from "../Components/Pages/Spaces/SpaceList";
+import SpaceDetail from "../Components/Pages/SpaceDetail";
 
 const Router = () => {
   return useRoutes([
@@ -14,12 +13,12 @@ const Router = () => {
       path: "/",
       element: <Layout />,
       children: [
-        { path: "", element: <Navigate to={"department"} /> },
+        { path: "", element: <Navigate to={"spaces"} /> },
         { path: "home", element: <HomeMain /> },
         { path: "profile", element: <Profile /> },
-        { path: "department", element: <DepartmentLists /> },
-        { path: "department/:id", element: <DepartmentDetail /> },
-        { path: "department/:groupId/:postId", element: <DepartmentPost /> },
+        { path: "spaces", element: <SpaceList /> },
+        { path: "space/:id", element: <SpaceDetail /> },
+        // { path: "department/:groupId/:postId", element: <DepartmentPost /> },
         { path: "scheduler", element: <Scheduler /> },
       ],
     },

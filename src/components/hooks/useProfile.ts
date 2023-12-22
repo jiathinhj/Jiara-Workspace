@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useAllAccounts from "./useAllAccounts";
+import { useSelector } from "react-redux";
 
-export const useProfile = (username: string) => {
-  const [info, setInfo] = useState<any>({});
+export const useProfile = (username: String) => {
+  const [info, setInfo] = useState(null);
+  const allUser = useSelector((state: any) => state.user.allUser);
 
-  const getUserInfo = (data: any) => {
-    const queryResult = data.find((dt: any) =>
-      dt.username.toLowerCase().includes(username)
-    );
-    return queryResult ? setInfo(queryResult) : undefined;
-  };
-  const { isLoading } = useAllAccounts(getUserInfo);
+  const getUserInfo = useCallback(
+    (data: any) => {
+      const queryResult = data.find((dt: any) =>
+        dt.username.toLowerCase().includes(username)
+      );
+      return queryResult ? setInfo(queryResult) : setInfo(null);
+    },
+    [username]
+  );
 
-  return { info, isLoading };
+  useEffect(() => {
+    allUser && getUserInfo(allUser);
+  }, [allUser]);
+
+  return { info };
 };
 
 //ignore this file

@@ -14,8 +14,8 @@ import {
 import { NavLink, useParams } from "react-router-dom";
 import Divider from "../../../Divider/Divider";
 
-import appLogo from "../../../../appLogo.png";
-import SideBar from "../LeftSider/SideBar";
+import logo from "../../../../logo.png";
+import SideBar from "../LeftSider";
 import { CurrentUserContext } from "../../../Context/CurrentUserContext";
 import Setting from "./Setting";
 

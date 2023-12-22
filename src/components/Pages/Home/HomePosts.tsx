@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Post from "../../Post";
-import axios from "../../../Api/axios";
+// import Post from "../../Post";
+import axios from "../../../Apis/axiosConfig";
 import { useInfiniteQuery, useQuery } from "react-query";
 import useAxiosPrivate from "../../Hooks/useAxiosPrivate";
 import { useDispatch } from "react-redux";
-import { getAllUserSuccess } from "../../../Redux/userSlice";
+import { getAllUserSuccess } from "../../../Redux/Slice/userSlice";
 
 const HomePost = () => {
   console.log("error");
@@ -75,13 +75,13 @@ const HomePost = () => {
     <p>Error: {error.message}</p>
   ) : (
     <>
-      {data.pages.map((page: any, i: number) => (
+      {/* {data.pages.map((page: any, i: number) => (
         <div className="home-post" key={i}>
           {page.map((post: any) => (
             <Post post={post} postId={post.postId} />
           ))}
         </div>
-      ))}
+      ))} */}
       <div>{!hasNextPage ? "Nothing more to load" : null}</div>
       <div>{isFetchingNextPage ? "Loading" : null}</div>
     </>

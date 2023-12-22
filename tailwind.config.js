@@ -1,18 +1,15 @@
-/* eslint-disable no-undef */
 const withMT = require('@material-tailwind/react/utils/withMT')
 
 module.exports = withMT({
-	content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+	content: ["./src/**/*.{js,jsx,ts,tsx}"],
 	theme: {
 		colors: {
-			primary: '#F3B975',
-			secondary: '#8CBDCA',
-			background: '#F8F2EE',
+			primary: '#8CBDCA',
+			secondary: '#F3B975',
+			background: '#D9E9ED',
 		},
 		fontFamily: {
-			logo: ['Pacifico', 'cursive'],
-			body: ['Dosis', 'sans-serif'],
-			sans: ['Dosis', 'sans-serif'],
+			sans: ["Open Sans", "sans-serif"],
 		},
 		extend: {
 		},
